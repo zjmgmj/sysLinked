@@ -1,0 +1,107 @@
+/* body{font-family: Roboto;} */
+.member h1{width: 100%;color: #262628;padding: 1.2rem 0 0.87rem 0;font-weight: 500;}
+.member-list li{height: 2.5rem;width: 100%;padding: 0.55rem 0 0.64rem 0;}
+.member-list .avator{width: 1.8rem;height: 1.8rem; margin-right: 0.6rem;margin-top: 0.1rem; overflow: hidden;}
+.member-list .avator img{width: 100%; height: 100%;}
+.member-list .name{color: #262628;font-weight: 500;}
+.member-list .email{color: #666666;font-weight: 400;padding-top: 0.2rem;}
+/*搜索框模块*/
+.search{width: 100%;height: 1.6rem;background:rgba(229,229,229,0.35);border:1px solid rgba(229,229,229,1);border-radius:0.8rem;margin-top:0.86rem;line-height: 1.6rem;}
+.search i{padding-left: 0.65rem;font-weight: 600;}
+.search input{border: #000000;padding: 0;margin: 0;height: 1.2rem;line-height: 1.2rem;margin-top: 0.2rem;width: 100%; padding-left: 0.5rem;}
+/*组织成员*/
+.member{background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(247,247,250,1) 100%);}
+.member h1{width: 100%;color: #262628;padding: 1.2rem 0 0.87rem 0;font-weight: 500;}
+/* .member-list{padding: 0 5%;} */
+.member-list li{height: 3rem;width: 100%;padding: 0.55rem 0 0.64rem 0;}
+.member-list li .avator{width: 1.8rem;height: 1.8rem; float: left;margin-right: 0.6rem;margin-top: 0.1rem;}
+.member-list li .avator img{width: 100%;}
+.member-list li .name{color: #262628;font-weight: 500;}
+.member-list li .email{color: #666666;font-weight: 400;}
+/*会员信息*/
+.avator-box{width: 100%;height: 100%;position: relative;background-color:#000;}
+.avator-box .goBack{position: absolute;left: 5%;z-index: 3;top: 0.52rem;opacity:0.68;}
+.avator-box .avator-bg{background:linear-gradient(134deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);opacity:0.68; width: 100%; height: 12.6rem;}
+
+.avator-box .avator-bg img{width: 100%; height: 100%;}
+.avator-box .avator-piece{position: absolute;top: 50%;margin-top: -2rem;z-index: 44;width: 100%;text-align: center;}
+.avator-box .avator-piece .avator-picture{width: 4rem;height: 4rem;border-radius: 2rem;margin: 0 auto;overflow: hidden;background-color: #FFFFFF;}
+.avator-box .avator-piece .avator-picture img{width: 100%;}
+
+.member-details{width: 100%;padding-left:5%;padding-right:5%; height: 100%;background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(247,247,250,1) 100%);}
+.member-details h1{padding-top: 1.3rem;padding-bottom: 0.65rem;color: #262628;}
+.member-details .info-list li{padding-top: 0.65rem;padding-bottom: 0.35rem;}
+.member-details .info-list li span i{padding-left: 0.4rem;}
+.member-details .btn{width: 100%;background:linear-gradient(136deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);padding: 1px;padding-right: 2px;}
+.member-details .btn span{width: 100%;height: 100%;display: block;background-color: #FFFFFF;color:#49B9EA;}
+
+/*修改角色*/
+.change-role{background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(247,247,250,1) 100%);}
+.change-role h1{width: 100%;color: #262628;padding: 1.2rem 0 0.87rem 0;font-weight: 500;}
+.change-role .role-list li{width: 100%;height: 2rem;line-height: 2rem;}
+.change-role .role-list li.on p{color: #49B9EA;}
+/*setting*/
+.setting{height: auto; background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(247,247,250,1) 100%);}
+.setting .upload-picture{width: 100%; padding-top: 1.3rem;}
+.setting .upload-picture span{display: block;}
+.setting .upload-picture span img{width: 2.2rem;}
+.setting .upload-picture span.upload-txt{margin-top: 1.5rem;margin-left:1.3rem;}
+.setting .group-input{width: 100%;height: 2.96rem;}
+.setting .group-input h3{padding-top: 0.87rem;}
+.setting .group-input p{padding-bottom: 0.87rem;}
+/*创建项目*/
+.upload{display: block;width: 2.2rem;height: 2.2rem;border: 1px dotted #F5F5F5;background:rgba(245,245,245,1);text-align: center;line-height: 2.2rem; overflow: hidden;}
+.upload input{width: 2.2rem;height: 2.2rem;position: absolute;left: 0;top: 0;z-index: 2333;opacity: 0;}
+.upload span{border: 1px dotted #F5F5F5;}
+.create-project{margin-top: 2rem;}
+.create-project p{text-align: center;background-color: rgba(153,153,153,1);line-height: 1.74rem;height: 1.74rem;padding: 1px;}
+.create-project p span{background-color: #FFFFFF;display: block;width: 100%;height: 100%;}
+.create-project p.on{background:linear-gradient(136deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);background-color:#5458A6;}
+
+/*邀请成员*/
+.member-list .check-box{margin-right: 0.65rem;margin-top: 0.3rem;}
+.member-list .check-box input{border-radius: 100%;}
+
+.pullrefresh{
+  position: absolute;
+  top: 1.5rem;
+  padding-top: 1rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+}
+.mui-pull-bottom-pocket,.mui-pull-loading{
+  display: none;
+}
+.mui-table-view:before,.mui-table-view:after{
+  background: none;
+}
+/*创建新文件*/
+.create-file{width: 82%;height: 8.5rem;position: absolute;left: 9%;right: 9%;top: 50%;margin-top: -4.25rem;z-index: 333333;border-radius:4px;overflow: hidden;}
+.create-file h1{width: 100%;height: 2.2rem;line-height: 2.2rem;text-align: center; background:#5458A6 linear-gradient(130deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);}
+.create-file .file-name{width: 85.5%;margin: 0 auto;margin-top: 0.87rem;height: 1.4rem;line-height: 1.4rem;margin-bottom:1.78rem;border-bottom:1px solid #48B6E6;}
+.create-file .file-name input{margin: 0;padding: 0;width: 100%;height: 100%;border: 0;}
+.create-file .create-btn{width: 100%;height: 2.2rem;line-height: 2.2rem;text-align: center;}
+
+.search-box{
+  position: fixed;
+  width: 100%;
+  left: 0;
+  background: #fff;
+  z-index: 9;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 0.5rem;
+}
+.dept-show{
+  display: none;
+}
+.organization h1{padding-top: 1.3rem;padding-bottom: 0.65rem;}
+.organization ul li{padding-top: 0.65rem;padding-bottom: 0.35rem;}
+.organization ul li span i{padding-left: 0.4rem;}
+.is-setting{
+  display: none;
+}

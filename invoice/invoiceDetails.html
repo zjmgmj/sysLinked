@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+      content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <title>sysLinked</title>
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../font/iconfont.css">
+		<link href="../css/mui.picker.min.css" rel="stylesheet" />
+		<link href="../css/mui.poppicker.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="apple-touch-icon" href="/touch-icon-iphone.png" />
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body class="page-width">    
+    <div class="bg-white page-width page-title">  
+      <i class="icon iconfont f-grey ft-18 back">&#xe654;</i>
+      <div class="title ft-16">Invoice Details</div>
+    </div>
+    <div class="page-con invoice pb-menu pt-header linear-gradient-grey">
+   		<div class="flex flex-between border-b-grey invoice-details mt-05">
+   			<div>
+	   			<p class="ft-14 f-grey line-height-30">Value Added Tax Ordinary Invoice</p>
+	   			<p class="ft-14 text-default line-height-20" id="category">Traffic category</p>
+	   		</div>
+	   		<div class="invoice-img"><img src="../images/invoice.jpg" id="invoice-pic"/></div>
+   		</div>
+   		<div class="border-b-dot pb-05">
+	   		<div class="pt-20 details-list">
+	   			<p class="ft-12 text-default line-height-20">Issue Date</p>
+	   			<p class="ft-14 f-grey line-height-30" id="invoiceDate"></p>
+	   		</div>
+	   		<div class="pt-20 details-list">
+	   			<div class="fl width-50">
+		   			<p class="ft-12 text-default line-height-20">Invoice Code</p>
+		   			<p class="ft-14 f-grey line-height-30" id="invoiceCode"></p>
+		   		</div>
+		   		<div class="fl width-50">
+		   			<p class="ft-12 text-default line-height-20">Invoice No.</p>
+		   			<p class="ft-14 f-grey line-height-30" id="invoiceNum"></p>
+		   		</div>
+	   		</div>
+	   		<div class="pt-20 details-list">
+					 <p class="ft-12 text-default line-height-20">Verify Code</p>
+					 <input type="text" id="verifiyCode">
+	   			<!-- <p class="ft-14 f-grey line-height-30" id="verifiyCode"></p> -->
+	   		</div>
+	   		<div class="pt-20 details-list">
+	   			<div class="fl width-50">
+		   			<p class="ft-12 text-default line-height-20">Invoice Amount</p>
+		   			<p class="ft-14 f-grey line-height-30" id="invoiceAmount"></p>
+		   		</div>
+		   		<div class="fl width-50">
+		   			<p class="ft-12 text-default line-height-20">Tax Amount</p>
+		   			<p class="ft-14 f-grey line-height-30" id="invoiceTax"></p>
+		   		</div>
+	   		</div>
+	   		<div class="pt-20 details-list">
+	   			<p class="ft-12 text-default line-height-20">Amount without Tax</p>
+	   			<p class="ft-14 f-grey line-height-30" id="amountExtax"></p>
+	   		</div>
+	   	</div>
+	   	<div class="border-b-dot pb-05">
+	   		<div class="pt-20 details-list">
+	   			<div class="fl width-50">
+		   			<p class="ft-12 text-default line-height-20">Invoice Receiver</p>
+		   			<p class="ft-14 f-grey line-height-30" id="draweeName"></p>
+		   		</div>
+		   		<div class="fl width-50">
+		   			<p class="ft-12 text-default line-height-20">Invoice Receiver Tax Code</p>
+		   			<p class="ft-14 f-grey line-height-30" id="draweeTaxno"></p>
+		   		</div>
+	   		</div>
+	   		<div class="pt-20 details-list">
+	   			<p class="ft-12 text-default line-height-20">Invoice Receiver Address, phone</p>
+	   			<p class="ft-14 f-grey line-height-30" id="draweeAddphone"></p>
+	   		</div>
+	   		<div class="pt-20 details-list">
+	   			<p class="ft-12 text-default line-height-20">Invoice receiver Bank, Account No.</p>
+	   			<p class="ft-14 f-grey line-height-30" id="draweeBankaccount"></p>
+	   		</div>
+	   	</div>
+	   	<div class="pb-05">
+	   		<div class="pt-20 details-list">
+	   			<div class="fl width-50">
+		   			<p class="ft-12 text-default line-height-20">Invoice Issuer</p>
+		   			<p class="ft-14 f-grey line-height-30" id="sellerName"></p>
+		   		</div>
+		   		<div class="fl width-50">
+		   			<p class="ft-12 text-default line-height-20">Invoice Issuer Tax Code</p>
+		   			<p class="ft-14 f-grey line-height-30" id="sellerTax"></p>
+		   		</div>
+	   		</div>
+	   		<div class="pt-20 details-list">
+	   			<p class="ft-12 text-default line-height-20">Invoice Issuer Address, phone</p>
+	   			<p class="ft-14 f-grey line-height-30" id="sellerAddphone"></p>
+	   		</div>
+	   		<div class="pt-20 details-list">
+	   			<p class="ft-12 text-default line-height-20">Invoice Issuer Bank, Account No.</p>
+	   			<p class="ft-14 f-grey line-height-30" id="sellerBankaccount"></p>
+	   		</div>
+			 </div>
+			 <div class="create-project flex flex-between">
+				<p class="width-47 ft-14 text-grey cancel"><span>Cancel</span></p>
+				<p class="width-47 ft-14 f-blue on submit" id="Submit"><span>Submit</span></p>
+			</div>
+		</div>
+    <div class="footer-black"></div>
+	</body>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script src="../js/mui.js"></script>
+	<script src="../js/public.js"></script>
+	<script src="../js/mui.picker.min.js"></script>
+  <script src="../js/mui.poppicker.js"></script>
+	<script src="./invoiceDetails.js"></script>
+</html>

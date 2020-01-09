@@ -1,0 +1,70 @@
+.author-box{
+  width: 1.8rem;
+  height: 1.8rem;
+}
+.author-box img{
+  width: 1.8rem;
+  height: 1.8rem;  
+}
+.chat-box{
+  /* margin-left: 0.5rem; */
+}
+.chat-conter{
+  border: 1px solid rgba(235,235,235,1);
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+.me-bg{
+  background: #49B9EA;
+  color: #fff;
+}
+/* .chat-footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  height: ;
+} */
+.chat-footer-box{
+  height: 2rem;
+}
+.chat-input{
+  height: 1.6rem;
+  line-height: 1.6rem;
+  background: #E5E5E5;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  margin: 0 0.5rem;
+}
+.add-file{
+  width: 20px;
+  height: 20px;
+  background: #118DF0;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 20px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.add-file input{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 2;
+}
+
+.chat-footer{
+  padding: 0.5rem 5% 0;
+  box-sizing: border-box;
+}
+.chat-img{
+  width: 3rem;
+}

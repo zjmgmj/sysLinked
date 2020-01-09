@@ -1,0 +1,54 @@
+body,p,div,span,i,em,input{font-family: Roboto;}
+/*费用管理*/
+.slide-item{width: 100%;height: 1.74rem;padding-top: 0.87rem;line-height: 1.74rem;}
+.slide-item li{position: relative;width: auto;height: 100%;}
+.slide-item li span{position: absolute;width:100%;left: 0;height: 3px;bottom: -4px;z-index: 222;}
+.slide-item li span.on{background:linear-gradient(118deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);}
+.invoice-list li{display: block;width: 100%;height: 1.3rem;padding-bottom: 0.66rem;padding-top: 0.66rem;}
+.invoice-list li .invoice-picture{width: 12%;}
+.invoice-list li .invoice-picture img{width:1.3rem; height: 1.3rem;}
+.invoice-info{width: 88%;}
+.total{width: 100%;height: 2rem;line-height: 2rem;}
+.report{
+  background: #fff;
+  padding: 0.2rem 5%;
+}
+.report h2{height: 0.87rem;width: 100%;padding-top: 1.3rem;padding-bottom: 0.87rem;}
+.report .chart-img{border-bottom:2px dotted rgba(229,229,229,1);padding-bottom: 0.8rem;}
+/* .report .chart-img,.report .chart-img img{width: 100%;} */
+.report .chart-img{width: 15rem; height: 9rem;}
+/* .report .chart-img img{width: 100%;} */
+.description{width: 100%;height: auto;padding-bottom: 1.2rem;}
+.description li{padding-top: 1.2rem;height: 0.82rem;line-height: 0.82rem;}
+.description .chart-color .chart{width: 35px;height: 0.42rem;margin-top: 0.2rem;margin-right: 1rem;}
+.description .chart-color .chart-1{background-color: #B1DCBD;}
+.description .chart-color .chart-2{background-color: #48B6E6;}
+.description .chart-color .chart-3{background-color: #4081E8;}
+.description .chart-color .chart-4{background-color: #5458A6;}
+/*费用详情*/
+.invoice-details{padding: 0.74rem 0;}
+.invoice-details img{width: 2.2rem;}
+.details-list{height: 100%;overflow: hidden;}
+.upload-input{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  z-index: 3;
+}
+.create-project{margin-top: 2rem;}
+.create-project p{text-align: center;background-color: rgba(153,153,153,1);line-height: 1.74rem;height: 1.74rem;padding: 1px;}
+.create-project p span{background-color: #FFFFFF;display: block;width: 100%;height: 100%;}
+.create-project p.on{background:linear-gradient(136deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);background-color:#5458A6;}
+.invoice-img{
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.35rem;
+  overflow: hidden;
+}
+.invoice-img img{
+  width: 100%;
+  height: 100%;
+}
