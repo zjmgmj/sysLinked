@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <title>sysLinked</title>
+  <link rel="stylesheet" href="/h5/font/iconfont.css">
+  <link rel="stylesheet" href="/h5/css/mui.min.css">
+  <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
+  <link rel="stylesheet" href="../organizationMember/index.css">
+  <style>
+    /* .delete-chat {
+      display: none;
+    }
+
+    .longtap .delete-chat {
+      display: block;
+    } */
+    .create-file {
+      width: 82%;
+      height: 8.5rem;
+      position: absolute;
+      left: 9%;
+      right: 9%;
+      top: 50%;
+      margin-top: -4.25rem;
+      z-index: 333333;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .create-file h1 {
+      width: 100%;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      text-align: center;
+      background: #5458A6 linear-gradient(130deg, rgba(177, 220, 189, 1) 0%, rgba(73, 185, 234, 1) 58%, rgba(84, 88, 166, 1) 100%);
+    }
+
+    .create-file .file-name {
+      width: 85.5%;
+      margin: 0 auto;
+      margin-top: 0.5rem;
+      height: 3rem;
+      line-height: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .create-file .create-btn {
+      width: 100%;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      text-align: center;
+    }
+
+    .create-file .file-name {
+      border-bottom: none
+    }
+  </style>
+</head>
+
+<body class="page-width bg-white">
+  <div class="bg-white flex flex-center page-width page-title">
+    <span class="ft-14 f-grey tab" data-active='0'>Notice<em class="on"></em></span>
+    <span class="ft-14 text-grey tab" data-active='1'>News<em></em></span>
+    <i class="icon iconfont f-grey ft-20 addIcon" style="display: none;" id="optionsBtn">&#xe63d;</i>
+  </div>
+  <!-- <div class="page-con notice pt-header pb-menu bg-white" id="pullrefresh"> -->
+  <div class="page-con organization notice bg-white notice-pullrefresh" data-active="0" id="pullrefresh" data-page="0">
+    <div>
+      <ul class="notice-list" id="noticeList">
+        <!-- <li class="border-b-grey">
+          <div class="notice-avator fl"><img src="../images/avatar.png" /></div>
+          <div class="notice-info fl">
+            <div class="flex flex-between line-height-20">
+              <p class="ft-16 f-grey">Luna.Chen</p>
+              <p class="ft-12 text-grey">1 week ago</p>
+            </div>
+            <p class="ft-12 text-grey pt-05">Turned to your collection of orange gradient yuan, the public figure, the
+              first picture to the title layout</p>
+            <div class="notice-picture flex flex-between pt-05">
+              <span><img src="../images/hotel1.png" /></span>
+              <span><img src="../images/hotel2.png" /></span>
+              <span><img src="../images/hotel3.png" /></span>
+              <span><img src="../images/hotel4.png" /></span>
+              <span><img src="../images/hotel5.png" /></span>
+            </div>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="chat-list" id="chatList" style="display: none;"></ul>
+    </div>
+  </div>
+  <!--弹窗-->
+  <div class="popup" id="notification">
+    <!--遮盖层-->
+    <div class="opacity-bg"></div>
+    <!--弹窗内容-->
+    <div class="create-file bg-white">
+      <h1 class="ft-16 text-white">Notification</h1>
+      <div class="file-name">
+        Are you sure you want to delete the news?
+      </div>
+      <div class="create-btn flex flex-between border-t-grey">
+        <span class="ft-16 width-50 border-r-grey text-red" id="determine">Determine</span>
+        <span class="f-blue ft-16 width-50" id="cancel">Cancel</span>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="/h5/js/jquery-3.4.1.min.js"></script>
+<script src="/h5/js/mui.js"></script>
+<script src="/h5/js/public.js"></script>
+<script src="./notice.js"></script>
+
+</html>

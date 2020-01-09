@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <title>sysLinked</title>
+  <link rel="stylesheet" href="/h5/font/iconfont.css">
+  <link rel="stylesheet" href="/h5/css/mui.min.css">
+  <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
+  <link rel="stylesheet" href="./index.css">
+  <style>
+    .mui-pull-top-pocket {
+      top: 1.6rem;
+    }
+  </style>
+</head>
+
+<body class="page-width">
+  <div class="bg-white flex flex-between page-width page-title">
+    <!-- <i class="icon iconfont f-grey ft-18">&#xe651;</i> -->
+    <div id="sidebar">
+      <i class="icon iconfont f-grey ft-18 iconicon-test29"></i>
+    </div>
+    <div class="title ft-16 f-grey">Project Members</div>
+    <i class="icon iconfont text-default ft-18" id="optionShow">&#xe639;</i>
+  </div>
+  <div id="pullrefresh" class="mt-40">
+    <div class="page-con member bg-white">
+      <!-- <h1 class="ft-16 border-b-grey">Administrator ·
+      <span id="adminCount"></span>
+    </h1> -->
+      <ul class="member-list" id="adminList">
+
+      </ul>
+      <!-- <h1 class="ft-16 border-b-grey">Members ·
+      <span id="userCount"></span>
+    </h1>
+    <ul class="member-list" id="userList">
+    </ul> -->
+    </div>
+  </div>
+  <!--弹窗-->
+  <div class="popup">
+    <!--遮盖层-->
+    <div class="opacity-bg"></div>
+    <!--弹窗内容-->
+    <div class="popup-txt">
+      <div class="popup-bg"><img src="/h5/images/popupBg.png" /></div>
+      <ul class="popup-members">
+        <li class="ft-14 flex align-center" id="inviteMembers">
+          <i class="icon iconfont text-black ft-21 iconicon-test11"></i>
+          <span class="pl-02">Invite members</span>
+        </li>
+        <li class="ft-14 flex align-center" id="batchImport">
+          <i class="icon iconfont text-black ft-21 iconicon-test25"></i>
+          <span class="pl-02">Batch Import</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+<script src="/h5/js/jquery-3.4.1.min.js"></script>
+<script src="/h5/js/mui.js"></script>
+<script src="/h5/js/public.js"></script>
+<script src="./projectMembers.js"></script>
+
+</html>
