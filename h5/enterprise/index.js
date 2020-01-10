@@ -1,5 +1,11 @@
 (function ($$, doc, $) {
-  let userId = localStorage.getItem('userId')
+  let userId = null
+  window.setupWebViewJavascriptBridge(bridge => {
+    bridge.callHandler('getUserId', '', (result) => {
+      const resData = JSON.parse(result)
+      userId = resData.userId
+    })
+  })
   function joinorglist () {
     $ajax('/org/joinorglist?userId=' + userId, 'get', '', function (res) {
       console.log(res)
@@ -50,9 +56,15 @@
     })
   }
   function pulldownRefresh () {
-    userId = localStorage.getItem('userId')
-    getuser()
-    joinorglist()
+    // userId = localStorage.getItem('userId')
+    window.setupWebViewJavascriptBridge(bridge => {
+      bridge.callHandler('getUserId', '', (result) => {
+        const resData = JSON.parse(result)
+        userId = resData.userId
+        getuser()
+        joinorglist()
+      })
+    })
   }
   mui.init(muiInit('#pullrefresh', pulldownRefresh));
   mui.ready(function () {
@@ -128,7 +140,7 @@
 
     function updateOrg (params) {
       $ajax('/orguser/update', 'post', params, function (res) {
-        mui.toast(res.msg)
+        // mui.toast(res.msg)
         if (res.code === 1) {
           joinorglist()
         }
@@ -160,7 +172,7 @@
       // const orgId = 38
       $ajax('/orguser/outorg?orgId=' + orgId + '&userId=' + userId, 'get', '', function (res) {
         console.log(res)
-        mui.toast(res.msg)
+        // mui.toast(res.msg)
         $('#notification').hide()
         joinorglist()
       })

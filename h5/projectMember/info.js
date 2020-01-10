@@ -8,8 +8,8 @@
     initData()
 
     function initData () {
-      $('#authorPicMax').attr('src', imgPath + '20191221002848830769511.png')
-      $('#authorPicMin').attr('src', imgPath + '20191221002848830769511.png')
+      $('#authorPicMax').attr('src', imgPath + info.userPic)
+      $('#authorPicMin').attr('src', imgPath + info.userPic)
       $('#name').text(info.firstName)
       $('#surname').text(info.lastName)
       $('#mailbox').text(info.userEamil)

@@ -5,7 +5,7 @@
     // const userId = 34
     const orgId = localStorage.getItem('orgDefault')
     const userId = localStorage.getItem('userId')
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+    const userInfo = JSON.parse(localStorage.getItem('projectuserDetail'))
     const userPic = userInfo.userPic
     const userNickname = userInfo.userNickname
     const senderId = Number(getUrlParam('staffId'))
@@ -17,9 +17,9 @@
         console.log(res)
         // const resData = res.data.rows.reverse()
         const resData = res.data.rows
+        $('#name').text(userNickname)
         if (resData.length > 0) {
           let temp = ''
-          $('#name').text(resData[0].userNickname)
           resData.map(item => {
             const authorPic = item.userPic ? imgPath + item.userPic : '/h5/images/icon_dotted.jpg'
             // const time = datetime2Str(new Date(item.createTime))

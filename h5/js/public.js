@@ -17,7 +17,7 @@ function $ajax (api, type = 'get', params = '', success = (res) => { }, error = 
   if (type === 'post') {
     config.data = JSON.stringify(params)
   }
-  mui.ajax('/api/syslinked_rest' + api, config)
+  mui.ajax('/syslinked_rest' + api, config)
 }
 function $upload (api, type = 'get', params = {}, success = (res) => { }, error = () => { }) {
   // $.ajax({
@@ -29,7 +29,7 @@ function $upload (api, type = 'get', params = {}, success = (res) => { }, error 
   //   success: success,
   //   error: error
   // });
-  mui.ajax('/api/syslinked_rest' + api, {
+  mui.ajax('/syslinked_rest' + api, {
     data: params,
     processData: false,
     contentType: false,

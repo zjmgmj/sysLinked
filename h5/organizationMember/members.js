@@ -53,6 +53,7 @@
       $('#pullrefresh').attr('data-page', page)
       $('#pullrefresh').attr('data-total', res.data.total)
       const resData = res.data.rows
+      localStorage.setItem('userlist', JSON.stringify(resData))
       if (type === 'deptId') {
         deptList(resData)
       } else {
@@ -68,8 +69,8 @@
 
   function deptList (resData) {
     let temp = ''
-    resData.map((item) => {
-      temp += `<li class="border-b-grey member-item" data-userId="${item.userId}">
+    resData.map((item, index) => {
+      temp += `<li class="border-b-grey member-item" data-userId="${item.userId}" data-index="${index}">
         <div class="flex align-center">
           <div class="avator border-blue radius-b50"><img src="/h5/images/avator.png" /></div>
           <div class="member-info">
@@ -83,7 +84,7 @@
   }
   function orgList (resData) {
     let temp = ''
-    resData.map((item) => {
+    resData.map((item, index) => {
       // temp += `<li class="border-b-grey member-item">
       //   <div class="flex align-center">
       //     <div class="avator border-blue radius-b50"><img src="../images/avator.png" /></div>
@@ -95,7 +96,7 @@
       // </li>`
       // <div class="check-box"><input type="checkbox" checked="checked"/></div>
       const status = item.status === 0 ? '未分配' : item.status === 1 ? '已分配' : '已停用'
-      temp += `<li class="border-b-grey member-item" data-userId="${item.userId}">
+      temp += `<li class="border-b-grey member-item" data-userId="${item.userId}"  data-index="${index}">
       <div class="flex align-center flex-between">        
         <div class="flex align-center">
           <div class="avator border-blue radius-b50"><img src="/h5/images/avator.png" /></div>
@@ -151,19 +152,30 @@
     // })
 
     mui('#memberList').on('tap', '.member-item', function () {
-      if (type === 'orgId') {
-        const isChecked = $(this).find('input').attr('checked')
-        $(this).find('input').attr('checked', !isChecked)
-        // const userId = this.getAttribute('data-userid')
-        // $ajax('/projectuser/delete?id='+userId, 'get', '', function(res) {
-        //   console.log(res)
-        //   if (res.code === 1) {
-        //     $('#memberList').html('')
-        //     orguserList()
-        //   }
-        //   mui.toast(res.msg)
-        // })
-      }
+      // localStorage.setItem('projectuserDetail', JSON.stringify(detail))
+      const idx = this.getAttribute('data-index')
+      const params = JSON.parse(localStorage.getItem('userlist'))
+      const detail = params[idx]
+      // detail.pid = pid
+      localStorage.setItem('projectuserDetail', JSON.stringify(detail))
+      console.log(this)
+      mui.openWindow({
+        url: '/h5/projectMember/memberInfo.html',
+        id: 'memberInfo'
+      })
+      // if (type === 'orgId') {
+      //   const isChecked = $(this).find('input').attr('checked')
+      //   $(this).find('input').attr('checked', !isChecked)
+      // const userId = this.getAttribute('data-userid')
+      // $ajax('/projectuser/delete?id='+userId, 'get', '', function(res) {
+      //   console.log(res)
+      //   if (res.code === 1) {
+      //     $('#memberList').html('')
+      //     orguserList()
+      //   }
+      //   mui.toast(res.msg)
+      // })
+      // }
       // const params = {
       //   deptId: Number(id),
       //   userId: Number(this.getAttribute('data-userid'))
