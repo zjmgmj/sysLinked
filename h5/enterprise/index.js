@@ -40,6 +40,7 @@
     })
   }
   function getuser () {
+    log(userId)
     $ajax('/user/getuser?userId=' + userId, 'get', '', function (res) {
       console.log(res)
       const resData = res.data

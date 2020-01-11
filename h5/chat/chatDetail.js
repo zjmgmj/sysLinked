@@ -5,7 +5,7 @@
     // const userId = 34
     const orgId = localStorage.getItem('orgDefault')
     const userId = localStorage.getItem('userId')
-    const userInfo = JSON.parse(localStorage.getItem('projectuserDetail'))
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'))
     const userPic = userInfo.userPic
     const userNickname = userInfo.userNickname
     const senderId = Number(getUrlParam('staffId'))

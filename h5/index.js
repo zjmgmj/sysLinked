@@ -32,12 +32,12 @@
     })
   }
   function pulldownRefresh () {
-    userId = 39
+    // userId = 39
     // orgId = 32
-    joinorglistAjax(userId)
-    getuser(userId)
+    // joinorglistAjax(userId)
+    // getuser(userId)
 
-    // getJoinorglist()
+    getJoinorglist()
   }
   function load () {
     const orgId = localStorage.getItem('orgDefault')
