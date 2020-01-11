@@ -114,6 +114,12 @@
         mui.toast(res.msg)
         if (res.code === 1) {
           // mui.back()
+          setTimeout(() => {
+            mui.openWindow({
+              url: '/h5/',
+              id: 'home'
+            })
+          }, 800)
         }
       })
     })
