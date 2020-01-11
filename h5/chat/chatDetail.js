@@ -13,6 +13,12 @@
 
     loadData()
     function loadData () {
+      // alert('orgId' + orgId)
+      // alert('userId' + userId)
+      // alert('senderId' + senderId)
+      // log('senderId', senderId)
+      // log('userId', userId)
+      // log('orgId', orgId)
       $ajax('/messages/list?staffId=' + userId + '&orgId=' + orgId + '&senderId=' + senderId, 'get', '', function (res) {
         console.log(res)
         // const resData = res.data.rows.reverse()

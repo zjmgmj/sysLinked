@@ -18,7 +18,8 @@ var Canvas2Image = function () {
     };
   }();
 
-  var downloadMime = 'image/octet-stream';
+  // var downloadMime = 'image/octet-stream';
+  var downloadMime = 'image/png';
 
   function scaleCanvas (canvas, width, height) {
     var w = canvas.width,
@@ -44,7 +45,12 @@ var Canvas2Image = function () {
   }
 
   function saveFile (strData) {
-    document.location.href = strData;
+    var a = document.createElement('a')
+    var event = new MouseEvent('click')
+    a.download = 'down'
+    a.href = strData
+    a.dispatchEvent(event)
+    // document.location.href = strData;
   }
 
   function genImage (strData) {

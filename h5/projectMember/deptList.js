@@ -32,7 +32,7 @@
     mui('body').on('tap', '.back', function () {
       // back()
       mui.openWindow({
-        url: '/h5/projectMember',
+        url: '/h5/projectMember/projectMembers.html',
         id: 'projectMember'
       })
     })

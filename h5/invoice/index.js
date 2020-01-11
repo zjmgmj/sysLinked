@@ -52,15 +52,17 @@
         const rows = res.data.rows
         let invoiceAmountTotal = 0
         const category = {
-          2: 'Accommodation',
-          3: 'Catering'
+          2: 'Traffic',
+          3: 'Accommodation',
+          12: 'Catering',
+          13: 'Other'
         }
         rows.map(item => {
           // const createDate = datetime2Str(new Date(item.createDate))
           const createDate = iosTimeFormtter(item.createDate)
           console.log(createDate)
           temp += `<li class="border-b-grey">
-            <div class="fl invoice-picture"><img src="${imgPath}${item.smallpic}" /></div>
+            <div class="fl invoice-picture"><img src="${imgPath}${item.pic}" /></div>
             <div class="fl flex flex-between invoice-info">
               <div class="line-height-15">
                 <p class="ft-12 f-grey">${category[item.invoiceType]}</p>

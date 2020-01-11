@@ -52,21 +52,35 @@
       resData.map((item, index) => {
         console.log(item)
         let filePic = '/h5/images/file_icon.jpg'
+        let fileType = 'file'
+        // if (item.type === 1) {
+        //   const imgSuffix = ['.jpg', '.png']
+        //   filePic = imgPath + item.pic
+        //   if (imgSuffix.indexOf(item.pic.substr(-4)) === -1) {
+        //     filePic = '/h5/images/file_pdf.jpg'
+        //   }
+        // }
         if (item.type === 1) {
-          const imgSuffix = ['.jpg', '.png']
-          filePic = imgPath + item.pic
-          if (imgSuffix.indexOf(item.pic.substr(-4)) === -1) {
+          const imgSuffix = ['.jpg', '.png', '.jpeg']
+          if (item.name.substr(-4) === '.pdf') {
             filePic = '/h5/images/file_pdf.jpg'
+            fileType = 'pdf'
+          } else if (item.pic && (imgSuffix.indexOf(item.pic.substr(-4)) !== -1 || item.pic.substr(-5) == '.jpeg')) {
+            fileType = 'img'
+            filePic = imgPath + item.pic
+          } else {
+            fileType = 'office'
+            filePic = '/h5/images/file-word.png'
           }
         }
         // const createDate = datetime2Str(new Date(item.createDate))
-        const createDate = iosTimeFormtter(item.messagesDate)
+        const createDate = item.createDate ? iosTimeFormtter(item.createDate) : ''
         temp += `<li class="flex flex-between border-b-grey file-item">
         <div class="flex align-center">
           <div class="mr-15"><input type="checkbox" data-id="${item.id}" data-index="${index}"/></div>
           <img src="${filePic}" class="mr-15"/>
           <div class="pt-10">
-            <p class="ft-12 text-333 line-height-15">${item.name}</p>
+            <p class="ft-12 text-333 line-height-15 text-ellipsis" style="width: 8rem">${item.name}</p>
             <p class="ft-12 text-default line-height-15">${createDate}</p>
           </div>
           </div>
@@ -115,7 +129,7 @@
       $('#optionsBox').show()
       return false
     })
-    mui('body').on('tap', '.opacity-bg', function () {
+    mui('body').on('tap', '.opacity-bg, #cancel', function () {
       $('.popup').hide()
     })
 
@@ -173,7 +187,7 @@
     }
 
     function recoveryFile (params) {
-      $ajax('/projectrecycle/recoveryall', 'post`', params, function (res) {
+      $ajax('/projectrecycle/recoveryall', 'post', params, function (res) {
         console.log(res)
         if (res.code === 1) {
           page = 1

@@ -30,8 +30,14 @@
   <div class="page-con invoice pb-menu pt-header linear-gradient-grey">
     <div class="flex flex-between border-b-grey invoice-details mt-05">
       <div>
-        <p class="ft-14 f-grey line-height-30">Value Added Tax Ordinary Invoice</p>
-        <p class="ft-14 text-default line-height-20" id="category">Traffic category</p>
+        <p class="ft-14 f-grey line-height-30">
+          <span class="text-red">*</span>
+          <span>Value Added Tax Ordinary Invoice</span>
+        </p>
+        <!-- <p class="ft-14 text-default line-height-20" id="category" data-type="专用发票" data-val="2"> -->
+        <p class="ft-14 text-default line-height-20" id="category" data-type="专用发票" data-val="2">
+          <span>Ttaffic</span>
+        </p>
       </div>
       <div class="invoice-img"><img src="/h5/images/invoice.jpg" id="invoice-pic" /></div>
     </div>
@@ -115,7 +121,7 @@
       <p class="width-47 ft-14 f-blue on submit" id="Submit"><span>Submit</span></p>
     </div>
   </div>
-  <div class="footer-black"></div>
+  <!-- <div class="footer-black"></div> -->
 </body>
 <script src="/h5/js/jquery-3.4.1.min.js"></script>
 <script src="/h5/js/mui.js"></script>

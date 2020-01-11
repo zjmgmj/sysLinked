@@ -175,6 +175,7 @@
       console.log('---------filelist')
       const fileType = this.getAttribute('data-fileType')
       const path = this.getAttribute('data-path')
+      console.log('path', path)
       if (fileType === 'file') {
         const id = this.getAttribute('data-id')
         mui.openWindow({

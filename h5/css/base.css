@@ -417,3 +417,8 @@ sub { vertical-align: text-bottom }
 .mui-table-view:before,.mui-table-view:after{
   background: none;
 }
+.text-ellipsis{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
