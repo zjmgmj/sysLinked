@@ -112,8 +112,8 @@
     })
     mui('body').on('tap', '#batchImport', function () {
       mui.openWindow({
-        url: '/h5/projectMember/deptList.html',
-        id: 'deptList'
+        url: '/h5/projectMember/batchImport.html',
+        id: 'batchImport'
       })
     })
   });

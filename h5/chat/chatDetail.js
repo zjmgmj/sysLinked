@@ -32,7 +32,7 @@
             const time = iosTimeFormtter(item.createTime)
             let imgTemp = ''
             if (item.fileurl) {
-              imgTemp = `<img src="${imgPath}${item.fileurl}" class="chat-img">`
+              imgTemp = `<img src="${imgPath}${item.fileurl}" class="chat-img" data-preview-src="" data-preview-group="1">`
             }
             let msgTemp = ''
             if (item.message) {
@@ -92,7 +92,9 @@
           console.log('res', res)
           const temp = `<div class="flex mb-05 flex-end">
               <div class="chat-box mr-05">
-                <p class="chat-conter me-bg"><img src="${imgPath}${res.data.url}" class="chat-img"></p>
+                <p class="chat-conter me-bg">
+                  <img src="${imgPath}${res.data.url}" class="chat-img" data-preview-src="" data-preview-group="1">
+                </p>
                 <div class="ft-12 text-default mt-02 text-right">${nowTime}</div>
               </div>
               <div class="author-box">
@@ -139,6 +141,7 @@
         console.log(res)
       })
     }
+    mui.previewImage();
     mui('body').on('tap', '#back', function () {
       mui.back()
     })

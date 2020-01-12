@@ -60,18 +60,16 @@
         //     filePic = '/h5/images/file_pdf.jpg'
         //   }
         // }
-        if (item.type === 1) {
-          const imgSuffix = ['.jpg', '.png', '.jpeg']
-          if (item.name.substr(-4) === '.pdf') {
-            filePic = '/h5/images/file_pdf.jpg'
-            fileType = 'pdf'
-          } else if (item.pic && (imgSuffix.indexOf(item.pic.substr(-4)) !== -1 || item.pic.substr(-5) == '.jpeg')) {
-            fileType = 'img'
-            filePic = imgPath + item.pic
-          } else {
-            fileType = 'office'
-            filePic = '/h5/images/file-word.png'
-          }
+        const imgSuffix = ['.jpg', '.png', '.jpeg']
+        if (item.name.substr(-4) === '.pdf') {
+          filePic = '/h5/images/file_pdf.jpg'
+          fileType = 'pdf'
+        } else if (item.pic && (imgSuffix.indexOf(item.pic.substr(-4)) !== -1 || item.pic.substr(-5) == '.jpeg')) {
+          fileType = 'img'
+          filePic = imgPath + item.pic
+        } else {
+          fileType = 'office'
+          filePic = '/h5/images/file-word.png'
         }
         // const createDate = datetime2Str(new Date(item.createDate))
         const createDate = item.createDate ? iosTimeFormtter(item.createDate) : ''
