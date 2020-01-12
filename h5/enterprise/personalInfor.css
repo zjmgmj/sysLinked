@@ -1,0 +1,31 @@
+body{font-family: Roboto;}
+/*我的账户*/
+.account-info li{line-height: 1.8rem;height: 1.8rem;}
+.account-info li a img{width: 0.88rem;height: 0.88rem;border-radius: 50%;margin-top: 0.46rem;}
+.account-info li a i{padding-left: 0.5rem;}
+/*我的设置*/
+/* .my-setting{background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(247,247,250,1) 100%);} */
+.my-setting .avator{display: block;width: 2.6rem;height: 2.6rem; overflow: hidden; border-radius: 100%;}
+.my-setting .avator img{width: 100%;}
+.my-setting .setting-nav{margin-top:0.8rem;}
+.my-setting .setting-nav .tab{text-align: center;height: 2.2rem;line-height: 2.2rem;position: relative;}
+.my-setting .setting-nav .tab.on .tab-bottom{position: absolute;width: 100%;display: block; height:3px;bottom: -4px; background:linear-gradient(118deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);}
+.sign-out{width: 100%;height: 1.6rem;line-height: 1.6rem;text-align: center;color: #FF0000;border: 1px solid #FF0000;background-color: #FFFFFF; margin-top: 1rem;margin-bottom: 1rem; display: none;}
+
+.avatar{
+  width: 1rem;
+  height: 1rem;
+}
+.author{
+  overflow: hidden;
+  position: relative;
+}
+.upload-input{
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 0;
+}

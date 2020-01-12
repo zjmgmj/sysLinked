@@ -65,7 +65,7 @@
     }
 
     mui('body').on('tap', '.goBack', function () {
-      back()
+      mui.back()
     })
 
     mui('body').on('tap', '#sendMessage', function () {

@@ -7,6 +7,7 @@
     mui('body').on('tap', '#startCreating', function () {
       // alert('---------------create')
       // save(localStorage.getItem('userId'))
+      // save(39)
       window.setupWebViewJavascriptBridge(bridge => {
         bridge.callHandler('getUserId', '', (result) => {
           const resData = JSON.parse(result)

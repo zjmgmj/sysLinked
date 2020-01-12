@@ -20,6 +20,10 @@
         if (item.orgusertype === 1) {
           orgusertype = '退出'
         }
+        let settingTemp = ''
+        if (item.userid == userId) {
+          settingTemp = `<div class="setting-icon"><i class="icon iconfont text-white ft-20 iconicon-test11"></i></div>`
+        }
         temp += `<li class="org-list" data-orgName="${item.orgName}" data-orgNum="${item.orgNum}" data-id="${item.id}">
           <div class="flex align-center flex-between org-list-content">
             <div class="flex align-center">
@@ -28,19 +32,20 @@
             </div>
             <div class="ft-14 pr-05 options-btn" data-orgusertype='${item.orgusertype}'>${orgusertype}</div>
           </div>
-          <div class="options flex">
-            <div class="setting-icon"><i class="icon iconfont text-white ft-20 iconicon-test11"></i></div>
+          <div class="options flex">            
+            ${settingTemp}
             <div class="delete ml-05"><i class="icon iconfont text-white ft-20 iconicon-test9"></i></div>
           </div>
         </li>`
       })
       $('#enterpriseContent').html(temp)
+      // $('#enterpriseContent').html(temp + temp + temp + temp + temp)
       $('#btnBox').show()
       mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
     })
   }
   function getuser () {
-    log(userId)
+    // log(userId)
     $ajax('/user/getuser?userId=' + userId, 'get', '', function (res) {
       console.log(res)
       const resData = res.data
@@ -58,6 +63,8 @@
   }
   function pulldownRefresh () {
     // userId = localStorage.getItem('userId')
+    // getuser()
+    // joinorglist()
     window.setupWebViewJavascriptBridge(bridge => {
       bridge.callHandler('getUserId', '', (result) => {
         const resData = JSON.parse(result)
@@ -108,7 +115,7 @@
           id: 'organizationMember'
         })
       } else {
-        localStorage.setItem('orgDefault', node.attr('data-id'))
+        // localStorage.setItem('orgDefault', node.attr('data-id'))
         $('#notification').show()
         const node = $(this).parents('.org-list')
         const orgId = Number(node.attr('data-id'))
@@ -133,11 +140,11 @@
       updateOrg(params)
     })
 
-    // mui('#enterpriseContent').on('drag', '.org-list-content', function (event) {
-    //   // const node = $(this).find('.org-list-content')[0]
-    //   const newWidth = this.clientWidth + event.detail.deltaX
-    //   this.style.width = (newWidth < minWidth ? minWidth : newWidth > maxWidth ? maxWidth : newWidth) + 'px'
-    // })
+    mui('#enterpriseContent').on('drag', '.org-list-content', function (event) {
+      // const node = $(this).find('.org-list-content')[0]
+      const newWidth = this.clientWidth + event.detail.deltaX
+      this.style.width = (newWidth < minWidth ? minWidth : newWidth > maxWidth ? maxWidth : newWidth) + 'px'
+    })
 
     function updateOrg (params) {
       $ajax('/orguser/update', 'post', params, function (res) {
@@ -162,12 +169,20 @@
       })
     }
 
+    mui('#enterpriseContent').on('tap', '.setting-icon', function () {
+      const orgId = $(this).parents('.org-list').attr('data-id')
+      mui.openWindow({
+        url: '/h5/corporateInfor?id=' + orgId,
+        id: 'corporateInfor'
+      })
+    })
 
-
-    // mui('#enterpriseContent').on('tap', '.delete', function () {
-    //   const orgId = $(this).parents('.org-list').attr('data-id')
-    //   outorg(orgId)
-    // })
+    mui('#enterpriseContent').on('tap', '.delete', function () {
+      const orgId = $(this).parents('.org-list').attr('data-id')
+      // outorg(orgId)
+      $('#notification').attr('data-orgId', orgId)
+      $('#notification').show()
+    })
 
     function outorg (orgId) {
       // const orgId = 38
@@ -214,6 +229,13 @@
         bridge.callHandler('logout', 'logout', function () {
           localStorage.clear();
         })
+      })
+    })
+
+    mui('body').on('tap', '#authorImg', function () {
+      mui.openWindow({
+        url: '/h5/enterprise/personalInfor.html',
+        id: 'personalInfor'
       })
     })
   });
