@@ -11,6 +11,7 @@
     const pid = JSON.parse(localStorage.getItem('project')).id
     activeSidebar('cost')
     mui('.relation').on('change', '#addInvoice', function () {
+      loadingShow()
       const file = this.files[0]
       const formData = new FormData()
       formData.append('file', file)
@@ -61,7 +62,7 @@
           // const createDate = datetime2Str(new Date(item.createDate))
           const createDate = iosTimeFormtter(item.createDate)
           console.log(createDate)
-          temp += `<li class="border-b-grey">
+          temp += `<li class="border-b-grey invoice-item" data-id="${item.id}">
             <div class="fl invoice-picture"><img src="${imgPath}${item.pic}" /></div>
             <div class="fl flex flex-between invoice-info">
               <div class="line-height-15">
@@ -78,8 +79,17 @@
       })
     }
 
+    mui('#invoiceList').on('tap', '.invoice-item', function () {
+      const id = this.getAttribute('data-id')
+      mui.openWindow({
+        url: '/h5/invoice/invoiceDetails.html?id=' + id,
+        id: 'invoiceDetail'
+      })
+    })
+
     function uploadImg (formData) {
       $upload('/upload/fileuploadaws', 'post', formData, (res) => {
+        loadingHide()
         if (res.code === 1) {
           console.log(res)
           mui.openWindow({

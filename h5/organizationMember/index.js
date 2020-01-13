@@ -131,6 +131,9 @@
         id: 'deptMemberList'
       })
     })
+    mui('body').on('tap', '#back', function () {
+      mui.back()
+    })
     // orguserList()
     // function orguserList() {
     //   $ajax('/orguser/list?orgId='+orgId+'&page='+page+'&size='+size, 'get', '', function(res) {

@@ -60,13 +60,14 @@
 
 
     mui('.upload').on('change', '#file', () => {
-      console.log('-------------a')
+      loadingShow()
       const fileInput = mui('#file')
       const file = fileInput[0].files[0];
       const formData = new FormData();
       formData.append('file', file)
       $upload('/upload/fileuploadaws', 'post', formData, (res) => {
         console.log('res', res)
+        loadingHide()
         if (res.code === 1) {
           const fileNoe = document.getElementById('fileShow')
           fileNoe.setAttribute('data', res.data.url)

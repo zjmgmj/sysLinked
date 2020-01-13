@@ -14,6 +14,7 @@
       resData.map((item) => {
         let pic = '/h5/images/icon_enterprise_grey.jpg'
         if (item.isdefault === 1) {
+          localStorage.setItem('orgDefault', item.id)
           pic = '/h5/images/icon_enterprise_blue.jpg'
         }
         let orgusertype = '进入'
@@ -50,6 +51,7 @@
       console.log(res)
       const resData = res.data
       localStorage.setItem('userInfo', JSON.stringify(resData))
+      localStorage.setItem('userId', resData.userId)
       // $('#mailbox').text(resData.userEamil)
       $('#mailbox').text(resData.userEamil)
       $('#phone').text(resData.userLogin)
@@ -62,7 +64,7 @@
     })
   }
   function pulldownRefresh () {
-    // userId = localStorage.getItem('userId')
+    // userId = 61
     // getuser()
     // joinorglist()
     window.setupWebViewJavascriptBridge(bridge => {

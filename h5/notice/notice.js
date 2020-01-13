@@ -84,7 +84,17 @@
       const authorPic = item.userPic ? imgPath + item.userPic : '/h5/images/icon_dotted.jpg'
       // const time = datetime2Str(new Date(item.messagesDate))
       const time = iosTimeFormtter(item.messagesDate)
-
+      let imgTempBox = ''
+      if (item.fileurl) {
+        const imgPathList = item.fileurl.split(',')
+        let imgTemp = ''
+        imgPathList.map((item) => {
+          if (item) {
+            imgTemp += `<span class="img-box"><img src="${imgPath}${item}" data-preview-src="" data-preview-group="${item.id}"/></span>`
+          }
+        })
+        imgTempBox = `<div class="notice-picture flex pt-05">${imgTemp}</div>`
+      }
       // log(new Date(item.messagesDate))
       temp += `<li class="border-b-grey flex">
         <div class="notice-avator"><img src="${authorPic}" /></div>
@@ -94,6 +104,7 @@
             <p class="ft-12 text-grey">${time}</p>
           </div>
           <p class="ft-12 text-grey pt-05">${item.englishMessages}</p>
+          ${imgTempBox}
         </div>
       </li>`
     })
@@ -141,7 +152,7 @@
     }
   });
   mui.ready(function () {
-    loadData()
+    // loadData()
     mui('body').on('tap', '.tab', function () {
       const active = this.getAttribute('data-active')
       $('.tab em').removeClass('on')
@@ -187,5 +198,6 @@
     mui('#notification').on('tap', '#cancel,.opacity-bg', function () {
       $('#notification').hide()
     })
+    mui.previewImage();
   })
 })(mui, document, jQuery);

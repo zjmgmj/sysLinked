@@ -68,6 +68,7 @@
 .chat-img{
   width: 3rem;
 }
+/* 图片预览 */
 .mui-preview-image.mui-fullscreen {
   position: fixed;
   z-index: 20;
