@@ -105,7 +105,7 @@ function date2Str (date) {
     const years = date.getFullYear()
     const month = date.getMonth() + 1
     const day = date.getDate()
-    return [years, month, day].map(formatNumber).join('-')
+    return [years, month, day].map(formatNumber).join('/')
   } else {
     return ''
   }
