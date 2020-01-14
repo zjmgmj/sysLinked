@@ -6,7 +6,8 @@
       userId = resData.userId
     })
   })
-  function joinorglist () {
+
+  function joinorglist() {
     $ajax('/org/joinorglist?userId=' + userId, 'get', '', function (res) {
       console.log(res)
       const resData = res.data
@@ -23,21 +24,36 @@
         }
         let settingTemp = ''
         if (item.userid == userId) {
-          settingTemp = `<div class="setting-icon"><i class="icon iconfont text-white ft-20 iconicon-test11"></i></div>`
+          // settingTemp = `<div class="setting-icon"><i class="icon iconfont text-white ft-20 iconicon-test11"></i></div>`
+          settingTemp = `<div class="setting-icon"><i class="icon iconfont ft-20 iconicon-test11"></i></div>`
         }
         temp += `<li class="org-list" data-orgName="${item.orgName}" data-orgNum="${item.orgNum}" data-id="${item.id}">
           <div class="flex align-center flex-between org-list-content">
             <div class="flex align-center">
-              <div class="pl-05 pr-05"><img src="${pic}" /></div>
+              <div class="pl-05 pr-05 check-org"><img src="${pic}" /></div>
               <p class="ft-14 f-grey ">${item.orgName}</p> 
             </div>
-            <div class="ft-14 pr-05 options-btn" data-orgusertype='${item.orgusertype}'>${orgusertype}</div>
-          </div>
-          <div class="options flex">            
-            ${settingTemp}
-            <div class="delete ml-05"><i class="icon iconfont text-white ft-20 iconicon-test9"></i></div>
+            <div class="ft-14 pr-05 options-btn">
+              <div class="flex">
+                ${settingTemp}
+                <div class="delete ml-05"><i class="icon iconfont ft-20 iconicon-test9"></i></div>
+              </div>              
+            </div>
           </div>
         </li>`
+        // temp += `<li class="org-list" data-orgName="${item.orgName}" data-orgNum="${item.orgNum}" data-id="${item.id}">
+        //   <div class="flex align-center flex-between org-list-content">
+        //     <div class="flex align-center">
+        //       <div class="pl-05 pr-05 check-org"><img src="${pic}" /></div>
+        //       <p class="ft-14 f-grey ">${item.orgName}</p> 
+        //     </div>
+        //     <div class="ft-14 pr-05 options-btn" data-orgusertype='${item.orgusertype}'>${orgusertype}</div>
+        //   </div>
+        //   <div class="options flex">            
+        //     ${settingTemp}
+        //     <div class="delete ml-05"><i class="icon iconfont text-white ft-20 iconicon-test9"></i></div>
+        //   </div>
+        // </li>`
       })
       $('#enterpriseContent').html(temp)
       // $('#enterpriseContent').html(temp + temp + temp + temp + temp)
@@ -45,7 +61,8 @@
       mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
     })
   }
-  function getuser () {
+
+  function getuser() {
     // log(userId)
     $ajax('/user/getuser?userId=' + userId, 'get', '', function (res) {
       console.log(res)
@@ -63,7 +80,8 @@
       $('#role').text(resData.orgRoleName)
     })
   }
-  function pulldownRefresh () {
+
+  function pulldownRefresh() {
     // userId = 61
     // getuser()
     // joinorglist()
@@ -108,6 +126,15 @@
       })
     })
 
+    mui('#enterpriseContent').on('tap', '.org-list-content', function () {
+      const node = $(this).parents('.org-list')
+      mui.openWindow({
+        url: '/h5/organizationMember/index.html?orgId=' + Number(node.attr('data-id')),
+        id: 'organizationMember'
+      })
+    })
+
+
     mui('#enterpriseContent').on('tap', '.options-btn', function () {
       const orgusertype = this.getAttribute('data-orgusertype')
       if (orgusertype === '0') {
@@ -125,7 +152,7 @@
       }
       return false
     })
-    mui('#enterpriseContent').on('tap', '.org-list-content', function () {
+    mui('#enterpriseContent').on('tap', '.check-org', function () {
       console.log(this)
       // outorg()
       const node = $(this).parents('.org-list')
@@ -142,13 +169,13 @@
       updateOrg(params)
     })
 
-    mui('#enterpriseContent').on('drag', '.org-list-content', function (event) {
-      // const node = $(this).find('.org-list-content')[0]
-      const newWidth = this.clientWidth + event.detail.deltaX
-      this.style.width = (newWidth < minWidth ? minWidth : newWidth > maxWidth ? maxWidth : newWidth) + 'px'
-    })
+    // mui('#enterpriseContent').on('drag', '.org-list-content', function (event) {
+    //   // const node = $(this).find('.org-list-content')[0]
+    //   const newWidth = this.clientWidth + event.detail.deltaX
+    //   this.style.width = (newWidth < minWidth ? minWidth : newWidth > maxWidth ? maxWidth : newWidth) + 'px'
+    // })
 
-    function updateOrg (params) {
+    function updateOrg(params) {
       $ajax('/orguser/update', 'post', params, function (res) {
         // mui.toast(res.msg)
         if (res.code === 1) {
@@ -158,7 +185,9 @@
         // joinorglist()
         // projectClick
         window.setupWebViewJavascriptBridge(bridge => {
-          bridge.callHandler('setOrgId', JSON.stringify({ defaultOrgId: params.orgId }), (result) => {
+          bridge.callHandler('setOrgId', JSON.stringify({
+            defaultOrgId: params.orgId
+          }), (result) => {
             // const resData = JSON.parse(result)
             // userId = resData.userId
             // orguserList()
@@ -177,6 +206,7 @@
         url: '/h5/corporateInfor?id=' + orgId,
         id: 'corporateInfor'
       })
+      return false
     })
 
     mui('#enterpriseContent').on('tap', '.delete', function () {
@@ -184,9 +214,10 @@
       // outorg(orgId)
       $('#notification').attr('data-orgId', orgId)
       $('#notification').show()
+      return false
     })
 
-    function outorg (orgId) {
+    function outorg(orgId) {
       // const orgId = 38
       $ajax('/orguser/outorg?orgId=' + orgId + '&userId=' + userId, 'get', '', function (res) {
         console.log(res)
