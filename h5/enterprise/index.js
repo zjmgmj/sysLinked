@@ -271,5 +271,19 @@
         id: 'personalInfor'
       })
     })
+    mui('body').on('tap', '#mailbox', function () {
+      const userId = localStorage.getItem('userId')
+      mui.openWindow({
+        url: '/h5/enterprise/emailEdit.html?email=' + $('#mailbox').text() + '&userId=' + userId,
+        id: 'mailbox'
+      })
+    })
+    mui('body').on('tap', '#phone', function () {
+      const userId = localStorage.getItem('userId')
+      mui.openWindow({
+        url: '/h5/enterprise/phoneEdit.html?phone=' + $('#phone').text() + '&userId=' + userId,
+        id: 'phone'
+      })
+    })
   });
 })(mui, document, jQuery);

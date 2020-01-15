@@ -4,7 +4,7 @@
     $('body').on('tap', '#sendMessage', function () {
       console.log($('#email').val().split(','))
       const emailList = $('#email').val().split(',')
-      const emailReg = /^\w+@[a-z0-9]+\.[a-z]{2,4}$/
+      // const emailReg = /^\w+@[a-z0-9]+\.[a-z]{2,4}$/
       const isEmail = emailList.find((item) => {
         return !emailReg.test(item)
       })

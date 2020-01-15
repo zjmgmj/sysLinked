@@ -3,6 +3,9 @@
   const size = 15
   let createUserid = localStorage.getItem('userId')
   let pid = JSON.parse(localStorage.getItem('project')).id
+  // alert('v2')
+  // let createUserid = 62
+  // let pid = 10047
   // window.setupWebViewJavascriptBridge(bridge => {
   //   bridge.callHandler('getUserId', '', (result) => {
   //     const resData = JSON.parse(result)
@@ -24,14 +27,16 @@
     $('#back').show()
     $('#sidebar').hide()
   }
-  function pulldownRefresh () {
+
+  function pulldownRefresh() {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     page = 1
     $('#fileList').html('')
     loadData()
   }
-  function pullupRefresh () {
+
+  function pullupRefresh() {
     // 上拉加载具体业务实现
     console.log('pullupRefresh')
     const total = $('#pullrefresh').attr('data-total')
@@ -42,7 +47,8 @@
     page = Number($('#pullrefresh').attr('data-page')) + 1
     loadData()
   }
-  function loadData () {
+
+  function loadData() {
     $ajax('/projectfolder/list?userId=' + createUserid + '&parentId=' + parentId + '&projectId=' + pid + '&page=' + page + '&size=' + size, 'get', '', (res) => {
       console.log(res)
       $('#pullrefresh').attr('data-page', page)
@@ -183,12 +189,16 @@
           id: 'fileChild'
         })
       } else if (fileType === 'office') {
-        window.open(`https://view.officeapps.live.com/op/view.aspx?src=${imgPath}${path}`, '_blank')
+        loadingShow()
+        location.href = `https://view.officeapps.live.com/op/view.aspx?src=${imgPath}${path}`
       } else if (fileType === 'img') {
         mui.openWindow({
-          url: '/h5/file/detail.html?path=' + path,
+          url: `/h5/file/detail.html?path=${path}&type=${fileType}`,
           id: 'fileChild'
         })
+      } else if (fileType === 'pdf') {
+        // window.open(`${imgPath}${path}`)
+        location.href = `${imgPath}${path}`
       }
     })
 
@@ -255,7 +265,7 @@
     loadData()
 
 
-    function saveFile (params) {
+    function saveFile(params) {
       $ajax('/projectfolder/save', 'post', params, (res) => {
         if (res.code === 1) {
           $('#fileList').html('')
@@ -266,7 +276,7 @@
       })
     }
 
-    function updateFile (params) {
+    function updateFile(params) {
       $ajax('/projectfolder/update', 'post', params, (res) => {
         if (res.code === 1) {
           $('#fileList').html('')

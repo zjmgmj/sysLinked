@@ -1,4 +1,6 @@
-function $ajax (api, type = 'get', params = '', success = (res) => { }, error = () => { }) {
+const emailReg = /^\w+@[a-z0-9]+\.[a-z]{2,4}$/
+
+function $ajax(api, type = 'get', params = '', success = (res) => {}, error = () => {}) {
   // $.ajax({
   //   url: '/api' + api,
   //   type: type,
@@ -9,7 +11,9 @@ function $ajax (api, type = 'get', params = '', success = (res) => { }, error = 
   //   error: error
   // });
   const config = {
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json'
+    },
     type: type,
     success: success,
     error: error
@@ -19,7 +23,8 @@ function $ajax (api, type = 'get', params = '', success = (res) => { }, error = 
   }
   mui.ajax('/syslinked_rest' + api, config)
 }
-function $upload (api, type = 'get', params = {}, success = (res) => { }, error = () => { }) {
+
+function $upload(api, type = 'get', params = {}, success = (res) => {}, error = () => {}) {
   // $.ajax({
   //   url: '/api' + api,
   //   type: type,
@@ -40,14 +45,14 @@ function $upload (api, type = 'get', params = {}, success = (res) => { }, error 
 }
 
 
-function formatNumber (n) {
+function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
 
 
 
-function _get (name) {
+function _get(name) {
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
   var r = window.location.search.substr(1).match(reg);
   if (r != null) return unescape(r[2]);
@@ -55,7 +60,7 @@ function _get (name) {
 };
 
 
-function datetime2Str (date) {
+function datetime2Str(date) {
   if (date) {
     let years = date.getFullYear()
     let month = date.getMonth() + 1
@@ -70,7 +75,7 @@ function datetime2Str (date) {
   }
 }
 
-function iosTimeFormtter (date) {
+function iosTimeFormtter(date) {
   const day = date.substr(0, 10)
   const timeLength = date.indexOf('.')
   const time = date.substr(10, timeLength - 10)
@@ -83,13 +88,13 @@ function iosTimeFormtter (date) {
   return timeStr.replace(/-/g, '/')
 }
 
-function iosDateFormtter (date) {
+function iosDateFormtter(date) {
   const day = date.substr(0, 10)
   const timeStr = day
   return timeStr.replace(/-/g, '/')
 }
 
-function time2Str (date) {
+function time2Str(date) {
   if (date) {
     let hours = date.getHours()
     let mins = date.getMinutes()
@@ -100,7 +105,7 @@ function time2Str (date) {
   }
 }
 
-function date2Str (date) {
+function date2Str(date) {
   if (date) {
     const years = date.getFullYear()
     const month = date.getMonth() + 1
@@ -111,32 +116,33 @@ function date2Str (date) {
   }
 }
 
-function getUrlParam (name) {
+function getUrlParam(name) {
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
   var r = window.location.search.substr(1).match(reg);
-  if (r != null) return unescape(r[2]); return null;
+  if (r != null) return unescape(r[2]);
+  return null;
 }
 
-function back () {
+function back() {
   self.location = document.referrer;
 }
 
-function call (params) {
+function call(params) {
   const callInfo = JSON.stringify(params)
   tianbai.getCall(callInfo)
 }
 
-function Callback (res) {
+function Callback(res) {
   alert('Callback')
   alert(res)
   return res
 }
 
-function alerCallBack () {
+function alerCallBack() {
   alert('---------success')
 }
 
-function log (message, data) {
+function log(message, data) {
   const temp = message + ':<br/>' + JSON.stringify(data)
   document.getElementsByTagName('body')[0].append(temp)
   // var log = document.getElementById('log')
@@ -173,20 +179,26 @@ const andoirFunction = (callback) => {
 }
 
 /**
-* IOS 与 IOS 交互时，使用这个函数即可，别的操作都不需要执行
-* @param {*} callback 
-*/
+ * IOS 与 IOS 交互时，使用这个函数即可，别的操作都不需要执行
+ * @param {*} callback 
+ */
 const setupWebViewJavascriptBridge = (callback) => {
   // alert('iosFuntion')
   // alert(callback)
-  if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
-  if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+  if (window.WebViewJavascriptBridge) {
+    return callback(WebViewJavascriptBridge);
+  }
+  if (window.WVJBCallbacks) {
+    return window.WVJBCallbacks.push(callback);
+  }
   window.WVJBCallbacks = [callback];
   var WVJBIframe = document.createElement('iframe');
   WVJBIframe.style.display = 'none';
   WVJBIframe.src = 'https://__bridge_loaded__';
   document.documentElement.appendChild(WVJBIframe);
-  setTimeout(function () { document.documentElement.removeChild(WVJBIframe) }, 0)
+  setTimeout(function () {
+    document.documentElement.removeChild(WVJBIframe)
+  }, 0)
   // if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
   // if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
   // window.WVJBCallbacks = [callback];
@@ -198,16 +210,16 @@ const setupWebViewJavascriptBridge = (callback) => {
 }
 
 /**
-* 注册 setupWebViewJavascriptBridge 方法
-*  之所以不将上面两个方法融合成一个方法，是因为放在一起，那么就只有 iosFuntion 中相关的方法体生效
-*/
+ * 注册 setupWebViewJavascriptBridge 方法
+ *  之所以不将上面两个方法融合成一个方法，是因为放在一起，那么就只有 iosFuntion 中相关的方法体生效
+ */
 window.setupWebViewJavascriptBridge = isAndroid ? andoirFunction : setupWebViewJavascriptBridge;
 
 /**
-* 这里如果不做判断是不是安卓，而是直接就执行下面的方法，就会导致 
-*      1、IOS 无法调用 H5 这边注册的事件函数
-*      2、H5 可以正常调用 IOS 这边的事件函数，并且 H5 的回调函数可以正常执行
-*/
+ * 这里如果不做判断是不是安卓，而是直接就执行下面的方法，就会导致 
+ *      1、IOS 无法调用 H5 这边注册的事件函数
+ *      2、H5 可以正常调用 IOS 这边的事件函数，并且 H5 的回调函数可以正常执行
+ */
 if (isAndroid) {
   /**
    * 与安卓交互时，不调用这个函数会导致：
@@ -234,7 +246,9 @@ if (isAndroid) {
     //   responseCallback(responseData)
     // })
     bridge.registerHandler('changeData', function (data, responseCallback) {
-      var responseData = { 'Javascript Says': 'Right back atcha!' }
+      var responseData = {
+        'Javascript Says': 'Right back atcha!'
+      }
       log('JS responding with', responseData)
       // alert(responseData)
       responseCallback(responseData)
@@ -354,27 +368,27 @@ mui('body').on('tap', '#sidebar', function () {
 //   }
 // })
 
-function activeSidebar (menu) {
+function activeSidebar(menu) {
   // $(`#${menu}`).addClass('active')
   console.log(menu)
 }
 
 
-function loadingShow () {
+function loadingShow() {
   const temp = `<div class="loading" id="loading">
     <div class="icon iconfont iconloading1"></div>
     </div>`
   $('body').append(temp)
 }
 
-function loadingHide () {
+function loadingHide() {
   $('#loading').remove()
 }
 
-function muiInit (container, pulldownRefresh = () => { }) {
+function muiInit(container, pulldownRefresh = () => {}) {
   return {
     pullRefresh: {
-      container: container,//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+      container: container, //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
       down: {
         auto: true,
         style: 'circle',
@@ -384,7 +398,20 @@ function muiInit (container, pulldownRefresh = () => { }) {
   }
 }
 
-
+function openFile(url) {
+  //创建一个下载任务
+  var dtask = plus.downloader.createDownload(url, {}, function (d, status) {
+    if (status == 200) {
+      var fileUrl = d.filename;
+      plus.runtime.openFile(fileUrl, {}, function (e) {
+        alert('打开失败');
+      });
+    } else {
+      alert("Download failed: " + status);
+    }
+  });
+  dtask.start();
+}
 // const pullDownRefresh = {
 //   pullRefresh: {
 //     container: "#pullrefresh",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
