@@ -23,14 +23,16 @@
   $('#title').text(title)
   // const deptId = getUrlParam('deptId')
   orguserList()
-  function pulldownRefresh () {
+
+  function pulldownRefresh() {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     page = 1
     $('#memberList').html('')
     orguserList()
   }
-  function pullupRefresh () {
+
+  function pullupRefresh() {
     // 上拉加载具体业务实现
     console.log('pullupRefresh')
     const total = $('#pullrefresh').attr('data-total')
@@ -41,7 +43,8 @@
     page = Number($('#pullrefresh').attr('data-page')) + 1
     orguserList()
   }
-  function orguserList () {
+
+  function orguserList() {
     const searchKey = $('#searchInput').val()
     // let api = '/orguser/list?page='+page+'&size='+size+ '&name='+searchKey + typeId
     let api = '/deptuser/getdeptuserlist?page=' + page + '&size=' + size + '&orgId=' + orgId + typeId
@@ -67,7 +70,7 @@
     })
   }
 
-  function deptList (resData) {
+  function deptList(resData) {
     let temp = ''
     resData.map((item, index) => {
       temp += `<li class="border-b-grey member-item" data-userId="${item.userId}" data-index="${index}">
@@ -82,7 +85,8 @@
     })
     $('#memberList').append(temp)
   }
-  function orgList (resData) {
+
+  function orgList(resData) {
     let temp = ''
     resData.map((item, index) => {
       // temp += `<li class="border-b-grey member-item">
@@ -118,10 +122,14 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
+        contentdown: "Pull down to refresh",
+        contentover: "Refresh immediately",
+        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
-        contentrefresh: '正在加载...',
+        contentrefresh: "loading",
+        contentnomore: 'No more',
         callback: pullupRefresh
       }
     }

@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <title>sysLinked</title>
+  <link rel="stylesheet" href="/h5/css/mui.min.css">
+  <link rel="stylesheet" href="/h5/font/iconfont.css">
+  <link href="/h5/css/mui.picker.min.css" rel="stylesheet" />
+  <link href="/h5/css/mui.poppicker.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
+  <link rel="stylesheet" href="personalInfor.css">
+</head>
+
+<body class="page-width bg-grey">
+  <div class="bg-white page-width page-title">
+    <i class="icon iconfont f-grey ft-18 back" id="back">&#xe654;</i>
+    <div class="title ft-16">个人信息</div>
+  </div>
+  <div class="page-con account pt-header pb-menu">
+    <ul class="account-info pt-30">
+      <li class="flex flex-between">
+        <p class="ft-14 text-grey col">头像</p>
+        <p class="flex flex-end align-center author">
+          <img class="fl avatar" id="avatar" src="../images/avatar.png" />
+          <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
+          <input type="file" accept="image/*" value="" class="upload-input">
+        </p>
+      </li>
+      <li>
+        <a class="flex flex-between" href="#">
+          <p class="ft-14 text-grey">昵称</p>
+          <p class="flex flex-end align-center  text-333">
+            <!-- <span class="ft-14 text-333 fl">Zoey Xu</span> -->
+            <input type="text" id="companyName" class="ft-14 text-right">
+            <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
+          </p>
+        </a>
+      </li>
+      <li class="border-b-grey pb-05">
+        <a class="flex flex-between" href="#">
+          <p class="ft-14 text-grey"></p>
+          <p class="flex flex-end align-center  text-333">
+            <!-- <span class="ft-14 text-333 fl" id="jobTitle"></span> -->
+            <input type="text" id="jobTitle" class="ft-14 text-right">
+            <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
+          </p>
+        </a>
+      </li>
+      <li class="pt-05">
+        <a class="flex flex-between" href="#">
+          <p class="ft-14 text-grey">生日</p>
+          <p id="birthday" class="col text-right">
+            <span class="ft-14 text-333" id="birthdayVal"></span>
+            <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
+          </p>
+        </a>
+      </li>
+      <li>
+        <a class="flex flex-between" href="#">
+          <p class="ft-14 text-grey">联系方式</p>
+          <p class="flex flex-end align-center text-333">
+            <input type="text" id="contactInfo" class="ft-14 text-right">
+            <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
+          </p>
+        </a>
+      </li>
+      <li>
+        <a class="flex flex-between" href="#">
+          <p class="ft-14 text-grey">地址</p>
+          <p class="flex flex-end align-center text-333">
+            <input type="text" id="address" class="ft-14 text-right">
+            <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
+          </p>
+          <!-- <p>
+            <span class="ft-14 text-333 fl">No. 58 Datieqiao Road</span>
+            <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
+          </p> -->
+        </a>
+      </li>
+    </ul>
+  </div>
+</body>
+<script src="/h5/js/jquery-3.4.1.min.js"></script>
+<script src="/h5/js/mui.js"></script>
+<script src="/h5/js/mui.picker.min.js"></script>
+<script src="/h5/js/mui.poppicker.js"></script>
+<script src="/h5/js/public.js"></script>
+<script src="personalInfor.js"></script>
+
+</html>

@@ -1,0 +1,4 @@
+/*验证码登录*/
+.page-bg{width: 100%;height: 100%;position: relative;}
+.page-bg .pic-bg{width: 100%;}
+.page-bg .page-opacity{width: 100%;height: 100%;position: fixed;left: 0;right: 0;top: 0;bottom: 0;z-index: 2;background-image: linear-gradient(#B1DCBD, #49B9EA,#5458A6);}

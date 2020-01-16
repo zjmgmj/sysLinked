@@ -4,14 +4,16 @@
   const createUserId = localStorage.getItem('userId')
   const deptId = getUrlParam('deptId')
   const pid = getUrlParam('projectId')
-  function pulldownRefresh () {
+
+  function pulldownRefresh() {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     page = 1
     $('#memberList').html('')
     deptuserList()
   }
-  function pullupRefresh () {
+
+  function pullupRefresh() {
     // 上拉加载具体业务实现
     console.log('pullupRefresh')
     const total = $('#pullrefresh').attr('data-total')
@@ -22,7 +24,8 @@
     page = Number($('#pullrefresh').attr('data-page')) + 1
     deptuserList()
   }
-  function deptuserList () {
+
+  function deptuserList() {
     // const searchKey = $('#searchInput').val()
     let api = '/deptuser/getdeptuserlist?size=' + size + '&page=' + page + '&deptId=' + deptId + '&projectId=' + pid
     $ajax(api, 'get', '', function (res) {
@@ -39,7 +42,7 @@
     })
   }
 
-  function orgList (resData) {
+  function orgList(resData) {
     let temp = ''
     resData.map((item) => {
       let checked = ""
@@ -63,10 +66,14 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
+        contentdown: "Pull down to refresh",
+        contentover: "Refresh immediately",
+        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
-        contentrefresh: '正在加载...',
+        contentrefresh: "loading",
+        contentnomore: 'No more',
         callback: pullupRefresh
       }
     }
@@ -96,14 +103,14 @@
       return false
     })
 
-    function projectuserDelete (userId) {
+    function projectuserDelete(userId) {
       $ajax('/projectuser/delete?id=' + userId, 'get', '', function (res) {
         console.log(res)
         mui.toast(res.msg)
       })
     }
 
-    function projectUserSave (params) {
+    function projectUserSave(params) {
       $ajax('/projectuser/save', 'post', params, function (res) {
         mui.toast(res.msg)
       })

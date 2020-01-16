@@ -285,5 +285,35 @@
         id: 'phone'
       })
     })
+
+    const pickButtons = ['cancel', 'sure']
+    var languagePicker = new mui.PopPicker({
+      buttons: pickButtons
+    });
+    const languageList = [{
+      value: 'en',
+      text: 'English'
+    }, {
+      value: 'zh',
+      text: '中文'
+    }]
+    languagePicker.setData(languageList)
+    mui('body').on('tap', '#selectLanguage', function () {
+      // languagePicker.setSelectedValue('en')
+      const me = this
+      languagePicker.show(function (items) {
+        $(me.children[0]).text(items[0].text)
+
+        if (items[0].value === 'zh') {
+          window.setupWebViewJavascriptBridge(bridge => {
+            bridge.callHandler('setLanguage', items[0].value)
+            mui.openWindow({
+              url: '/h5/zh/enterprise/enterprise.html',
+              id: 'enterprise'
+            })
+          })
+        }
+      });
+    })
   });
 })(mui, document, jQuery);

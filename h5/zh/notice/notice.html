@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <title>sysLinked</title>
+  <link rel="stylesheet" href="/h5/font/iconfont.css">
+  <link rel="stylesheet" href="/h5/css/mui.min.css">
+  <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
+  <link rel="stylesheet" href="../organizationMember/index.css">
+  <style>
+    .img-box {
+      width: 2rem;
+      height: 2rem;
+      overflow: hidden;
+    }
+
+    .create-file {
+      width: 82%;
+      height: 8.5rem;
+      position: absolute;
+      left: 9%;
+      right: 9%;
+      top: 50%;
+      margin-top: -4.25rem;
+      z-index: 333333;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .create-file h1 {
+      width: 100%;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      text-align: center;
+      background: #5458A6 linear-gradient(130deg, rgba(177, 220, 189, 1) 0%, rgba(73, 185, 234, 1) 58%, rgba(84, 88, 166, 1) 100%);
+    }
+
+    .create-file .file-name {
+      width: 85.5%;
+      margin: 0 auto;
+      margin-top: 0.5rem;
+      height: 3rem;
+      line-height: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .create-file .create-btn {
+      width: 100%;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      text-align: center;
+    }
+
+    .create-file .file-name {
+      border-bottom: none
+    }
+
+    /* 图片预览 */
+    .mui-preview-image.mui-fullscreen {
+      position: fixed;
+      z-index: 20;
+      background-color: #000;
+    }
+
+    .mui-preview-header,
+    .mui-preview-footer {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      z-index: 10;
+    }
+
+    .mui-preview-header {
+      height: 44px;
+      top: 0;
+    }
+
+    .mui-preview-footer {
+      height: 50px;
+      bottom: 0px;
+    }
+
+    .mui-preview-header .mui-preview-indicator {
+      display: block;
+      line-height: 25px;
+      color: #fff;
+      text-align: center;
+      margin: 15px auto 4;
+      width: 70px;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+      font-size: 16px;
+    }
+
+    .mui-preview-image {
+      display: none;
+      -webkit-animation-duration: 0.5s;
+      animation-duration: 0.5s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+
+    .mui-preview-image.mui-preview-in {
+      -webkit-animation-name: fadeIn;
+      animation-name: fadeIn;
+    }
+
+    .mui-preview-image.mui-preview-out {
+      background: none;
+      -webkit-animation-name: fadeOut;
+      animation-name: fadeOut;
+    }
+
+    .mui-preview-image.mui-preview-out .mui-preview-header,
+    .mui-preview-image.mui-preview-out .mui-preview-footer {
+      display: none;
+    }
+
+    .mui-zoom-scroller {
+      position: absolute;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      -webkit-backface-visibility: hidden;
+    }
+
+    .mui-zoom {
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+    }
+
+    .mui-slider .mui-slider-group .mui-slider-item img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .mui-android-4-1 .mui-slider .mui-slider-group .mui-slider-item img {
+      width: 100%;
+    }
+
+    .mui-android-4-1 .mui-slider.mui-preview-image .mui-slider-group .mui-slider-item {
+      display: inline-table;
+    }
+
+    .mui-android-4-1 .mui-slider.mui-preview-image .mui-zoom-scroller img {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .mui-preview-loading {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    .mui-preview-loading.mui-active {
+      display: block;
+    }
+
+    .mui-preview-loading .mui-spinner-white {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -25px;
+      margin-top: -25px;
+      height: 50px;
+      width: 50px;
+    }
+
+    .mui-preview-image img.mui-transitioning {
+      -webkit-transition: -webkit-transform 0.5s ease, opacity 0.5s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @-webkit-keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    p img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body class="page-width bg-white">
+  <div class="bg-white flex flex-center page-width page-title">
+    <span class="ft-14 f-grey tab" data-active='0'>通知<em class="on"></em></span>
+    <span class="ft-14 text-grey tab" data-active='1'>消息<em></em></span>
+    <i class="icon iconfont f-grey ft-20 addIcon" style="display: none;" id="optionsBtn">&#xe63d;</i>
+  </div>
+  <!-- <div class="page-con notice pt-header pb-menu bg-white" id="pullrefresh"> -->
+  <div class="page-con organization notice bg-white notice-pullrefresh" data-active="0" id="pullrefresh" data-page="0">
+    <div>
+      <ul class="notice-list" id="noticeList">
+        <!-- <li class="border-b-grey">
+          <div class="notice-avator fl"><img src="../images/avatar.png" /></div>
+          <div class="notice-info fl">
+            <div class="flex flex-between line-height-20">
+              <p class="ft-16 f-grey">Luna.Chen</p>
+              <p class="ft-12 text-grey">1 week ago</p>
+            </div>
+            <p class="ft-12 text-grey pt-05">Turned to your collection of orange gradient yuan, the public figure, the
+              first picture to the title layout</p>
+            <div class="notice-picture flex flex-between pt-05">
+              <span><img src="../images/hotel1.png" /></span>
+              <span><img src="../images/hotel2.png" /></span>
+              <span><img src="../images/hotel3.png" /></span>
+              <span><img src="../images/hotel4.png" /></span>
+              <span><img src="../images/hotel5.png" /></span>
+            </div>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="chat-list" id="chatList" style="display: none;"></ul>
+    </div>
+  </div>
+  <!--弹窗-->
+  <div class="popup" id="notification">
+    <!--遮盖层-->
+    <div class="opacity-bg"></div>
+    <!--弹窗内容-->
+    <div class="create-file bg-white">
+      <h1 class="ft-16 text-white">通知</h1>
+      <div class="file-name">
+        确定删除这条信息吗
+      </div>
+      <div class="create-btn flex flex-between border-t-grey">
+        <span class="ft-16 width-50 border-r-grey text-red" id="determine">确认</span>
+        <span class="f-blue ft-16 width-50" id="cancel">取消</span>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="/h5/js/jquery-3.4.1.min.js"></script>
+<script src="/h5/js/mui.js"></script>
+<script src="/h5/js/mui.zoom.js"></script>
+<script src="/h5/js/mui.previewimage.js"></script>
+<script src="/h5/js/public.js"></script>
+<script src="./notice.js"></script>
+
+</html>

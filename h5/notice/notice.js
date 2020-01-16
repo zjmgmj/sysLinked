@@ -4,7 +4,7 @@
   const orgId = localStorage.getItem('orgDefault')
   const userId = localStorage.getItem('userId')
   // const picPath = 'https://test-for-syslinked1.s3.cn-north-1.amazonaws.com.cn/'
-  function pulldownRefresh () {
+  function pulldownRefresh() {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     // const page = Number($('#pulldownRefresh').attr('data-page'))
@@ -19,7 +19,8 @@
     }
     loadData()
   }
-  function pullupRefresh () {
+
+  function pullupRefresh() {
     // 上拉加载具体业务实现
     const total = $('#pullrefresh').attr('data-total')
     if (Number(total) == $('#noticeList li').length) {
@@ -31,7 +32,7 @@
     console.log('pullupRefresh')
   }
 
-  function loadData () {
+  function loadData() {
     window.setupWebViewJavascriptBridge(bridge => {
       bridge.callHandler('getUserId', '', (result) => {
         const resData = JSON.parse(result)
@@ -78,7 +79,7 @@
     })
   }
 
-  function noticeList (resData) {
+  function noticeList(resData) {
     let temp = ''
     resData.map((item) => {
       const authorPic = item.userPic ? imgPath + item.userPic : '/h5/images/icon_dotted.jpg'
@@ -111,7 +112,7 @@
     $('#noticeList').append(temp)
   }
 
-  function chatList (resData) {
+  function chatList(resData) {
     let temp = ''
     resData.map((item) => {
       const authorPic = item.userPic ? imgPath + item.userPic : '/h5/images/icon_dotted.jpg'
@@ -142,11 +143,15 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
+        contentdown: "Pull down to refresh",
+        contentover: "Refresh immediately",
+        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
         auto: true,
-        contentrefresh: '正在加载...',
+        contentrefresh: "loading",
+        contentnomore: 'No more',
         callback: pullupRefresh
       }
     }

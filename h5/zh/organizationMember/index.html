@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <title>sysLinked</title>
+  <link rel="stylesheet" href="/h5/font/iconfont.css">
+  <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body class="page-width bg-white">
+  <!-- <div class="bg-white flex flex-center page-width page-title">  
+      <span class="ft-14 f-grey">Organization<em class="on"></em></span>
+			<span class="ft-14 text-grey">Group<em></em></span>
+			<div>
+				<i class="icon iconfont text-default ft-18 addIcon" id="optionShow">&#xe639;</i>
+			</div>
+    </div> -->
+  <div class="bg-white flex flex-between page-width page-title">
+    <div>
+      <i class="icon iconfont f-grey ft-18 back" id="back">&#xe654;</i>
+    </div>
+    <div class="title ft-14 col">组织架构</div>
+    <div>
+      <i class="icon iconfont text-default ft-18 addIcon" id="optionShow">&#xe639;</i>
+    </div>
+  </div>
+  <div class="page-con organization pt-header">
+    <h1 class="ft-16 border-b-grey f-grey">账户设置</h1>
+    <ul>
+      <li class="member-li flex flex-between text-grey ft-14" data-type="orgId" data-status="">
+        <span>所有成员</span>
+        <!-- <span class="text-333"><i class="icon iconfont text-default ft-12">&#xe657;</i></span> -->
+        <span class="text-333">
+          <span id="allNum">0</span>
+          <i class="icon iconfont text-default ft-12">&#xe657;</i>
+        </span>
+      </li>
+      <li class="member-li flex flex-between text-grey ft-14" data-type="orgId" data-status="0">
+        <span>未分配部门成员</span>
+        <!-- <span class="text-333"><i class="icon iconfont text-default ft-12">&#xe657;</i></span> -->
+        <span class="text-333">
+          <span id="unassignedNum">0</span>
+          <i class="icon iconfont text-default ft-12">&#xe657;</i>
+        </span>
+      </li>
+      <li class="member-li flex flex-between text-grey ft-14" data-type="orgId" data-status="2">
+        <span>停用成员</span>
+        <!-- <span class="text-333"><i class="icon iconfont text-default ft-12">&#xe657;</i></span> -->
+        <span class="text-333">
+          <span id="deactivatedNum">0</span>
+          <i class="icon iconfont text-default ft-12">&#xe657;</i>
+        </span>
+
+      </li>
+    </ul>
+    <h1 class="ft-16 border-b-grey f-grey">部门</h1>
+    <ul id="deptList">
+    </ul>
+  </div>
+  <!--弹窗-->
+  <div class="popup" id="optionBox">
+    <!--遮盖层-->
+    <div class="opacity-bg"></div>
+    <!--弹窗内容-->
+    <div class="popup-txt">
+      <div class="popup-bg"><img src="/h5/images/popupBg.png" /></div>
+      <ul class="popup-members">
+        <li class="ft-14 flex align-center" id="inviteMembers">
+          <i class="icon iconfont text-black ft-21">&#xe64c;</i>
+          <span class="pl-02">邀请成员</span>
+        </li>
+        <li class="ft-14 flex align-center" id="createDeptShow">
+          <i class="icon iconfont text-black ft-21">&#xe653;</i>
+          <span class="pl-02">添加部门</span>
+        </li>
+        <!-- <li>
+    				<a class="ft-14" href="#"><i class="icon iconfont text-black ft-21">&#xe653;</i>Add department</a>
+    			</li> -->
+      </ul>
+    </div>
+  </div>
+  <!--弹窗-->
+  <div class="popup" id="createDept">
+    <!--遮盖层-->
+    <div class="opacity-bg"></div>
+    <!--弹窗内容-->
+    <div class="create-file bg-white">
+      <h1 class="ft-16 text-white">创建部门</h1>
+      <div class="file-name"><input type="text" id="deptName" name="fileName" value="" placeholder="" /></div>
+      <div class="create-btn flex flex-between border-t-grey">
+        <span class="f-blue ft-16 width-50 border-r-grey" id="cancel">取消</span>
+        <span class="f-blue ft-16 width-50" id="determine">确认</span>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="/h5/js/jquery-3.4.1.min.js"></script>
+<script src="/h5/js/mui.js"></script>
+<script src="/h5/js/public.js"></script>
+<script src="./index.js"></script>
+
+</html>

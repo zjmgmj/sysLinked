@@ -8,14 +8,15 @@
   const id = getUrlParam('deptId')
   const typeId = '&deptId=' + id
   // const status = getUrlParam('status')
-  function pulldownRefresh () {
+  function pulldownRefresh() {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     page = 1
     $('#memberList').html('')
     orguserList()
   }
-  function pullupRefresh () {
+
+  function pullupRefresh() {
     // 上拉加载具体业务实现
     console.log('pullupRefresh')
     const total = $('#pullrefresh').attr('data-total')
@@ -26,7 +27,8 @@
     page = Number($('#pullrefresh').attr('data-page')) + 1
     orguserList()
   }
-  function orguserList () {
+
+  function orguserList() {
     const searchKey = $('#searchInput').val()
     const api = '/orguser/list?page=' + page + '&size=' + size + '&orgId=' + orgId + '&name=' + searchKey + typeId
     $ajax(api, 'get', '', function (res) {
@@ -42,7 +44,7 @@
     })
   }
 
-  function deptList (resData) {
+  function deptList(resData) {
     let temp = ''
     resData.map((item) => {
       let checked = ""
@@ -66,10 +68,14 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
+        contentdown: "Pull down to refresh",
+        contentover: "Refresh immediately",
+        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
-        contentrefresh: '正在加载...',
+        contentrefresh: "loading",
+        contentnomore: 'No more',
         callback: pullupRefresh
       }
     }
@@ -94,13 +100,13 @@
       return false
     })
 
-    function removeMember (userId) {
+    function removeMember(userId) {
       $ajax('/deptuser/delete?deptId=' + id + '&userId=' + userId, 'get', '', function (res) {
         console.log(res)
       })
     }
 
-    function addMember (userId) {
+    function addMember(userId) {
       const params = {
         deptId: Number(id),
         userId: Number(userId)

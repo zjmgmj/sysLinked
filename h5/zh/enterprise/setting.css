@@ -1,0 +1,66 @@
+/*setting*/
+.setting {
+  height: auto;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(247, 247, 250, 1) 100%);
+}
+
+.setting .upload-picture {
+  width: 100%;
+  padding-top: 1.3rem;
+}
+
+.setting .upload-picture span {
+  display: block;
+}
+
+.setting .upload-picture span img {
+  width: 2.2rem;
+}
+
+.setting .upload-picture span.upload-txt {
+  margin-top: 1.5rem;
+  margin-left: 1.3rem;
+}
+
+.setting .group-input {
+  width: 100%;
+  height: 2.96rem;
+}
+
+.setting .group-input h3 {
+  padding-top: 0.87rem;
+}
+
+.setting .group-input p {
+  padding-bottom: 0.87rem;
+}
+
+.code-button {
+  border: 1px #49B9EA solid;
+  color: #49B9EA;
+  padding: 0.2rem 0.5rem;
+}
+
+.setting-bootom-btn {
+  margin-top: 2rem;
+}
+
+.setting-bootom-btn p {
+  text-align: center;
+  background-color: rgba(153, 153, 153, 1);
+  line-height: 1.74rem;
+  height: 1.74rem;
+  padding: 1px;
+}
+
+.setting-bootom-btn p span {
+  background-color: #FFFFFF;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.setting-bootom-btn p.on {
+  background: linear-gradient(136deg, rgba(177, 220, 189, 1) 0%, rgba(73, 185, 234, 1) 58%, rgba(84, 88, 166, 1) 100%);
+  background-color: #5458A6;
+}

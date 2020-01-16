@@ -392,6 +392,9 @@ function muiInit(container, pulldownRefresh = () => {}) {
       down: {
         auto: true,
         style: 'circle',
+        contentdown: "Pull down to refresh", //可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+        contentover: "Refresh immediately", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+        contentrefresh: "loading", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
         callback: pulldownRefresh
       }
     }

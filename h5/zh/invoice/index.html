@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,height=device-height,maximum-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <title>sysLinked</title>
+  <link rel="stylesheet" href="/h5/font/iconfont.css">
+  <!-- <link rel="stylesheet" href="../css/mui.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
+  <link rel="stylesheet" type="text/css" href="/h5/css/index.css" />
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body class="page-width">
+  <div class="bg-white flex flex-between page-width page-title">
+    <!-- <i class="icon iconfont f-grey ft-18">&#xe651;</i> -->
+    <div id="sidebar">
+      <i class="icon iconfont f-grey ft-18 iconicon-test29"></i>
+    </div>
+    <div class="title ft-14">发票管理</div>
+    <div class="relation">
+      <i class="icon iconfont text-default ft-18 iconicon-test7" id="addPhotoShow"></i>
+      <input type="file" accept="image/*" id="addInvoice" value="" class="upload-input">
+    </div>
+  </div>
+  <div class="page-con invoice pt-header">
+    <ul class="slide-item flex flex-between border-b-grey">
+      <li class="ft-16 f-grey category-tab" data-val="">全部<span class="on"></span></li>
+      <li class="ft-16 text-default category-tab" data-val="2">交通<span></span></li>
+      <li class="ft-16 text-default category-tab" data-val="3">住宿<span></span></li>
+      <li class="ft-16 text-default category-tab" data-val="12">餐饮<span></span></li>
+      <li class="ft-16 text-default category-tab" data-val="13">其他<span></span></li>
+    </ul>
+    <ul class="invoice-list" id="invoiceList">
+    </ul>
+    <div class="flex flex-between border-b-grey total">
+      <p class="ft-14 f-grey">合计</p>
+      <p class="ft-12 text-grey" id="invoiceAmountTotal"></p>
+    </div>
+  </div>
+  <div class="report" id="reportBox">
+    <h2 class="flex flex-between">
+      <span class="ft-16 f-grey">报告</span>
+      <!-- <i class="icon iconfont ft-20 f-grey" id="down">&#xe656;</i> -->
+    </h2>
+    <div class="chart-img" id="chart"></div>
+    <ul class="description" id="description">
+    </ul>
+  </div>
+  <!--弹窗-->
+  <div class="popup">
+    <!--遮盖层-->
+    <div class="opacity-bg"></div>
+    <!--弹窗内容-->
+    <div class="popup-txt">
+      <div class="popup-bg"><img src="/h5/images/popupBg.png" /></div>
+      <ul class="popup-members">
+        <li class="border-b-grey ft-14 flex align-center">
+          <i class="icon iconfont text-black ft-20">&#xe64b;</i>
+          <span class="pl-02">扫一扫</span>
+        </li>
+        <li class="ft-14 flex align-center relative">
+          <i class="icon iconfont text-black ft-20">&#xe646;</i>
+          <span class="pl-02">添加</span>
+          <input type="file" accept="image/*" id="addInvoice" value="" class="upload-input">
+          <!-- <input type="file" accept="image/*" value="" id="file"/>      -->
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+<script src="/h5/js/jquery-3.4.1.min.js"></script>
+<script src="/h5/js/mui.js"></script>
+<script src="/h5/js/echarts.min.js"></script>
+<script src="/h5/js/public.js"></script>
+<script src="/h5/js/html2canvas.js"></script>
+<script src="/h5/js/canvas2image.js"></script>
+<script src="./index.js"></script>
+
+</html>

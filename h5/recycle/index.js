@@ -19,7 +19,7 @@
   //     // loadData()
   //   })
   // })
-  function pulldownRefresh () {
+  function pulldownRefresh() {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     page = 1
@@ -28,7 +28,8 @@
     $('#fileList').html('')
     loadData()
   }
-  function pullupRefresh () {
+
+  function pullupRefresh() {
     // 上拉加载具体业务实现
     console.log('pullupRefresh')
     const total = $('#pullrefresh').attr('data-total')
@@ -39,7 +40,8 @@
     page = Number($('#pullrefresh').attr('data-page')) + 1
     loadData()
   }
-  function loadData () {
+
+  function loadData() {
     $ajax('/projectrecycle/list?projectId=' + pid + '&page=' + page + '&size=' + size, 'get', '', (res) => {
       console.log(res)
       $('#pullrefresh').attr('data-page', page)
@@ -97,10 +99,14 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
+        contentdown: "Pull down to refresh",
+        contentover: "Refresh immediately",
+        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
-        contentrefresh: '正在加载...',
+        contentrefresh: "loading",
+        contentnomore: 'No more',
         callback: pullupRefresh
       }
     }
@@ -172,7 +178,7 @@
     localStorage.removeItem('recoverFileList')
     loadData()
 
-    function deleteFile (params) {
+    function deleteFile(params) {
       $ajax('/projectrecycle/deleteall', 'post', params, function (res) {
         if (res.code === 1) {
           page = 1
@@ -184,7 +190,7 @@
       })
     }
 
-    function recoveryFile (params) {
+    function recoveryFile(params) {
       $ajax('/projectrecycle/recoveryall', 'post', params, function (res) {
         console.log(res)
         if (res.code === 1) {

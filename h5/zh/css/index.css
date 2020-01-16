@@ -1,0 +1,35 @@
+.page-con{background-color: #FFFFFF;font-family:Roboto;}
+.page-con h1{width: 100%;height: auto;padding: 1.2rem 0;font-size: 0.6rem;color: #262628;font-weight:500;}
+.page-con ul.store-list{width: 100%;height: 100%;}
+/* .page-con ul.store-list li{width:100%;height: 2.2rem;line-height: 2.2rem; box-shadow:0px 0px 6px rgba(84,88,166,0.11);border-radius:4px;margin-bottom: 0.65rem;clear: both;} */
+.page-con ul.store-list li{width:100%;height: 2.2rem;line-height: 2.2rem;margin-bottom: 0.65rem;clear: both;}
+/* .page-con ul.store-list li .store-pic{width: 1.8rem;padding: 0.2rem;float: left;} */
+.page-con ul.store-list li .store-pic{width: 1.8rem;padding: 0.2rem; height: 1.8rem;}
+/* .page-con ul.store-list li p{font-size:12px;font-weight:400;color:rgba(38,38,40,1);opacity:0.7;float: left;margin-left: 0.65rem;width: 68%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;} */
+.page-con ul.store-list li p{font-size:12px;font-weight:400;color:rgba(38,38,40,1);opacity:0.7;margin-left: 0.65rem;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+/* .page-con ul.store-list li .Pentagram{width: 0.65rem;height: 0.65rem;margin-top: 0.67rem;margin-right: 0.5rem;float: right;} */
+/* .page-con ul.store-list li .Pentagram{width: 0.65rem;height: 0.65rem;margin-right: 0.5rem;} */
+.Pentagram, .setting{font-size: 20px; margin-right: 0.5rem;}
+
+/* .page-con ul.store-list li.store-txt{position: relative;width: 92%;} */
+.page-con ul.store-list li.store-txt{position: relative;width: 100%;}
+.page-con ul.store-list li.store-txt .store-left{ transition: all 0.5s; height: 100%; position: absolute;left: 0;top: 0;z-index: 3;width: 100%; background: #fff; box-shadow:0px 0px 6px rgba(84,88,166,0.11);border-radius:4px;}
+/* .page-con ul.store-list li .delete{display: none;} */
+.page-con ul.store-list li.store-txt .delete{position: absolute;right: 0;top: 0.25rem;height:1.7rem;z-index: 2; text-align: center;width: 1.7rem;background-color: #FF0000;border-radius:8px;display: block;}
+.page-con ul.store-list li.store-txt .delete i{display: block;width: 100%;height: 100%;line-height: 1.7rem;}
+
+.page-con ul.close-list li{background:#f7f7f7;box-shadow:0 0 0;}
+
+
+.Pentagram.iconicon-test6 {
+  color: #E23E3E;
+}
+.Pentagram.iconicon-test5, .setting {
+  color: rgb(112, 112, 112);
+}
+/* #pullrefresh{
+  height: calc(100vh-1.6rem);
+} */
+.mui-pull-top-pocket{
+  top: 1.8rem;
+}

@@ -15,6 +15,8 @@
   <title>sysLinked</title>
   <link rel="stylesheet" href="/h5/font/iconfont.css">
   <link rel="stylesheet" href="/h5/css/mui.min.css">
+  <link href="/h5/css/mui.picker.min.css" rel="stylesheet" />
+  <link href="/h5/css/mui.poppicker.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
   <link rel="stylesheet" href="./index.css">
 </head>
@@ -96,14 +98,12 @@
         </ul>
         <h1 class="border-b-grey ft-16 f-grey pb-05 pt-20">Preferences</h1>
         <ul class="account-info">
-          <li>
-            <a class="flex flex-between" href="#">
-              <p class="ft-14 text-grey">Language</p>
-              <p>
-                <span class="ft-14 text-333 fl">English</span>
-                <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
-              </p>
-            </a>
+          <li class="flex flex-between">
+            <p class="ft-14 text-grey">Language</p>
+            <p id="selectLanguage">
+              <span class="ft-14 text-333 fl">English</span>
+              <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
+            </p>
           </li>
           <li>
             <a class="flex flex-between" href="#">
@@ -155,6 +155,8 @@
 </body>
 <script src="/h5/js/jquery-3.4.1.min.js"></script>
 <script src="/h5/js/mui.js"></script>
+<script src="/h5/js/mui.picker.min.js"></script>
+<script src="/h5/js/mui.poppicker.js"></script>
 <script src="/h5/js/public.js"></script>
 <script src="./index.js"></script>
 

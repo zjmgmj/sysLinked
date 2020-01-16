@@ -3,7 +3,7 @@
   const size = 150
   let pid = null
 
-  function loadData () {
+  function loadData() {
     window.setupWebViewJavascriptBridge(bridge => {
       bridge.callHandler('getProjectId', '', (result) => {
         // log('result', result)
@@ -48,14 +48,18 @@
     // alert('pid' + pid)
 
   }
-  function pulldownRefresh () {
+
+  function pulldownRefresh() {
     // pid = JSON.parse(localStorage.getItem('project')).id
     loadData()
   }
   mui.init({
     pullRefresh: {
-      container: '#pullrefresh',//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+      container: '#pullrefresh', //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
       down: {
+        contentdown: "Pull down to refresh",
+        contentover: "Refresh immediately",
+        contentrefresh: "loading",
         auto: true,
         style: 'circle',
         callback: pulldownRefresh
