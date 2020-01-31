@@ -19,12 +19,12 @@
     function sendCode() {
       const toeamil = $('#alternateMailbox').val()
       if (!emailReg.test(toeamil)) {
-        mui.toast('邮箱格式错误')
+        mui.toast('Email is malformed')
         return false
       }
       $ajax('/user/sendeamil?type=1&toeamil=' + toeamil, 'get', '', function (res) {
         if (res.code === 1) {
-          mui.toast('发送成功')
+          mui.toast('success')
           $('.code-button').attr('data-code', res.data)
           let time = 60
           const timeInter = setInterval(() => {

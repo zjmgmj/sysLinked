@@ -82,17 +82,17 @@
   }
 
   function pulldownRefresh() {
-    userId = 61
-    getuser()
-    joinorglist()
-    // window.setupWebViewJavascriptBridge(bridge => {
-    //   bridge.callHandler('getUserId', '', (result) => {
-    //     const resData = JSON.parse(result)
-    //     userId = resData.userId
-    //     getuser()
-    //     joinorglist()
-    //   })
-    // })
+    // userId = 61
+    // getuser()
+    // joinorglist()
+    window.setupWebViewJavascriptBridge(bridge => {
+      bridge.callHandler('getUserId', '', (result) => {
+        const resData = JSON.parse(result)
+        userId = resData.userId
+        getuser()
+        joinorglist()
+      })
+    })
   }
   mui.init(muiInit('#pullrefresh', pulldownRefresh));
   mui.ready(function () {

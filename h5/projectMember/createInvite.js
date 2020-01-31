@@ -9,7 +9,7 @@
         return !emailReg.test(item)
       })
       if (isEmail) {
-        mui.toast('邮箱格式错误')
+        mui.toast('Email is malformed')
         return false
       }
       const params = {
@@ -21,7 +21,7 @@
       $ajax('/user/sendorgeamil', 'post', params, function (res) {
         console.log(res)
         if (res.code === 1) {
-          mui.toast('发送成功')
+          mui.toast('success')
           setTimeout(() => {
             // back()
             mui.back()

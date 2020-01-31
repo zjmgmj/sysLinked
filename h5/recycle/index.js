@@ -140,7 +140,7 @@
     mui('.popup').on('tap', '#removeCompletely', function () {
       const checkEl = $("input:checked")
       if (!checkEl.length) {
-        mui.toast('请选择需要删除的数据')
+        mui.toast('Please select the data to be deleted')
         $('.popup').hide()
         return false
       }
@@ -155,7 +155,7 @@
       // const id = $("input:checked")[0].getAttribute('data-id')      
       const checkEl = $("input:checked")
       if (!checkEl.length) {
-        mui.toast('请选择需要恢复的数据')
+        mui.toast('Please select the data you need to recover')
         $('.popup').hide()
         return false
       }

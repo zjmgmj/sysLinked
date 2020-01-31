@@ -1,9 +1,9 @@
-
 (function ($$, doc, $) {
   let maxWidth = 0
   let userId = null
   let orgId = null
-  function joinorglistAjax (id) {
+
+  function joinorglistAjax(id) {
     localStorage.setItem('userId', id)
     $ajax('/org/joinorglist?userId=' + id, 'get', '', function (res) {
       if (res.data.length > 0) {
@@ -15,23 +15,27 @@
         localStorage.setItem('orgJoinorg', JSON.stringify(res.data))
         load()
         window.setupWebViewJavascriptBridge(bridge => {
-          bridge.callHandler('setOrgId', JSON.stringify({ defaultOrgId: orgId }))
+          bridge.callHandler('setOrgId', JSON.stringify({
+            defaultOrgId: orgId
+          }))
         })
       } else {
         // document.getElementById('content').innerHTML = contentTemp
-        $('#content').html(`<div class="text-center pt-10">暂无数据</div>`)
+        $('#content').html(`<div class="text-center pt-10">No data</div>`)
         mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
       }
     })
   }
-  function getuser () {
+
+  function getuser() {
     $ajax('/user/getuser?userId=' + userId, 'get', '', function (res) {
       // console.log(res)
       const resData = res.data
       localStorage.setItem('userInfo', JSON.stringify(resData))
     })
   }
-  function pulldownRefresh () {
+
+  function pulldownRefresh() {
     // userId = 39
     // orgId = 32
     // joinorglistAjax(userId)
@@ -39,7 +43,8 @@
 
     getJoinorglist()
   }
-  function load () {
+
+  function load() {
     const orgId = localStorage.getItem('orgDefault')
     const userId = localStorage.getItem('userId')
     $ajax('/project/list?page=1&size=50&orgId=' + orgId + '&userId=' + userId, 'get', null, (res) => {
@@ -105,7 +110,7 @@
   }
 
 
-  function getJoinorglist () {
+  function getJoinorglist() {
     // joinorglistAjax('39')
     window.setupWebViewJavascriptBridge(bridge => {
       bridge.callHandler('getUserId', '', (result) => {
@@ -116,7 +121,9 @@
         joinorglistAjax(resData.userId)
         getuser(resData.userId)
         window.setupWebViewJavascriptBridge(bridge => {
-          bridge.callHandler('hasGetUserId', JSON.stringify({ flag: 1 }), () => {
+          bridge.callHandler('hasGetUserId', JSON.stringify({
+            flag: 1
+          }), () => {
             // log('hasGetUserId')
           })
         })
@@ -227,5 +234,3 @@
   });
 
 })(mui, document, jQuery);
-
-

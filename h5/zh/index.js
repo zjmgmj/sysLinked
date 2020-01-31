@@ -89,11 +89,11 @@
             break
         }
       })
-      const contentTemp = `<h1>My Starred Projects · <span id="starredCount">${starredCount}</span></h1>
+      const contentTemp = `<h1>加星标项目 · <span id="starredCount">${starredCount}</span></h1>
       <ul class="store-list" id="starredProjects">${starredProjectsTemp}</ul>
-      <h1>Startup Project · <span id="startupCount">${startupCount}</span></h1>
+      <h1>启动项目 · <span id="startupCount">${startupCount}</span></h1>
       <ul class="store-list" id="startupProject">${startupProjectTemp}</ul>
-      <h1>Close Project · <span id="closeCount">${closeCount}</span></h1>
+      <h1>关闭项目 · <span id="closeCount">${closeCount}</span></h1>
       <ul class="store-list close-list" id="closeProject">${closeProjectTemp}</ul>`
       localStorage.setItem('projectList', JSON.stringify(resData))
       // $('#starredCount').text(starredCount)

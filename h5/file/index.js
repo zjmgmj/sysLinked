@@ -148,7 +148,7 @@
         $('.create-file-popup').attr('data-edit', idx)
         return false
       }
-      mui.toast('请选择文件夹修改')
+      mui.toast('Please select a folder to modify')
       // $('input').attr('checked', false)
     })
 
