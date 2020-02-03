@@ -132,6 +132,7 @@
         url: '/h5/organizationMember/index.html?orgId=' + Number(node.attr('data-id')),
         id: 'organizationMember'
       })
+      return false
     })
 
 
@@ -167,6 +168,7 @@
         userId: userId
       }
       updateOrg(params)
+      return false
     })
 
     // mui('#enterpriseContent').on('drag', '.org-list-content', function (event) {

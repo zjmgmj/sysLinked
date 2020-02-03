@@ -82,17 +82,17 @@
   }
 
   function pulldownRefresh() {
-    userId = 61
-    getuser()
-    joinorglist()
-    // window.setupWebViewJavascriptBridge(bridge => {
-    //   bridge.callHandler('getUserId', '', (result) => {
-    //     const resData = JSON.parse(result)
-    //     userId = resData.userId
-    //     getuser()
-    //     joinorglist()
-    //   })
-    // })
+    // userId = 61
+    // getuser()
+    // joinorglist()
+    window.setupWebViewJavascriptBridge(bridge => {
+      bridge.callHandler('getUserId', '', (result) => {
+        const resData = JSON.parse(result)
+        userId = resData.userId
+        getuser()
+        joinorglist()
+      })
+    })
   }
   mui.init(muiInit('#pullrefresh', pulldownRefresh));
   mui.ready(function () {
@@ -132,6 +132,7 @@
         url: '/h5/zh/organizationMember/index.html?orgId=' + Number(node.attr('data-id')),
         id: 'organizationMember'
       })
+      return false
     })
 
 
@@ -167,6 +168,7 @@
         userId: userId
       }
       updateOrg(params)
+      return false
     })
 
     // mui('#enterpriseContent').on('drag', '.org-list-content', function (event) {

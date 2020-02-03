@@ -17,6 +17,9 @@
         if (res.code === 1) {
           const resData = res.data
           const fileNoe = document.getElementById('fileShow')
+          if (resData.pic) {
+            $('#fileShow').show()
+          }
           fileNoe.setAttribute('data', resData.pic)
           fileNoe.setAttribute('src', imgPath + resData.pic)
           fileNoe.style.display = 'block'
@@ -103,8 +106,10 @@
         implementationAddress: $('#projectAddress').val(),
         name: $('#projectName').val(),
         pic: $('#fileShow').attr('data'),
-        startTime: $('#startTime span')[0].innerText,
-        endTime: $('#endTime span')[0].innerText
+        // startTime: $('#startTime span')[0].innerText,
+        // endTime: $('#endTime span')[0].innerText
+        startTime: new Date($('#startTime span')[0].innerText),
+        endTime: new Date($('#endTime span')[0].innerText)
       }
       let urlApi = '/project/save'
       if (id) {
