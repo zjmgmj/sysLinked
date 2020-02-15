@@ -72,9 +72,9 @@
       // $('#mailbox').text(resData.userEamil)
       $('#mailbox').text(resData.userEamil)
       $('#phone').text(resData.userLogin)
-      // $('#weChat').text(resData.userLogin)
-      // $('#weibo').text(resData.userLogin)
-      // $('#dingTalk').text(resData.userLogin)
+      $('#weChat').text(resData.userWechatopenid)
+      $('#weibo').text(resData.userWeiboopenid)
+      $('#dingTalk').text(resData.userDingdingopenid)
       $('#authorImg').attr('src', imgPath + resData.userPic)
       $('#name').text(resData.userNickname)
       $('#role').text(resData.orgRoleName)
@@ -314,6 +314,14 @@
           })
         }
       });
+    })
+    mui('body').on('tap', '#weChat,#weibo,#dingTalk', function () {
+      console.log(this)
+      window.setupWebViewJavascriptBridge(bridge => {
+        bridge.callHandler('thirdLogin', this.getAttribute('data-val'), () => {
+          getuser()
+        })
+      })
     })
   });
 })(mui, document, jQuery);
