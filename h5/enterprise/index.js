@@ -72,9 +72,9 @@
       // $('#mailbox').text(resData.userEamil)
       $('#mailbox').text(resData.userEamil)
       $('#phone').text(resData.userLogin)
-      $('#weChat').text(resData.userWechatopenid)
-      $('#weibo').text(resData.userWeiboopenid)
-      $('#dingTalk').text(resData.userDingdingopenid)
+      $('#weChat').text(resData.userWechatopenid ? 'Bind' : 'Unbound')
+      $('#weibo').text(resData.userWeiboopenid ? 'Bind' : 'Unbound')
+      $('#dingTalk').text(resData.userDingdingopenid ? 'Bind' : 'Unbound')
       $('#authorImg').attr('src', imgPath + resData.userPic)
       $('#name').text(resData.userNickname)
       $('#role').text(resData.orgRoleName)
@@ -84,7 +84,7 @@
 
 
   function pulldownRefresh() {
-    // userId = 39
+    // userId = 70
     // getuser()
     // joinorglist()
     window.setupWebViewJavascriptBridge(bridge => {
