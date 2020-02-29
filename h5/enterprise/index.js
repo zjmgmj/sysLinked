@@ -16,6 +16,7 @@
         let pic = '/h5/images/icon_enterprise_grey.jpg'
         if (item.isdefault === 1) {
           localStorage.setItem('orgDefault', item.id)
+          localStorage.setItem('project', JSON.stringify(item))
           pic = '/h5/images/icon_enterprise_blue.jpg'
         }
         let orgusertype = '进入'
@@ -75,6 +76,7 @@
       $('#weChat').text(resData.userWechatopenid ? 'Bind' : 'Unbound')
       $('#weibo').text(resData.userWeiboopenid ? 'Bind' : 'Unbound')
       $('#dingTalk').text(resData.userDingdingopenid ? 'Bind' : 'Unbound')
+      $('#apple').text(resData.userAppleopnid ? 'Bind' : 'Unbound')
       $('#authorImg').attr('src', imgPath + resData.userPic)
       $('#name').text(resData.userNickname)
       $('#role').text(resData.orgRoleName)
@@ -84,17 +86,17 @@
 
 
   function pulldownRefresh() {
-    // userId = 70
-    // getuser()
-    // joinorglist()
-    window.setupWebViewJavascriptBridge(bridge => {
-      bridge.callHandler('getUserId', '', (result) => {
-        const resData = JSON.parse(result)
-        userId = resData.userId
-        getuser()
-        joinorglist()
-      })
-    })
+    userId = 87
+    getuser()
+    joinorglist()
+    // window.setupWebViewJavascriptBridge(bridge => {
+    //   bridge.callHandler('getUserId', '', (result) => {
+    //     const resData = JSON.parse(result)
+    //     userId = resData.userId
+    //     getuser()
+    //     joinorglist()
+    //   })
+    // })
   }
   mui.init(muiInit('#pullrefresh', pulldownRefresh));
   mui.ready(function () {
@@ -319,8 +321,7 @@
         }
       });
     })
-    mui('body').on('tap', '#weChat,#weibo,#dingTalk', function () {
-      console.log(this)
+    mui('body').on('tap', '#weChat,#weibo,#dingTalk,#apple', function () {
       window.setupWebViewJavascriptBridge(bridge => {
         bridge.callHandler('thirdLogin', this.getAttribute('data-val'), () => {
           getuser()

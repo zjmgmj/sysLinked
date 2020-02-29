@@ -18,7 +18,7 @@
   <link href="/h5/css/mui.picker.min.css" rel="stylesheet" />
   <link href="/h5/css/mui.poppicker.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
-  <link rel="stylesheet" href="/h5/zh/enterprise/index.css">
+  <link rel="stylesheet" href="./index.css">
 </head>
 
 <body class="page-width bg-white" id="pullrefresh">
@@ -36,19 +36,19 @@
       </div>
       <div class="">
         <div class="setting-nav flex flex-between border-b-grey">
-          <div class="ft-16 f-grey width-50 tab on" id="enterprise">企业<span class="tab-bottom"></span></div>
-          <div class="ft-16 text-default width-50 tab" id="settings">设置<span class="tab-bottom"></span></div>
+          <div class="ft-16 f-grey width-50 tab on" id="enterprise">Enterprise<span class="tab-bottom"></span></div>
+          <div class="ft-16 text-default width-50 tab" id="settings">Settings<span class="tab-bottom"></span></div>
         </div>
       </div>
     </div>
     <div class="pt-05 enterprise-con ">
       <div id="enterpriseContent" class=""></div>
       <div id="settingContent" style="display: none;">
-        <h1 class="border-b-grey ft-16 f-grey pb-05 pt-36">账户设置</h1>
+        <h1 class="border-b-grey ft-16 f-grey pb-05 pt-36">Account Settings</h1>
         <ul class="account-info">
           <li>
             <div class="flex flex-between">
-              <p class="ft-14 text-grey">邮箱</p>
+              <p class="ft-14 text-grey">Mailbox</p>
               <p>
                 <span class="ft-14 text-333 fl" id="mailbox">
                   <!-- <input type="text" id="mailbox" class="text-right" value=""> -->
@@ -59,7 +59,7 @@
           </li>
           <li>
             <div class="flex flex-between">
-              <p class="ft-14 text-grey">手机号</p>
+              <p class="ft-14 text-grey">phone number</p>
               <p>
                 <span class="ft-14 text-333 fl" id="phone">
                   <!-- <input type="text" id="phone" class="text-right" value=""> -->
@@ -70,70 +70,79 @@
           </li>
           <li>
             <div class="flex flex-between">
-              <p class="ft-14 text-grey">微信</p>
+              <p class="ft-14 text-grey">WeChat</p>
               <p>
-                <span class="ft-14 text-333 fl" id="weChat" data-val="1">未绑定</span>
+                <span class="ft-14 text-333 fl" id="weChat" data-val="1">Unbound</span>
                 <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
               </p>
             </div>
           </li>
           <li>
             <div class="flex flex-between">
-              <p class="ft-14 text-grey">微博</p>
+              <p class="ft-14 text-grey">Weibo</p>
               <p>
-                <span class="ft-14 text-333 fl" id="weibo" data-val="2">未绑定</span>
+                <span class="ft-14 text-333 fl" id="weibo" data-val="2">Unbound</span>
                 <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
               </p>
             </div>
           </li>
           <li>
             <div class="flex flex-between">
-              <p class="ft-14 text-grey">钉钉</p>
+              <p class="ft-14 text-grey">DingTalk</p>
               <p>
-                <span class="ft-14 text-333 fl" id="dingTalk" data-val="3">未绑定</span>
+                <span class="ft-14 text-333 fl" id="dingTalk" data-val="3">Unbound</span>
+                <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="flex flex-between">
+              <p class="ft-14 text-grey">Apple</p>
+              <p>
+                <span class="ft-14 text-333 fl" id="apple" data-val="4">Unbound</span>
                 <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
               </p>
             </div>
           </li>
         </ul>
-        <h1 class="border-b-grey ft-16 f-grey pb-05 pt-20">偏好设置</h1>
+        <h1 class="border-b-grey ft-16 f-grey pb-05 pt-20">Preferences</h1>
         <ul class="account-info">
           <li class="flex flex-between">
-            <p class="ft-14 text-grey">语言</p>
+            <p class="ft-14 text-grey">Language</p>
             <p id="selectLanguage">
-              <span class="ft-14 text-333 fl">中文</span>
+              <span class="ft-14 text-333 fl">English</span>
               <i class="icon iconfont text-default ft-14 fr">&#xe657;</i>
             </p>
           </li>
-          <!-- <li>
+          <li>
             <a class="flex flex-between" href="#">
-              <p class="ft-14 text-grey">通知设置</p>
+              <p class="ft-14 text-grey">Notification settings</p>
               <p></p>
             </a>
-          </li> -->
+          </li>
         </ul>
-        <h1 class="border-b-grey ft-16 f-grey pb-05 pt-20">更多</h1>
+        <h1 class="border-b-grey ft-16 f-grey pb-05 pt-20">More</h1>
         <ul class="account-info">
           <li>
             <a class="flex flex-between" href="#">
-              <p class="ft-14 text-grey">账户密码</p>
+              <p class="ft-14 text-grey">Account Password</p>
               <p class="icon iconfont text-default ft-14">&#xe657;</p>
             </a>
           </li>
-          <!-- <li>
+          <li>
             <a class="flex flex-between" href="../help.html">
-              <p class="ft-14 text-grey">帮助</p>
+              <p class="ft-14 text-grey">Help</p>
               <p class="icon iconfont text-default ft-14">&#xe657;</p>
             </a>
-          </li> -->
+          </li>
         </ul>
       </div>
     </div>
     <div style="padding: 1rem 5%; display: none;" id="btnBox">
       <div class="create-business ft-12">
-        <button class="f-blue" id="createBusiness">+ 创建企业</button>
+        <button class="f-blue" id="createBusiness">+ Create A Business</button>
       </div>
-      <div class="sign-out ft-12" id="signOut">退出</div>
+      <div class="sign-out ft-12" id="signOut">Sign Out</div>
     </div>
   </div>
   <!--弹窗-->
@@ -142,13 +151,13 @@
     <div class="opacity-bg"></div>
     <!--弹窗内容-->
     <div class="create-file bg-white">
-      <h1 class="ft-16 text-white">通知</h1>
+      <h1 class="ft-16 text-white">Notification</h1>
       <div class="file-name">
-        确定要退出企业吗？
+        Are you sure you want to quit the business, once you ca n’t recover?
       </div>
       <div class="create-btn flex flex-between border-t-grey">
-        <span class="ft-16 width-50 border-r-grey text-red" id="determine">确定</span>
-        <span class="f-blue ft-16 width-50" id="cancel">取消</span>
+        <span class="ft-16 width-50 border-r-grey text-red" id="determine">Determine</span>
+        <span class="f-blue ft-16 width-50" id="cancel">Cancel</span>
       </div>
     </div>
   </div>
@@ -158,6 +167,6 @@
 <script src="/h5/js/mui.picker.min.js"></script>
 <script src="/h5/js/mui.poppicker.js"></script>
 <script src="/h5/js/public.js"></script>
-<script src="/h5/zh/enterprise/index.js"></script>
+<script src="./index.js"></script>
 
 </html>

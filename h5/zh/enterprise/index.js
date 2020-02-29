@@ -16,6 +16,7 @@
         let pic = '/h5/images/icon_enterprise_grey.jpg'
         if (item.isdefault === 1) {
           localStorage.setItem('orgDefault', item.id)
+          localStorage.setItem('project', JSON.stringify(item))
           pic = '/h5/images/icon_enterprise_blue.jpg'
         }
         let orgusertype = '进入'
@@ -75,6 +76,7 @@
       $('#weChat').text(resData.userWechatopenid ? '已绑定' : '未绑定')
       $('#weibo').text(resData.userWeiboopenid ? '已绑定' : '未绑定')
       $('#dingTalk').text(resData.userDingdingopenid ? '已绑定' : '未绑定')
+      $('#apple').text(resData.userAppleopnid ? '已绑定' : '未绑定')
       $('#authorImg').attr('src', imgPath + resData.userPic)
       $('#name').text(resData.userNickname)
       $('#role').text(resData.orgRoleName)
@@ -315,7 +317,7 @@
         }
       });
     })
-    mui('body').on('tap', '#weChat,#weibo,#dingTalk', function () {
+    mui('body').on('tap', '#weChat,#weibo,#dingTalk,#apple', function () {
       console.log(this)
       window.setupWebViewJavascriptBridge(bridge => {
         bridge.callHandler('thirdLogin', this.getAttribute('data-val'), () => {
