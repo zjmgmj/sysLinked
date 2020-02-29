@@ -80,11 +80,18 @@
       $('#authorImg').attr('src', imgPath + resData.userPic)
       $('#name').text(resData.userNickname)
       $('#role').text(resData.orgRoleName)
+      if (resData.userNotice === 1) {
+        $('#notificationSet').attr('src', '/h5/images/icon_enterprise_blue.jpg')
+      } else { 
+        $('#notificationSet').attr('src', '/h5/images/icon_enterprise_grey.jpg')
+      }
+      $('#notificationSet').attr('data-val', resData.userNotice)
+      $('#reminder').text(resData.userReminder)
     })
   }
 
   function pulldownRefresh() {
-    // userId = 61
+    // userId = 87
     // getuser()
     // joinorglist()
     window.setupWebViewJavascriptBridge(bridge => {
@@ -282,6 +289,13 @@
         id: 'mailbox'
       })
     })
+    mui('body').on('tap', '#accountPassword', function () { 
+      const userId = localStorage.getItem('userId')
+      mui.openWindow({
+        url: '/h5/zh/enterprise/changePassword.html?userId=' + userId,
+        id: 'changePassword'
+      })
+    })
     mui('body').on('tap', '#phone', function () {
       const userId = localStorage.getItem('userId')
       mui.openWindow({
@@ -323,6 +337,30 @@
         bridge.callHandler('thirdLogin', this.getAttribute('data-val'), () => {
           getuser()
         })
+      })
+    })
+    mui('body').on('tap', '#notificationSet', function () {
+      const userId = localStorage.getItem('userId')
+      let noticeStatus = this.getAttribute('data-val')
+      if (noticeStatus == 1) {
+        noticeStatus = 0
+      } else {
+        noticeStatus = 1
+      }
+      const params = {
+        userId: Number(userId),
+        userNotice: noticeStatus
+      }
+      $ajax('/user/update', 'post', params, function (res) {
+        mui.toast(res.msg)
+        if (res.code === 1) {
+          if (noticeStatus === 1) {
+            $('#notificationSet').attr('src', '/h5/images/icon_enterprise_blue.jpg')
+          } else {
+            $('#notificationSet').attr('src', '/h5/images/icon_enterprise_grey.jpg')
+          }
+          $('#notificationSet').attr('data-val', noticeStatus)
+        }
       })
     })
   });

@@ -4,8 +4,10 @@
     const email = getUrlParam('email')
     const userId = getUrlParam('userId')
     if (!email) {
+      $('#mailboxTitle').text('邮箱')
       $('#oldMail').hide()
     } else {
+      $('#mailboxTitle').text('更换邮箱')
       $('#mailbox').val(email)
     }
     mui('body').on('tap', '#back,.cancel', function () {
