@@ -279,7 +279,7 @@
       })
     })
 
-    mui('body').on('tap', '#authorImg', function () {
+    mui('body').on('tap', '#personalInfor', function () {
       mui.openWindow({
         url: '/h5/enterprise/personalInfor.html',
         id: 'personalInfor'
@@ -344,20 +344,24 @@
       })
     })
     mui('body').on('tap', '#notificationSet', function () { 
-      const userId = localStorage.getItem('userId')
+      // const userId = localStorage.getItem('userId')
       let noticeStatus = this.getAttribute('data-val')
       if (noticeStatus == 1) {
         noticeStatus = 0
       } else { 
         noticeStatus = 1
       }
-      const params = {
-        userId: Number(userId),
-        userNotice: noticeStatus
-      }
+      // const params = {
+      //   userId: Number(userId),
+      //   userNotice: noticeStatus
+      // }
+      const params = JSON.parse(localStorage.getItem('userInfo'))
+      params.userNotice = noticeStatus
       $ajax('/user/update', 'post', params, function (res) {
         mui.toast(res.msg)
         if (res.code === 1) {
+          // getuser()
+          localStorage.setItem('userInfo', JSON.stringify(res.data))
           if (noticeStatus === 1) {
             $('#notificationSet').attr('src', '/h5/images/icon_enterprise_blue.jpg')
           } else { 
@@ -405,12 +409,15 @@
     mui('body').on('tap', '#openReminder', function () {
       daysPicker.show(function (items) {
         $('#reminder').text(items[0].value)
-        const params = {
-          userId: Number(userId),
-          userReminder: items[0].value
-        }
+        // const params = {
+        //   userId: Number(userId),
+        //   userReminder: items[0].value
+        // }
+        const params = JSON.parse(localStorage.getItem('userInfo'))
+        params.userReminder = items[0].value
         $ajax('/user/update', 'post', params, function (res) {
           mui.toast(res.msg)
+          localStorage.setItem('userInfo', JSON.stringify(res.data))
         })
       });
     })

@@ -5,7 +5,7 @@
     const userId = getUrlParam('userId')
     if (!email) {
       $('#mailboxTitle').text('邮箱')
-      $('#mailbox').attr('readonly', false
+      $('#mailbox').attr('readonly', false)
       $('#oldMail').hide()
     } else {
       $('#mailboxTitle').text('更换邮箱')
@@ -59,10 +59,8 @@
         mui.toast('请输入正确验证码')
         return false
       }
-      const params = {
-        userId: Number(userId),
-        userEamil: toeamil
-      }
+      const params = JSON.parse(localStorage.getItem('userInfo'))
+      params.userEamil = toeamil
       if (!email) {
         params.type = 1
       }
@@ -74,6 +72,7 @@
       $ajax('/user/update', 'post', params, function (res) {
         mui.toast(res.msg)
         if (res.code === 1) {
+          localStorage.setItem('userInfo', JSON.stringify(res.data))
           setTimeout(() => {
             back()
           }, 500)

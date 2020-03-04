@@ -24,13 +24,17 @@
         mui.toast('Inconsistent secondary password entry')
         return false
       }
-      const userId = getUrlParam('userId')
-      const params = {
-        type: 3,
-        userId: Number(userId),
-        userNewPassword: newPassword,
-        userPassword: oldPassword,
-      }
+      // const userId = getUrlParam('userId')
+      // const params = {
+      //   type: 3,
+      //   userId: Number(userId),
+      //   userNewPassword: newPassword,
+      //   userPassword: oldPassword,
+      // }
+      const params = JSON.parse(localStorage.getItem('userInfo'))
+      params.userNewPassword = newPassword
+      params.userPassword = oldPassword
+      params.type = 3
       save(params)
     })
 
@@ -38,6 +42,7 @@
       $ajax('/user/update', 'post', params, function (res) {
         mui.toast(res.msg == '原始密码错误' ? 'The original password is wrong' : res.msg)
         if (res.code === 1) {
+          localStorage.setItem('userInfo', JSON.stringify(res.data))
           setTimeout(() => {
             back()
           }, 500)

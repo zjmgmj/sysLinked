@@ -20,6 +20,18 @@
   <link href="/h5/css/mui.poppicker.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
   <link rel="stylesheet" href="./setting.css">
+  <style>
+    .setting .group-input {
+      width: 100%;
+      height: 2.5rem;
+    }
+    .setting .group-input input{
+      height: 2.5rem;
+    }
+    .code-button{
+      height: 2rem;
+    }
+  </style>
 </head>
 
 <body class="page-width bg-grey">
@@ -31,19 +43,19 @@
   </div>
   <div class="page-con setting pt-header pb-menu">
     <div class="group-input border-b-grey">
-      <h3 class="f-7E7E7F ft-12">手机号码</h3>
+      <!-- <h3 class="f-7E7E7F ft-12">手机号码</h3> -->
       <input type="text" id="phoneNumber" class="ft-14 pt-05">
     </div>
     <div class="group-input border-b-grey">
-      <h3 class="f-7E7E7F ft-12">添加备用电话号码</h3>
+      <!-- <h3 class="f-7E7E7F ft-12">添加备用电话号码</h3> -->
       <div class="flex">
-        <input type="text" id="newPhoneNum" class="f-grey ft-14 pt-05" value="">
+        <input type="text" id="newPhoneNum" placeholder="请输入手机号" class="f-grey ft-14 pt-05" value="">
         <button class="code-button">获取验证码</button>
       </div>
     </div>
     <div class="group-input border-b-grey">
-      <h3 class="f-7E7E7F ft-12">验证码</h3>
-      <input type="text" id="verifCode" class="f-grey ft-14 pt-05" value="">
+      <!-- <h3 class="f-7E7E7F ft-12">验证码</h3> -->
+      <input type="text" id="verifCode" placeholder="输入验证码" class="f-grey ft-14 pt-05" value="">
     </div>
     <div class="ft-12 f-7E7E7F mt-05">All login accounts can be used to log in, and the primary email account can be
       notified.

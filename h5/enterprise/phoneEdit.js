@@ -3,6 +3,7 @@
   mui.ready(function () {
     const phoneNumber = getUrlParam('phone')
     const userId = getUrlParam('userId')
+    $('#phoneNumber').attr('readonly', true)
     $('#phoneNumber').val(phoneNumber)
     mui('body').on('tap', '#back,.cancel', function () {
       mui.back()
@@ -51,11 +52,14 @@
         mui.toast('请输入正确验证码')
         return false
       }
-      const params = {
-        type: 2,
-        userId: userId,
-        userLogin: newPhoneNum
-      }
+      // const params = {
+      //   type: 2,
+      //   userId: userId,
+      //   userLogin: newPhoneNum
+      // }
+      const params = JSON.parse(localStorage.getItem('userInfo'))
+      params.type = 2
+      params.userLogi = newPhoneNum
       save(params)
       console.log(this)
     })
@@ -64,6 +68,7 @@
       $ajax('/user/update', 'post', params, function (res) {
         mui.toast(res.msg)
         if (res.code === 1) {
+          localStorage.setItem('userInfo', JSON.stringify(res.data))
           setTimeout(() => {
             back()
           }, 500)

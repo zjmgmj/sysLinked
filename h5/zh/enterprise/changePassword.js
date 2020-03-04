@@ -21,13 +21,17 @@
         mui.toast('二次密码输入不一致')
         return false
       }
-      const userId = getUrlParam('userId')
-      const params = {
-        type: 3,
-        userId: Number(userId),
-        userNewPassword: newPassword,
-        userPassword: oldPassword,
-      }
+      // const userId = getUrlParam('userId')
+      // const params = {
+      //   type: 3,
+      //   userId: Number(userId),
+      //   userNewPassword: newPassword,
+      //   userPassword: oldPassword,
+      // }
+      const params = JSON.parse(localStorage.getItem('userInfo'))
+      params.userNewPassword = newPassword
+      params.userPassword = oldPassword
+      params.type = 3
       save(params)
     })
 
@@ -35,6 +39,7 @@
       $ajax('/user/update', 'post', params, function (res) {
         mui.toast(res.msg)
         if (res.code === 1) {
+          localStorage.setItem('userInfo', JSON.stringify(res.data))
           setTimeout(() => {
             back()
           }, 500)

@@ -69,16 +69,11 @@
       userUpdate(params)
     })
     function userUpdate (userInfo) {
-      const keys = ["address", "birthday", "userNickname", "position", "type", "userId", "userLogin", "userPic"]
-      let params = {}
-      keys.map(key => {
-        params[key] = userInfo[key]
-      })
-      params.type = 0
-      $ajax('/user/update', 'post', params, function (res) {
+      userInfo.type = 0
+      $ajax('/user/update', 'post', userInfo, function (res) {
         console.log(res)
         if (res.code === 1) {
-          localStorage.setItem('userInfo', JSON.stringify(params))
+          localStorage.setItem('userInfo', JSON.stringify(res.data))
         }
         loadingHide()
       })
