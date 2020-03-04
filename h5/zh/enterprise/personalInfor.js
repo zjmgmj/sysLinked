@@ -38,22 +38,17 @@
       })
     }
 
-    mui('body').on('change', '#companyName', function () {
+    $('#companyName').on('input', function () { 
       const params = JSON.parse(localStorage.getItem('userInfo'))
       const name = $(this)[0].value
-      // params.firstName = name
-      // params.lastName = ''
-      // params.lastName = name.substr(0, name.length - 1)
       params.userNickname = name
       userUpdate(params)
     })
-
-    mui('body').on('change', '#jobTitle', function () {
+    $('#jobTitle').on('input', function () {
       const params = JSON.parse(localStorage.getItem('userInfo'))
       params.position = $(this)[0].value
       userUpdate(params)
     })
-
     mui('body').on('tap', '#birthday', function () {
       dayPicker.setSelectedValue($('#birthdayVal')[0].innerText)
       dayPicker.show((res) => {
@@ -63,13 +58,12 @@
         userUpdate(params)
       })
     })
-
-    mui('body').on('tap', '#contactInfo', function () {
+    $('#contactInfo').on('input', function () {
       const params = JSON.parse(localStorage.getItem('userInfo'))
       params.userLogin = $(this)[0].value
       userUpdate(params)
     })
-    mui('body').on('tap', '#address', function () {
+    $('#address').on('input', function () {
       const params = JSON.parse(localStorage.getItem('userInfo'))
       params.address = $(this)[0].value
       userUpdate(params)

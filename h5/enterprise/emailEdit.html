@@ -20,6 +20,18 @@
   <link href="/h5/css/mui.poppicker.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
   <link rel="stylesheet" href="./setting.css">
+  <style>
+    .setting .group-input {
+      width: 100%;
+      height: 2.5rem;
+    }
+    .setting .group-input input{
+      height: 2.5rem;
+    }
+    .code-button{
+      height: 2rem;
+    }
+  </style>
 </head>
 
 <body class="page-width bg-grey">
@@ -31,19 +43,19 @@
   </div>
   <div class="page-con setting pt-header pb-menu">
     <div class="group-input border-b-grey" id="oldMail">
-      <h3 class="f-7E7E7F ft-12">Main Mailbox</h3>
-      <input type="text" id="mailbox" readonly class="ft-14 pt-05">
+      <!-- <h3 class="f-7E7E7F ft-12">Main Mailbox</h3> -->
+      <input type="text" id="mailbox" placeholder="Please enter your email" class="ft-14 pt-05">
     </div>
     <div class="group-input border-b-grey">
-      <h3 class="f-7E7E7F ft-12">Add Alternate Mailbox</h3>
+      <!-- <h3 class="f-7E7E7F ft-12">Add Alternate Mailbox</h3> -->
       <div class="flex">
-        <input type="text" id="alternateMailbox" class="f-grey ft-14 pt-05" value="">
+        <input type="text" id="alternateMailbox" placeholder="Please enter your email" class="f-grey ft-14 pt-05" value="">
         <button class="code-button">Verification Code</button>
       </div>
     </div>
     <div class="group-input border-b-grey">
-      <h3 class="f-7E7E7F ft-12">Verification Code</h3>
-      <input type="text" id="VerifCode" class="f-grey ft-14 pt-05" value="">
+      <!-- <h3 class="f-7E7E7F ft-12">Verification Code</h3> -->
+      <input type="text" placeholder="please enter verification code" id="VerifCode" class="f-grey ft-14 pt-05" value="">
     </div>
     <div class="ft-12 f-7E7E7F mt-05">All login accounts can be used to log in, and the primary email account can be
       notified.

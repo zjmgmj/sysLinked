@@ -5,9 +5,11 @@
     const userId = getUrlParam('userId')
     if (!email) {
       $('#mailboxTitle').text('邮箱')
+      $('#mailbox').attr('readonly', false
       $('#oldMail').hide()
     } else {
       $('#mailboxTitle').text('更换邮箱')
+      $('#mailbox').attr('readonly', true)
       $('#mailbox').val(email)
     }
     mui('body').on('tap', '#back,.cancel', function () {

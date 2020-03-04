@@ -304,6 +304,53 @@
       })
     })
     const pickButtons = ['cancel', 'sure']
+    var daysPicker = new mui.PopPicker({
+      buttons: pickButtons
+    });
+    const daysList = [{
+      value: '1',
+      text: '1day'
+    }, {
+      value: '2',
+      text: '2day'
+    }, {
+      value: '3',
+      text: '3day'
+    }, {
+      value: '4',
+      text: '4day'
+    }, {
+      value: '5',
+      text: '5day'
+    }, {
+      value: '6',
+      text: '6day'
+    }, {
+      value: '7',
+      text: '7day'
+    }, {
+      value: '8',
+      text: '8day'
+    }, {
+      value: '9',
+      text: '9day'
+    }, {
+      value: '10',
+      text: '10day'
+      }]
+    daysPicker.setData(daysList)
+    mui('body').on('tap', '#openReminder', function () {
+      daysPicker.show(function (items) {
+        $('#reminder').text(items[0].value)
+        const params = {
+          userId: Number(userId),
+          userReminder: items[0].value
+        }
+        $ajax('/user/update', 'post', params, function (res) {
+          mui.toast(res.msg)
+        })
+      });
+    })
     var languagePicker = new mui.PopPicker({
       buttons: pickButtons
     });

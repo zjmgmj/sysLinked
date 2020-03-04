@@ -1,0 +1,106 @@
+.device-num{
+  color: #49B9EA;
+  border: 0.05rem #49B9EA solid;
+  border-radius: 0.3rem;
+  padding: 0.2rem 0.5rem;
+}
+.pullrefresh {
+  position: absolute;
+  top: 1.5rem;
+  padding-top: 0.5rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+}
+.content {
+  height: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  box-sizing: border-box;
+}
+.device-list{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  justify-content: space-between;
+}
+.loading{
+  display: none!important;
+}
+.device-item{
+  border: 0.05rem #49B9EA solid;
+  /* width: 7rem;
+  height: 6rem; */
+  background: #F5F5F5;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.select-device{
+  position: absolute;
+  height: 2.4rem;
+  width: 5rem;
+  left: 50%;
+  margin-left: -2.5rem;
+  top: 50%;
+  margin-top: -1.2rem;
+  color: #262628;
+}
+
+.create-btn{width: 100%;height: 1.65rem;padding: 1px;line-height: 1.65rem;text-align: center;background:linear-gradient(136deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);background-color: #5458A6;}
+.create-btn button{display: block;width: 100%;height: 100%;background-color: #FFFFFF;}
+/*创建新文件*/
+.create-file {
+  width: 82%;
+  height: 21.2rem;
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  top: 10%;
+  z-index: 333333;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.create-file h1 {
+  width: 100%;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  text-align: center;
+  background: #5458A6 linear-gradient(130deg, rgba(177, 220, 189, 1) 0%, rgba(73, 185, 234, 1) 58%, rgba(84, 88, 166, 1) 100%);
+}
+
+.create-file .device-form {
+  width: 85.5%;
+  margin: 0 auto;
+  margin-top: 0.87rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  margin-bottom: 1.78rem;
+  border-bottom: 1px solid #48B6E6;
+}
+
+.create-file .device-form input {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.create-file .create-btn {
+  width: 100%;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  text-align: center;
+  background: #fff;
+}
+.video{
+  background: #000;
+  /* width: 100%;
+  height: 100%; */
+}

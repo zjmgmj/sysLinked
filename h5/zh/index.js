@@ -212,7 +212,7 @@
       const id = $(this).parents('.store-txt').attr('data-id')
       const getProjectList = JSON.parse(localStorage.getItem('projectList'))
       const projectList = getProjectList.find((item) => {
-        return item.id = Number(id)
+        return item.id === Number(id)
       })
       localStorage.setItem('project', JSON.stringify(projectList))
       window.setupWebViewJavascriptBridge(bridge => {

@@ -1,0 +1,9 @@
+.file-content {
+  padding: 0.5rem 0;
+}
+.file-content img{
+  width: 2rem;
+}
+.edit,.del{
+  padding: 10px;
+}

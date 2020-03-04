@@ -5,9 +5,11 @@
     const userId = getUrlParam('userId')
     if (!email) {
       $('#mailboxTitle').text('Mailbox')
+      $('#mailbox').attr('readonly', false)
       $('#oldMail').hide()
     } else {
       $('#mailboxTitle').text('Change Mailbox')
+      $('#mailbox').attr('readonly', true)
       $('#mailbox').val(email)
     }
     mui('body').on('tap', '#back,.cancel', function () {
