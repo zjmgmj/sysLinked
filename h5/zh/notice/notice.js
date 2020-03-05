@@ -104,7 +104,7 @@
             <p class="ft-16 f-grey">${item.userNickname}</p>
             <p class="ft-12 text-grey">${time}</p>
           </div>
-          <p class="ft-12 text-grey pt-05">${item.englishMessages}</p>
+          <p class="ft-12 text-grey pt-05">${item.messages}</p>
           ${imgTempBox}
         </div>
       </li>`
