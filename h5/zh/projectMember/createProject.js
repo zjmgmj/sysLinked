@@ -34,6 +34,7 @@
             $('#checkedYes i.icon').attr('class', 'icon iconfont iconicon-test36 f-48B6E6')
             $('#checkedYes').attr('data-val', resData.status)
           }
+          localStorage.setItem('tempObject', JSON.stringify(resData))
         }
       })
     }
@@ -98,7 +99,7 @@
         mui.toast('Please Enter End Time')
         return false
       }
-      const params = {
+      let params = {
         // id: Number(id),
         createUserid: userid,
         orgId: orgId,
@@ -115,12 +116,18 @@
       if (id) {
         urlApi = '/project/update'
         params.status = Number($('.iconicon-test36.f-48B6E6').parent().attr('data-val'))
+        const tempObject = JSON.parse(localStorage.getItem('tempObject'))
+        Object.assign(tempObject, params)
+        params = tempObject
+        const projectUser = $('#projectUser span').attr('data-userId')
+        if (projectUser) {
+          params.transferUserid = Number(projectUser)
+        }
       }
       $ajax(urlApi, 'post', params, (res) => {
         console.log('---------', res)
         mui.toast(res.msg)
         if (res.code === 1) {
-          // mui.back()
           setTimeout(() => {
             mui.openWindow({
               url: '/h5/zh/',
@@ -152,6 +159,32 @@
         $('#checkedNo i.icon').removeClass('iconicon-test36 f-48B6E6').addClass('iconicon-test37 text-default')
         $('#checkedYes i.icon').removeClass('iconicon-test37 text-default').addClass('iconicon-test36 f-48B6E6')
       }
+    })
+    const userPicker = new mui.PopPicker({
+      buttons: pickButtons
+    });
+    getprojectuserlist()
+    function getprojectuserlist() { 
+      const urlApi = '/projectuser/getprojectuserlist?page=1&size=100&projectId='+id
+      $ajax(urlApi, 'get', '', (res) => {
+        console.log('---------', res)
+        // mui.toast(res.msg)
+        if (res.code === 1) {
+          const resData = res.data.rows
+          resData.map(item => { 
+            item.value = item.userId
+            item.text = item.userNickname
+          })
+          userPicker.setData(res.data.rows)
+        }
+      })
+    }
+    mui('body').on('tap', '#projectUser', function () { 
+      userPicker.show(function (items) { 
+        console.log('userPicker', items)
+        $('#projectUser span')[0].innerText = items[0].text
+        $($('#projectUser span')[0]).attr('data-userId', items[0].value)
+      })
     })
   });
 
