@@ -25,6 +25,11 @@
         console.log(res)
         mui.toast(res.msg)
         if (res.code === 1) {
+          window.setupWebViewJavascriptBridge(bridge => {
+            bridge.callHandler('setOrgId', JSON.stringify({
+              defaultOrgId: res.data.id
+            }))
+          })
           setTimeout(() => {
             back()
           }, 500)

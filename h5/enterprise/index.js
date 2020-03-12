@@ -197,12 +197,25 @@
     })
 
     function outorg(orgId) {
-      // const orgId = 38
       $ajax('/orguser/outorg?orgId=' + orgId + '&userId=' + userId, 'get', '', function (res) {
         console.log(res)
-        // mui.toast(res.msg)
         $('#notification').hide()
-        joinorglist()
+        // joinorglist()
+        if (orgId == localStorage.getItem('orgDefault')) {
+          const node = $($('.org-list')[0])
+          const id = node.attr('data-id')
+          localStorage.setItem('orgDefault', JSON.stringify(id))
+          const params = {
+            orgId: id,
+            isdefault: 1,
+            orgName: node.attr('data-orgname'),
+            orgNum: node.attr('data-orgNum'),
+            userId: userId
+          }
+          updateOrg(params)
+        } else { 
+          joinorglist()
+        }
       })
     }
 
@@ -343,33 +356,12 @@
       value: '1',
       text: '1day'
     }, {
-      value: '2',
-      text: '2day'
-    }, {
       value: '3',
       text: '3day'
     }, {
-      value: '4',
-      text: '4day'
-    }, {
       value: '5',
       text: '5day'
-    }, {
-      value: '6',
-      text: '6day'
-    }, {
-      value: '7',
-      text: '7day'
-    }, {
-      value: '8',
-      text: '8day'
-    }, {
-      value: '9',
-      text: '9day'
-    }, {
-      value: '10',
-      text: '10day'
-      }]
+    }]
     daysPicker.setData(daysList)
     mui('body').on('tap', '#openReminder', function () {
       daysPicker.show(function (items) {
