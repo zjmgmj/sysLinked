@@ -21,7 +21,7 @@
         })
       } else {
         // document.getElementById('content').innerHTML = contentTemp
-        $('#content').html(`<div class="text-center pt-10">No data</div>`)
+        $('#orgContent').html(`<div class="text-center pt-10">No data</div>`)
         mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
       }
     })
@@ -35,9 +35,10 @@
     })
   }
 
-  function pulldownRefresh() {
-    // userId = 39
-    // orgId = 32
+  function pulldownRefresh () {
+    $('#createProject').hide()
+    // userId = 91
+    // orgId = 159
     // joinorglistAjax(userId)
     // getuser(userId)
 
@@ -96,28 +97,21 @@
       <h1>Close Project · <span id="closeCount">${closeCount}</span></h1>
       <ul class="store-list close-list" id="closeProject">${closeProjectTemp}</ul>`
       localStorage.setItem('projectList', JSON.stringify(resData))
-      // $('#starredCount').text(starredCount)
-      // $('#startupCount').text(startupCount)
-      // $('#closeCount').text(closeCount)
-      // document.getElementById('starredProjects').innerHTML = starredProjectsTemp
-      // document.getElementById('startupProject').innerHTML = startupProjectTemp
-      // document.getElementById('closeProject').innerHTML = closeProjectTemp
-      // document.getElementById('content').innerHTML = contentTemp
-      $('#content').html(contentTemp)
+      $('#orgContent').html(contentTemp)
       mui('#pullrefresh').pullRefresh().endPulldownToRefresh()
       if ($('.store-txt').length > 0) maxWidth = $('.store-txt')[0].clientWidth
+      setTimeout(() => { 
+        getPermissionOrg()
+      }, 100)
     })
   }
 
 
   function getJoinorglist() {
-    // joinorglistAjax('39')
     window.setupWebViewJavascriptBridge(bridge => {
       bridge.callHandler('getUserId', '', (result) => {
         const resData = JSON.parse(result)
         userId = resData.userId
-        // log('参数', result)
-        // log('userId', userId)
         joinorglistAjax(resData.userId)
         getuser(resData.userId)
         window.setupWebViewJavascriptBridge(bridge => {
@@ -128,24 +122,13 @@
           })
         })
       })
-      // if (userId) {
-      //   bridge.callHandler('hasGetUserId', { flag: 1 })
-      // }
     })
   }
   mui.init(muiInit('#pullrefresh', pulldownRefresh));
   mui.ready(function () {
-
-    // userId = 34
-    // joinorglistAjax(userId)
-    // getuser(userId)
-
     const minWidth = window.innerWidth * 0.6
 
-
-
-
-    mui('#content').on('drag', '.store-left', (event) => {
+    mui('#orgContent').on('drag', '.store-left', (event) => {
       const newWidth = event.path[1].clientWidth + event.detail.deltaX
       if ($(event.path[1]).attr('class').indexOf('store-left') !== -1) {
         event.path[1].style.width = (newWidth < minWidth ? minWidth : newWidth > maxWidth ? maxWidth : newWidth) + 'px'
@@ -153,7 +136,7 @@
     })
 
     // 删除
-    mui('#content').on('tap', '.delete', function (e) {
+    mui('#orgContent').on('tap', '.delete', function (e) {
       const id = $(this).parents('.store-txt').attr('data-id')
       // const id = 1
       const node = $(this).parents('.store-txt')
@@ -174,7 +157,7 @@
 
 
     // 设置
-    mui('#content').on('tap', '.setting', function () {
+    mui('#orgContent').on('tap', '.setting', function () {
       // console.log(this)
       const id = $(this).parents('.store-txt').attr('data-id')
       mui.openWindow({
@@ -185,7 +168,7 @@
     })
 
     // 星
-    mui('#content').on('tap', '.Pentagram', function () {
+    mui('#orgContent').on('tap', '.Pentagram', function () {
       const node = $(this).parents('.store-txt')
       const params = {
         createUserid: userId,
@@ -207,7 +190,7 @@
       return false
     })
 
-    mui('#content').on('tap', '.store-left', function () {
+    mui('#orgContent').on('tap', '.store-left', function () {
       // 选择项目
       const id = $(this).parents('.store-txt').attr('data-id')
       const getProjectList = JSON.parse(localStorage.getItem('projectList'))
@@ -215,6 +198,7 @@
         return item.id === Number(id)
       })
       localStorage.setItem('project', JSON.stringify(projectList))
+      getPermissionProject(id)
       window.setupWebViewJavascriptBridge(bridge => {
         bridge.callHandler('projectClick', JSON.stringify(projectList))
       })

@@ -35,12 +35,12 @@
     })
   }
 
-  function pulldownRefresh() {
-    // userId = 39
-    // orgId = 32
+  function pulldownRefresh () {
+    $('#createProject').hide()
+    // userId = 91
+    // orgId = 159
     // joinorglistAjax(userId)
     // getuser(userId)
-
     getJoinorglist()
   }
 
@@ -106,6 +106,9 @@
       $('#content').html(contentTemp)
       mui('#pullrefresh').pullRefresh().endPulldownToRefresh()
       if ($('.store-txt').length > 0) maxWidth = $('.store-txt')[0].clientWidth
+      setTimeout(() => { 
+        getPermissionOrg()
+      }, 100)
     })
   }
 
@@ -205,7 +208,7 @@
         mui.toast(res.msg)
       })
       return false
-    })
+    }) 
 
     mui('#content').on('tap', '.store-left', function () {
       // 选择项目
@@ -215,6 +218,7 @@
         return item.id === Number(id)
       })
       localStorage.setItem('project', JSON.stringify(projectList))
+      getPermissionProject(id)
       window.setupWebViewJavascriptBridge(bridge => {
         bridge.callHandler('projectClick', JSON.stringify(projectList))
       })

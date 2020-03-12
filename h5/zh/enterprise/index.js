@@ -42,24 +42,12 @@
             </div>
           </div>
         </li>`
-        // temp += `<li class="org-list" data-orgName="${item.orgName}" data-orgNum="${item.orgNum}" data-id="${item.id}">
-        //   <div class="flex align-center flex-between org-list-content">
-        //     <div class="flex align-center">
-        //       <div class="pl-05 pr-05 check-org"><img src="${pic}" /></div>
-        //       <p class="ft-14 f-grey ">${item.orgName}</p> 
-        //     </div>
-        //     <div class="ft-14 pr-05 options-btn" data-orgusertype='${item.orgusertype}'>${orgusertype}</div>
-        //   </div>
-        //   <div class="options flex">            
-        //     ${settingTemp}
-        //     <div class="delete ml-05"><i class="icon iconfont text-white ft-20 iconicon-test9"></i></div>
-        //   </div>
-        // </li>`
       })
       $('#enterpriseContent').html(temp)
-      // $('#enterpriseContent').html(temp + temp + temp + temp + temp)
-      $('#btnBox').show()
       mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+      setTimeout(() => { 
+        getPermissionOrg()
+      }, 100)
     })
   }
 
@@ -77,7 +65,9 @@
       $('#weibo').text(resData.userWeiboopenid ? '已绑定' : '未绑定')
       $('#dingTalk').text(resData.userDingdingopenid ? '已绑定' : '未绑定')
       $('#apple').text(resData.userAppleopnid ? '已绑定' : '未绑定')
-      $('#authorImg').attr('src', imgPath + resData.userPic)
+      if (resData.userPic) {
+        $('#authorImg').attr('src', imgPath + resData.userPic)
+      }
       $('#name').text(resData.userNickname)
       $('#role').text(resData.orgRoleName)
       if (resData.userNotice === 1) {
@@ -90,14 +80,15 @@
     })
   }
 
-  function pulldownRefresh() {
-    // userId = 87
+  function pulldownRefresh () {
+    // userId = 91
     // getuser()
     // joinorglist()
     window.setupWebViewJavascriptBridge(bridge => {
       bridge.callHandler('getUserId', '', (result) => {
         const resData = JSON.parse(result)
         userId = resData.userId
+        $('#btnBox').hide()
         getuser()
         joinorglist()
       })
@@ -136,6 +127,10 @@
     })
 
     mui('#enterpriseContent').on('tap', '.org-list-content', function () {
+      const orgRoles = JSON.parse(localStorage.getItem('orgRole'))
+      if (orgRoles.businessOrganization.indexOf('orguser:list') === -1) { 
+        return  false
+      }
       const node = $(this).parents('.org-list')
       mui.openWindow({
         url: '/h5/zh/organizationMember/index.html?orgId=' + Number(node.attr('data-id')),

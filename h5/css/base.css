@@ -422,3 +422,27 @@ sub { vertical-align: text-bottom }
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+
+/* 权限 */
+#createProject, 
+.store-txt .setting, 
+.store-txt .Pentagram, 
+#organization #optionShow,
+#btnBox,
+#enterpriseContent .setting-icon,
+#enterpriseContent .delete,
+#uploadFileBox,
+#createFile,
+#editFile,
+#delFile,
+#projectMembers #optionShow,
+#invoice #addPhotoShow,
+#invoiceDetail .create-project,
+#reportBox,
+#removeCompletely,
+#recoverFiles,
+#recycleAlone,
+#recycleAll{
+  display: none;
+}

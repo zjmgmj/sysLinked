@@ -73,9 +73,10 @@
   function deptList(resData) {
     let temp = ''
     resData.map((item, index) => {
+      const authorPic = item.userPic ? imgPath + item.userPic : '/h5/images/avatar.png'
       temp += `<li class="border-b-grey member-item" data-userId="${item.userId}" data-index="${index}">
         <div class="flex align-center">
-          <div class="avator border-blue radius-b50"><img src="/h5/images/avator.png" /></div>
+          <div class="avator border-blue radius-b50"><img src="${authorPic}" /></div>
           <div class="member-info">
             <p class="name ft-16">${item.userNickname}</p>
             <p class="email ft-12">${item.userEamil}</p>

@@ -4,54 +4,41 @@
   let pid = null
 
   function loadData() {
-    window.setupWebViewJavascriptBridge(bridge => {
-      bridge.callHandler('getProjectId', '', (result) => {
-        // log('result', result)
-        const resData = JSON.parse(result)
-        pid = resData.projectId
-        // log('pid', pid)
-        $ajax('/projectuser/getprojectuserlist?page=' + page + '&size=' + size + '&projectId=' + pid, 'get', '', function (res) {
-          // console.log(res)
-          // let adminCount = 0
-          // let userCount = 0
-          const resData = res.data.rows
-          localStorage.setItem('projectuserlist', JSON.stringify(resData))
-          let temp = ''
-          resData.map((item, index) => {
-            temp += `<li class="border-b-grey flex flex-between align-center member-item" data-id="${item.projectUserId}" data-index="${index}">
+    $ajax('/projectuser/getprojectuserlist?page=' + page + '&size=' + size + '&projectId=' + pid, 'get', '', function (res) {
+      const resData = res.data.rows
+      localStorage.setItem('projectuserlist', JSON.stringify(resData))
+      let temp = ''
+      resData.map((item, index) => {
+        temp += `<li class="border-b-grey flex flex-between align-center member-item" data-id="${item.projectUserId}" data-index="${index}">
           <div class="avator border-blue radius-b50">        
-            <img src="${item.userPic !== 'null' && item.userPic !== '' ? imgPath + item.userPic : '/h5/images/nike.png'}" alt="sysLinked" />            
+            <img src="${item.userPic !== 'null' && item.userPic !== '' ? imgPath + item.userPic : '/h5/images/avatar.png'}" alt="sysLinked" />            
           </div>
           <div class="member-info col">
             <p class="name ft-16">${item.userNickname}</p>
             <p class="email ft-12">${item.userEamil}</p>
           </div>
         </li>`
-            // temp += `<li class="border-b-grey flex flex-between align-center member-item" data-id="${item.projectUserId}" data-index="${index}">
-            //   <div class="avator border-blue radius-b50">        
-            //     <img src="${item.userPic !== 'null' && item.userPic !== '' ? imgPath + item.userPic : '/h5/images/nike.png'}" alt="sysLinked" />            
-            //   </div>
-            //   <div class="member-info col">
-            //     <p class="name ft-16">${item.userNickname}</p>
-            //     <p class="email ft-12">${item.userEamil}</p>
-            //   </div>
-            //   <div class="text-red del-list">删除</div>
-            // </li>`
-          })
-          $('#adminList').html(temp)
-          mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
-          // $('#adminCount').text(adminCount)
-          // $('#userCount').text(userCount)
-        })
       })
+      $('#adminList').html(temp)
+      mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+      setTimeout(() => { 
+        getPermissionProject()
+      }, 100)
     })
-    // alert('pid' + pid)
 
   }
 
-  function pulldownRefresh() {
+  function pulldownRefresh () {
+    $('#projectMembers #optionShow').hide()
     // pid = JSON.parse(localStorage.getItem('project')).id
-    loadData()
+    // loadData()
+    window.setupWebViewJavascriptBridge(bridge => {
+      bridge.callHandler('getProjectId', '', (result) => {
+        const resData = JSON.parse(result)
+        pid = resData.projectId
+        loadData()
+      })
+    })
   }
   mui.init({
     pullRefresh: {

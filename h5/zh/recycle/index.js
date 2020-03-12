@@ -71,6 +71,11 @@
           fileType = 'office'
           filePic = '/h5/images/file-word.png'
         }
+        let caozuoTmp = `<i class="icon iconfont text-default ft-16 iconcaozuo"></i>`
+        const projectRole = JSON.parse(localStorage.getItem('projectRoles'))
+        if (projectRole.recycle.indexOf('projectrecycle:delete') === -1 && projectRole.recycle.indexOf('projectrecycle:recovery') === -1) {
+          caozuoTmp = ''
+        }
         // const createDate = datetime2Str(new Date(item.createDate))
         const createDate = item.createDate ? iosTimeFormtter(item.createDate) : ''
         temp += `<li class="flex flex-between border-b-grey file-item">
@@ -82,7 +87,7 @@
             <p class="ft-12 text-default line-height-15">${createDate}</p>
           </div>
           </div>
-          <i class="icon iconfont text-default ft-16 iconcaozuo"></i>
+          ${caozuoTmp}
         </li>`
       })
       $('#fileList').append(temp)
@@ -115,6 +120,8 @@
 
     mui('#pullrefresh').on('tap', '.iconcaozuo', function () {
       $('#optionsBox').show()
+      $('#recycleAll').hide()
+      $('#recycleAlone').show()
       const fileItem = $(this).parents('.file-item')
       fileItem.find('input').attr('checked', true)
       mui('.popup').on('tap', '#recoverFiles', function () {
@@ -124,11 +131,15 @@
       return false
     })
     mui('body').on('tap', '.iconcaozuo', function () {
+      $('#recycleAlone').hide()
       $('#optionsBox').show()
+      $('#recycleAll').show()
       return false
     })
     mui('body').on('tap', '.opacity-bg, #cancel', function () {
       $('.popup').hide()
+      $('#recycleAlone').show()
+      $('#recycleAll').show()
     })
 
     mui('.popup').on('tap', '#removeCompletely', function () {

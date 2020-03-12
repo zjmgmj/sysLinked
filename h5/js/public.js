@@ -145,12 +145,6 @@ function alerCallBack() {
 function log(message, data) {
   const temp = message + ':<br/>' + JSON.stringify(data)
   document.getElementsByTagName('body')[0].append(temp)
-  // var log = document.getElementById('log')
-  // var el = document.createElement('div')
-  // el.className = 'logLine'
-  // el.innerHTML = message + ':<br/>' + JSON.stringify(data)
-  // if (log.children.length) { log.insertBefore(el, log.children[0]) }
-  // else { log.appendChild(el) }
 }
 
 const u = navigator.userAgent;
@@ -199,14 +193,6 @@ const setupWebViewJavascriptBridge = (callback) => {
   setTimeout(function () {
     document.documentElement.removeChild(WVJBIframe)
   }, 0)
-  // if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
-  // if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
-  // window.WVJBCallbacks = [callback];
-  // var WVJBIframe = document.createElement('iframe');
-  // WVJBIframe.style.display = 'none';
-  // WVJBIframe.src = 'https://__bridge_loaded__';
-  // document.documentElement.appendChild(WVJBIframe);
-  // setTimeout(function () { document.documentElement.removeChild(WVJBIframe) }, 0)
 }
 
 /**
@@ -234,142 +220,28 @@ if (isAndroid) {
       responseCallback("JS 返回给原生的消息内容");
     })
   })
-
-
 } else {
-  // alert('----ios')
   window.setupWebViewJavascriptBridge(function (bridge) {
-    // bridge.registerHandler('changeData', function (data, responseCallback) {
-    //   log('ObjC called testJavascriptHandler with', data)
-    //   var responseData = { 'Javascript Says': 'Right back atcha!' }
-    //   log('JS responding with', responseData)
-    //   responseCallback(responseData)
-    // })
     bridge.registerHandler('changeData', function (data, responseCallback) {
       var responseData = {
         'Javascript Says': 'Right back atcha!'
       }
       log('JS responding with', responseData)
-      // alert(responseData)
       responseCallback(responseData)
     })
-
-    // bridge.callHandler('changeData', { 'foo': 'bar' }, function (response) {
-    //   log('JS got response1', response)
-    //   // alert(response)
-    // })
   })
 }
 
 
-// function getCall (funName, params, resultFun = () => { }) {
-//   window.setupWebViewJavascriptBridge(bridge => {
-//     bridge.callHandler(funName, JSON.stringify(params), (result) => {
-//       // alert(result)
-//       // log('JS got response12', response)
-//       resultFun(result)
-//     })
-//   })
-// }
-
-// function call (funName, params, resultFun = () => { }) {
-//   window.setupWebViewJavascriptBridge(bridge => {
-//     bridge.callHandler(funName, JSON.stringify(params), (result) => {
-//       // alert(result)
-//       // log('JS got response12', response)
-//       resultFun(result)
-//     })
-//   })
-// }
-
 const imgPath = 'https://alieneye.s3.cn-northwest-1.amazonaws.com.cn/'
 
-// function sidebar () {
-//   const project = JSON.parse(localStorage.getItem('project'))
-//   console.log('project', project)
-//   const temp = `<div class="sidebar-box"></div>
-//         <div class="sidebar">
-//           <div class="author">
-//             <div class="linear-gradient-bg"></div>
-//             <img src="${imgPath}${project.pic}" width="100%" height="100%">
-//             <div class="author-content padding text-white">
-//               <div class="text-right"><i class="icon iconfont iconicon-test29
-//                   ft-23"></i></div>
-//               <div class="author-img"><img src="${imgPath}${project.pic}"></div>
-//               <div class="mt-05 ft-16">${project.name}</div>
-//               <div class="ft-14">SHJIXM09794</div>
-//             </div>
-//           </div>
-//           <div class="sidebar-menu pt-10 pb-10 ft-16 text-grey">
-//             <ul>
-//               <li class="flex menu-list" id="allPictures" data-menu='All pictures'>
-//                 <i class="icon iconfont iconicon-test"></i>
-//                 <span class="pl-05">All pictures</span>
-//               </li>
-//               <li class="flex menu-list" id="floorPlan" data-menu='Floor plan'>
-//                 <i class="icon iconfont iconicon-test14"></i>
-//                 <span class="pl-05">Floor plan</span>
-//               </li>
-//               <li class="flex menu-list" data-url="/file/" id="file">
-//                 <i class="icon iconfont iconicon-test15"></i>
-//                 <span class="pl-05">File</span>
-//               </li>
-//               <li class="flex menu-list" id="cameraManagement" data-menu='Camera management'>
-//                 <i class="icon iconfont iconicon-test16"></i>
-//                 <span class="pl-05">Camera management</span>
-//               </li>
-//               <li class="flex menu-list"  data-url="/projectMember/projectMembers.html" id="teamStaff">
-//                 <i class="icon iconfont iconicon-test4"></i>
-//                 <span class="pl-05">Team Staff</span>
-//               </li>
-//               <li class="flex menu-list" data-url="/invoice/" id="cost">
-//                 <i class="icon iconfont iconicon-test17"></i>
-//                 <span class="pl-05">cost</span>
-//               </li>
-//               <li class="flex menu-list" data-url="/recycle/" id="recycleBin">
-//                 <i class="icon iconfont iconicon-test9"></i>
-//                 <span class="pl-05">Recycle Bin</span>
-//               </li>              
-//             </ul>
-//           </div>
-//           <div class="sidebar-footer flex ft-16 padding" data-url="/">
-//             <i class="icon iconfont iconicon-test1"></i>
-//             <span class="pl-05">Back to Home</span>
-//           </div>`
-//   // document.getElementsByName()
-//   $('body').append(temp)
-// }
-// sidebar()
 mui('body').on('tap', '#sidebar', function () {
   window.setupWebViewJavascriptBridge(bridge => {
     bridge.callHandler('jumpPage', 'leftCornerClick')
   })
-  // $('.sidebar-box, .sidebar').addClass('active')
 })
-// mui('body').on('tap', '.sidebar-box', function () {
-//   if (location.pathname !== '/menu.html') {
-//     $('.sidebar-box, .sidebar').removeClass('active')
-//   }
-// })
-
-// mui('.sidebar').on('tap', '.menu-list, .sidebar-footer', function () {
-//   console.log(this)
-//   const url = this.getAttribute('data-url')
-//   const menu = this.getAttribute('data-menu')
-//   if (url) {
-//     mui.openWindow({
-//       url: url,
-//       id: this.innerText
-//     })
-//   } else if (menu) {
-//     window.setupWebViewJavascriptBridge(bridge => {
-//       bridge.callHandler('jumpPage', menu)
-//     })
-//   }
-// })
 
 function activeSidebar(menu) {
-  // $(`#${menu}`).addClass('active')
   console.log(menu)
 }
 
@@ -415,13 +287,129 @@ function openFile(url) {
   });
   dtask.start();
 }
-// const pullDownRefresh = {
-//   pullRefresh: {
-//     container: "#pullrefresh",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
-//     down: {
-//       auto: true,
-//       style: 'circle',
-//       callback: pulldownRefresh
-//     }
-//   }
-// }
+
+function getPermissionOrg () {
+  const userId = localStorage.getItem('userId')
+  const orgId = localStorage.getItem('orgDefault')
+  $ajax('/permission/getpermissionorglist?userId=' + userId + '&orgId=' + orgId, 'get', '', function (res) {
+    const resData = res.data
+    const orgRoles = {
+      businessOrganization: [],
+      memberManagement: [],
+      permissionSettings: [],
+      projectManagement: []
+    }
+    resData.map(item => { 
+      orgRoles[item.menuCode].push(item.permissionCode)
+    })
+    localStorage.setItem('orgRole', JSON.stringify(orgRoles))
+    roles(orgRoles)
+  })
+}
+function getPermissionProject (projectId) {
+  const userId = localStorage.getItem('userId')
+  const pId = projectId ?  projectId : JSON.parse(localStorage.getItem('project')).id
+  $ajax('/permission/getpermissionprojectlist?userId=' + userId + '&projectId=' + pId, 'get', '', function (res) {
+    const resData = res.data
+    const keys = ['folder', 'projectMemberManage', 'invoice', 'recycle']
+    const projectRole = {
+      folder: [],
+      projectMemberManage: [],
+      invoice: [],
+      recycle: []
+    }
+    resData.map(item => { 
+      if (keys.indexOf(item.menuCode) !== -1) {
+        projectRole[item.menuCode].push(item.permissionCode)
+      }
+    })
+    localStorage.setItem('projectRoles', JSON.stringify(projectRole))
+    projectRoles(projectRole)
+  })
+}
+
+function roles (orgRoles) {
+  const orgRole = orgRoles ? orgRoles : JSON.parse(localStorage.getItem('orgRole'))
+  Object.keys(orgRole).forEach(key => { 
+    orgRole[key].map(item => {
+      switch (item) {
+        case 'org:save':
+          $('#btnBox').show()
+          break;
+        case 'org:update':
+          $('#enterpriseContent .setting-icon').show()
+          break;
+        case 'org:delete':
+          $('#enterpriseContent .delete').show()
+          break;
+        case 'user:sendorgeamil':
+          $('#organization #optionShow').show()
+          break
+        case 'project:save':
+          $('#createProject').show()
+          break
+        case 'project:update':
+          $('.store-txt .setting').show()
+          $('.store-txt .delete').show()
+          $('.store-txt .Pentagram').show()
+          break
+      }
+    })
+  })
+}
+function projectRoles (projectRole) {
+  if (projectRole.folder.length === 0) {
+    $('#addFileShow').hide()
+  }
+  if (projectRole.recycle.indexOf('projectrecycle:deleteall') === -1 && projectRole.recycle.indexOf('projectrecycle:recoveryall') === -1) {
+    $('#recycle #optionsShow').hide()
+  }
+  Object.keys(projectRole).forEach(key => { 
+    projectRole[key].map(item => {
+      switch (item) {
+        case 'projectfolder:save':
+          $('#uploadFileBox').show()
+          $('#createFile').show()
+          break;
+        case 'projectfolder:update':
+          $('#editFile').show()
+          break;
+        case 'projectfolder:delete':
+          $('#delFile').show()
+          break;
+        case 'user:sendorgeamil':
+          $('#projectMembers #optionShow').show()
+          break;
+        case 'projectinvoice:distinguish':
+          $('#invoice #addPhotoShow').show()
+          break;
+        case 'projectinvoice:update':
+          $('#invoiceDetail .create-project').show()
+          break;
+        case 'projectinvoice:getprojectinvoicegrouplist':
+          $('#reportBox').show()
+          break;
+        case 'projectrecycle:delete':
+          $('#recycleAlone #removeCompletely').show()
+          break;
+        case 'projectrecycle:recovery':
+          $('#recycleAlone #recoverFiles').show()
+          break;
+        case 'projectrecycle:deleteall':
+          $('#recycleAll #removeCompletely').show()
+          break;
+        case 'projectrecycle:recoveryall':
+          $('#recycleAll #recoverFiles').show()
+          break;
+      }
+    })
+  })
+}
+const orgRole = JSON.parse(localStorage.getItem('orgRole'))
+if (orgRole) { 
+  roles(orgRole)
+}
+const projectRole = JSON.parse(localStorage.getItem('projectRoles'))
+if (projectRole) {
+  projectRoles(projectRole)
+}

@@ -20,7 +20,7 @@
           resData.map((item, index) => {
             temp += `<li class="border-b-grey flex flex-between align-center member-item" data-id="${item.projectUserId}" data-index="${index}">
           <div class="avator border-blue radius-b50">        
-            <img src="${item.userPic !== 'null' && item.userPic !== '' ? imgPath + item.userPic : '/h5/images/nike.png'}" alt="sysLinked" />            
+            <img src="${item.userPic !== 'null' && item.userPic !== '' ? imgPath + item.userPic : '/h5/images/avatar.png'}" alt="sysLinked" />            
           </div>
           <div class="member-info col">
             <p class="name ft-16">${item.userNickname}</p>
@@ -51,6 +51,7 @@
 
   function pulldownRefresh() {
     // pid = JSON.parse(localStorage.getItem('project')).id
+    $('#projectMembers #optionShow').hide()
     loadData()
   }
   mui.init({

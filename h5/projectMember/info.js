@@ -8,8 +8,13 @@
     initData()
 
     function initData () {
-      $('#authorPicMax').attr('src', imgPath + info.userPic)
-      $('#authorPicMin').attr('src', imgPath + info.userPic)
+      const authorPic = info.userPic ? imgPath + info.userPic : '/h5/images/avatar.png'
+      if (!info.userPic) {
+        $('#authorPicMax').hide()
+      } else { 
+        $('#authorPicMax').attr('src', authorPic)
+      }
+      $('#authorPicMin').attr('src', authorPic)
       $('#name').text(info.firstName)
       $('#surname').text(info.lastName)
       $('#mailbox').text(info.userEamil)

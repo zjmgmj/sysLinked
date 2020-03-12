@@ -124,7 +124,8 @@
     })
 
     mui('body').on('tap', '#back', function () {
-      back()
+      // back()
+      mui.back()
     })
     orguserList()
   });

@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="./index.css">
 </head>
 
-<body class="page-width">
+<body class="page-width" id="recycle">
   <div class="bg-white flex flex-between page-width page-title">
     <!-- <i class="icon iconfont f-grey ft-18">&#xe651;</i> -->
     <div id="sidebar">
@@ -28,7 +28,7 @@
     </div>
     <div class="title ft-14">回收站</div>
     <!-- <i class="icon iconfont text-default ft-18 iconicon-test7" id="addFileShow"></i> -->
-    <i class="icon iconfont text-default ft-16 iconcaozuo" id="optionsShow"></i>
+    <div><i class="icon iconfont text-default ft-16 iconcaozuo" id="optionsShow"></i></div>
   </div>
   <div id="pullrefresh" class="pullrefresh">
     <div class="mui-scroll">
@@ -42,9 +42,13 @@
     <div class="opacity-bg"></div>
     <!--弹窗内容-->
     <div class="popup-native">
-      <div class="native-txt bg-white">
-        <p class="native-btn ft-20 f-007AFF border-b-grey" id="recoverFiles">恢复文件</p>
-        <p class="native-btn ft-18 f-FF0000" id="removeCompletely">完全删除</p>
+      <div class="native-txt bg-white" id="recycleAlone">
+        <p class="native-btn ft-20 f-007AFF border-b-grey" id="recoverFiles">Recover Files</p>
+        <p class="native-btn ft-18 f-FF0000" id="removeCompletely">Remove Completely</p>
+      </div>
+      <div class="native-txt bg-white" id="recycleAll">
+        <p class="native-btn ft-20 f-007AFF border-b-grey" id="recoverFiles">Recover Files</p>
+        <p class="native-btn ft-18 f-FF0000" id="removeCompletely">Remove Completely</p>
       </div>
       <div class="native-txt bg-white" id="cancel">
         <p class="native-btn ft-20 f-007AFF">取消</p>

@@ -1,7 +1,7 @@
 (function ($$, doc, $) {
   let page = 1
   const size = 12
-  const userId = 17
+  // const userId = 17
   const orgId = getUrlParam('orgId')
   let searchKey = ''
   // const type = getUrlParam('type')
@@ -120,7 +120,8 @@
     })
 
     mui('body').on('tap', '#back', function () {
-      back()
+      // back()
+      mui.back()
     })
     orguserList()
   });
