@@ -145,7 +145,8 @@ sub { vertical-align: text-bottom }
 .f-grey{color:#262628}
 .text-333{color: #333333;}
 .text-green{color: #059002;}
-.text-black{color: #000000;}
+.text-black{color: #262628;}
+.text-999{color: #999999;}
 .f-7E7E7F{color: #7E7E7F;}
 .f-48B6E6{color: #48B6E6;}
 .f-blue{color: #49B9EA;}
@@ -424,6 +425,7 @@ sub { vertical-align: text-bottom }
 }
 
 
+
 /* 权限 */
 #createProject, 
 .store-txt .setting, 
@@ -445,4 +447,15 @@ sub { vertical-align: text-bottom }
 #recycleAlone,
 #recycleAll{
   display: none;
+}
+
+.cancel-btn {
+  border: 1px #999 solid;
+  border-radius: 5px;
+  color: #999;
+}
+.submit-btn{
+  border: 1px #262628 solid;
+  border-radius: 5px;
+  color: #262628;
 }

@@ -3,7 +3,7 @@ body,p,div,span,i,em,input{font-family: Roboto;}
 .slide-item{width: 100%;height: 1.74rem;padding-top: 0.87rem;line-height: 1.74rem;}
 .slide-item li{position: relative;width: auto;height: 100%;}
 .slide-item li span{position: absolute;width:100%;left: 0;height: 3px;bottom: -4px;z-index: 222;}
-.slide-item li span.on{background:linear-gradient(118deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);}
+.slide-item li span.on{background:#262628;}
 .invoice-list li{display: block;width: 100%;height: 1.3rem;padding-bottom: 0.66rem;padding-top: 0.66rem;}
 .invoice-list li .invoice-picture{width: 12%;}
 .invoice-list li .invoice-picture img{width:1.3rem; height: 1.3rem;}
@@ -39,9 +39,17 @@ body,p,div,span,i,em,input{font-family: Roboto;}
   z-index: 3;
 }
 .create-project{margin-top: 2rem;}
-.create-project p{text-align: center;background-color: rgba(153,153,153,1);line-height: 1.74rem;height: 1.74rem;padding: 1px;}
+.create-project p{
+  text-align: center;
+  line-height: 1.74rem;
+  height: 1.74rem;
+  padding: 1px;
+  /* border: 1px #262628 solid;
+  border-radius: 5px;
+  color: #262628; */
+}
 .create-project p span{background-color: #FFFFFF;display: block;width: 100%;height: 100%;}
-.create-project p.on{background:linear-gradient(136deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);background-color:#5458A6;}
+/* .create-project p.on{background:#262628} */
 .invoice-img{
   width: 2.2rem;
   height: 2.2rem;

@@ -2,7 +2,7 @@ body{font-family: Roboto;}
 .page-title .addIcon{position: absolute;right: 5%;top: 0;}
 .page-title span{padding: 0 0.8rem;position: relative;}
 .page-title span em{width:1.8rem;height:3px;border-radius:1px;position: absolute;left: 50%;margin-left: -0.9rem;bottom: 2px;z-index: 22;background: #fff;}
-.page-title span em.on{background:linear-gradient(118deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);}
+.page-title span em.on{background:#262628;}
 .organization h1{padding-top: 1.3rem;padding-bottom: 0.65rem;}
 .organization ul li{padding-top: 0.65rem;padding-bottom: 0.35rem;}
 .organization ul li span i{padding-left: 0.4rem;}
@@ -43,8 +43,8 @@ body{font-family: Roboto;}
 .chat-list .chat-time p span{margin-top: 0.74rem;}
 /*创建群聊*/
 .create-group-chat{width: 82%;height: 8.5rem;position: absolute;left: 9%;right: 9%;top: 50%;margin-top: -4.25rem;z-index: 333333;border-radius:4px;overflow: hidden;}
-.create-group-chat h1{width: 100%;height: 2.2rem;line-height: 2.2rem;text-align: center; background:#5458A6 linear-gradient(130deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);}
-.create-group-chat .group-chat-name{width: 85.5%;margin: 0 auto;margin-top: 0.87rem;height: 1.4rem;line-height: 1.4rem;margin-bottom:1.78rem;border-bottom:1px solid #48B6E6;}
+.create-group-chat h1{width: 100%;height: 2.2rem;line-height: 2.2rem;text-align: center; background:#262628;}
+.create-group-chat .group-chat-name{width: 85.5%;margin: 0 auto;margin-top: 0.87rem;height: 1.4rem;line-height: 1.4rem;margin-bottom:1.78rem;border-bottom:1px solid #262628;}
 .create-group-chat .group-chat-name input{margin: 0;padding: 0;width: 100%;height: 100%;border: 0;}
 .create-group-chat .create-btn{width: 100%;height: 2.2rem;line-height: 2.2rem;text-align: center;}
 /*邀请成员*/
@@ -92,8 +92,8 @@ body{font-family: Roboto;}
 }
 /*创建新文件*/
 .create-file{width: 82%;height: 8.5rem;position: absolute;left: 9%;right: 9%;top: 50%;margin-top: -4.25rem;z-index: 333333;border-radius:4px;overflow: hidden;}
-.create-file h1{width: 100%;height: 2.2rem;line-height: 2.2rem;text-align: center; background:#5458A6 linear-gradient(130deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);}
-.create-file .file-name{width: 85.5%;margin: 0 auto;margin-top: 0.87rem;height: 1.4rem;line-height: 1.4rem;margin-bottom:1.78rem;border-bottom:1px solid #48B6E6;}
+.create-file h1{width: 100%;height: 2.2rem;line-height: 2.2rem;text-align: center; background:#262628;}
+.create-file .file-name{width: 85.5%;margin: 0 auto;margin-top: 0.87rem;height: 1.4rem;line-height: 1.4rem;margin-bottom:1.78rem;border-bottom:1px solid #262628;}
 .create-file .file-name input{margin: 0;padding: 0;width: 100%;height: 100%;border: 0;}
 .create-file .create-btn{width: 100%;height: 2.2rem;line-height: 2.2rem;text-align: center;}
 

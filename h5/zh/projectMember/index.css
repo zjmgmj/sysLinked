@@ -284,7 +284,9 @@
 
 .create-project p {
   text-align: center;
-  background-color: rgba(153, 153, 153, 1);
+  /* border: 1px #262628 solid;
+  border-radius: 5px;
+  color: #262628; */
   line-height: 1.74rem;
   height: 1.74rem;
   padding: 1px;
@@ -297,10 +299,6 @@
   height: 100%;
 }
 
-.create-project p.on {
-  background: linear-gradient(136deg, rgba(177, 220, 189, 1) 0%, rgba(73, 185, 234, 1) 58%, rgba(84, 88, 166, 1) 100%);
-  background-color: #5458A6;
-}
 
 /*邀请成员*/
 .member-list .check-box {
@@ -353,7 +351,7 @@
   height: 2.2rem;
   line-height: 2.2rem;
   text-align: center;
-  background: #5458A6 linear-gradient(130deg, rgba(177, 220, 189, 1) 0%, rgba(73, 185, 234, 1) 58%, rgba(84, 88, 166, 1) 100%);
+  background: #262628;
 }
 
 .create-file .file-name {
@@ -363,7 +361,7 @@
   height: 1.4rem;
   line-height: 1.4rem;
   margin-bottom: 1.78rem;
-  border-bottom: 1px solid #48B6E6;
+  border-bottom: 1px solid #262628;
 }
 
 .create-file .file-name input {

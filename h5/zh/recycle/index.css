@@ -11,8 +11,8 @@ body,p,div,span,i,em,input{font-family: Roboto;}
 .file-list img{height: 0.8rem; width: 1rem;}
 /*创建新文件*/
 .create-file{width: 82%;height: 8.5rem;position: absolute;left: 9%;right: 9%;top: 50%;margin-top: -4.25rem;z-index: 333333;border-radius:4px;overflow: hidden;}
-.create-file h1{width: 100%;height: 2.2rem;line-height: 2.2rem;text-align: center; background:#5458A6 linear-gradient(130deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);}
-.create-file .file-name{width: 85.5%;margin: 0 auto;margin-top: 0.87rem;height: 1.4rem;line-height: 1.4rem;margin-bottom:1.78rem;border-bottom:1px solid #48B6E6;}
+.create-file h1{width: 100%;height: 2.2rem;line-height: 2.2rem;text-align: center; background:#262628;}
+.create-file .file-name{width: 85.5%;margin: 0 auto;margin-top: 0.87rem;height: 1.4rem;line-height: 1.4rem;margin-bottom:1.78rem;border-bottom:1px solid #262628;}
 .create-file .file-name input{margin: 0;padding: 0;width: 100%;height: 100%;border: 0;}
 .create-file .create-btn{width: 100%;height: 2.2rem;line-height: 2.2rem;text-align: center;}
 .upload-input{
