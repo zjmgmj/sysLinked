@@ -121,7 +121,7 @@
         params = tempObject
         const projectUser = $('#projectUser span').attr('data-userId')
         if (projectUser) {
-          params.transferUserid = Number(projectUser)
+          params.createUserid = Number(projectUser)
         }
       }
       $ajax(urlApi, 'post', params, (res) => {

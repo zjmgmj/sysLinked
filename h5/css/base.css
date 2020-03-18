@@ -30,7 +30,7 @@ html { font-size: 25px !important; }
 
 
 html { -ms-touch-action: none;}
-body { font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial, "Microsoft YaHei"; background-color: #f5f5f5; }
+body { font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial, "Microsoft YaHei"; background-color: #f5f5f5; color: #262626;}
 /*页面旋转3d效果*/
 
 input,button { font-family: Arial, "Microsoft YaHei", sans-serif;border: none;background: none; }
