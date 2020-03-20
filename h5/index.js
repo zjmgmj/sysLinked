@@ -21,7 +21,7 @@
         })
       } else {
         // document.getElementById('content').innerHTML = contentTemp
-        $('#orgContent').html(`<div class="text-center pt-10">No data</div>`)
+        $('#content').html(`<div class="text-center pt-10">No data</div>`)
         mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
       }
     })
@@ -37,6 +37,8 @@
 
   function pulldownRefresh () {
     $('#createProject').hide()
+    // userId = 82
+    // orgId = 158
     // userId = 91
     // orgId = 159
     // joinorglistAjax(userId)
@@ -97,7 +99,7 @@
       <h1>Close Project · <span id="closeCount">${closeCount}</span></h1>
       <ul class="store-list close-list" id="closeProject">${closeProjectTemp}</ul>`
       localStorage.setItem('projectList', JSON.stringify(resData))
-      $('#orgContent').html(contentTemp)
+      $('#content').html(contentTemp)
       mui('#pullrefresh').pullRefresh().endPulldownToRefresh()
       if ($('.store-txt').length > 0) maxWidth = $('.store-txt')[0].clientWidth
       setTimeout(() => { 
@@ -128,7 +130,7 @@
   mui.ready(function () {
     const minWidth = window.innerWidth * 0.6
 
-    mui('#orgContent').on('drag', '.store-left', (event) => {
+    mui('#content').on('drag', '.store-left', (event) => {
       const newWidth = event.path[1].clientWidth + event.detail.deltaX
       if ($(event.path[1]).attr('class').indexOf('store-left') !== -1) {
         event.path[1].style.width = (newWidth < minWidth ? minWidth : newWidth > maxWidth ? maxWidth : newWidth) + 'px'
@@ -136,7 +138,7 @@
     })
 
     // 删除
-    mui('#orgContent').on('tap', '.delete', function (e) {
+    mui('#content').on('tap', '.delete', function (e) {
       const id = $(this).parents('.store-txt').attr('data-id')
       // const id = 1
       const node = $(this).parents('.store-txt')
@@ -157,7 +159,7 @@
 
 
     // 设置
-    mui('#orgContent').on('tap', '.setting', function () {
+    mui('#content').on('tap', '.setting', function () {
       // console.log(this)
       const id = $(this).parents('.store-txt').attr('data-id')
       mui.openWindow({
@@ -168,7 +170,7 @@
     })
 
     // 星
-    mui('#orgContent').on('tap', '.Pentagram', function () {
+    mui('#content').on('tap', '.Pentagram', function () {
       const node = $(this).parents('.store-txt')
       const params = {
         createUserid: userId,
@@ -190,7 +192,7 @@
       return false
     })
 
-    mui('#orgContent').on('tap', '.store-left', function () {
+    mui('#content').on('tap', '.store-left', function () {
       // 选择项目
       const id = $(this).parents('.store-txt').attr('data-id')
       const getProjectList = JSON.parse(localStorage.getItem('projectList'))
