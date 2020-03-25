@@ -19,7 +19,7 @@
   const orgId = getUrlParam('orgId')
   // localStorage.getItem('orgDefault')
 
-  const title = getUrlParam('title') || 'All Members'
+  const title = getUrlParam('title') || '成员'
   $('#title').text(title)
   // const deptId = getUrlParam('deptId')
   orguserList()
@@ -109,7 +109,7 @@
             <p class="email ft-12">${item.userId}</p>
             <p class="name ft-16">
               <span>${item.userNickname}</span>
-              <span class="ft-12">(${item.orgRoleName})</span>
+              <span class="ft-12">(${item.orgRoleName ? item.orgRoleName : '暂无'})</span>
             </p>            
           </div>
         </div>

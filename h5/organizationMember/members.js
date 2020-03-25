@@ -100,7 +100,7 @@
       //   </div>
       // </li>`
       // <div class="check-box"><input type="checkbox" checked="checked"/></div>
-      const status = item.status === 0 ? '未分配' : item.status === 1 ? '已分配' : '已停用'
+      const status = item.status === 0 ? 'Unassigned' : item.status === 1 ? 'Allocated' : 'Terminated'
       temp += `<li class="border-b-grey member-item" data-userId="${item.userId}"  data-index="${index}">
       <div class="flex align-center flex-between">        
         <div class="flex align-center">

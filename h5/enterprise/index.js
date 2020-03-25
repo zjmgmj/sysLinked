@@ -84,18 +84,18 @@
 
 
   function pulldownRefresh() {
-    // userId = 91
-    // getuser()
-    // joinorglist()
-    window.setupWebViewJavascriptBridge(bridge => {
-      bridge.callHandler('getUserId', '', (result) => {
-        const resData = JSON.parse(result)
-        userId = resData.userId
-        $('#btnBox').hide()
-        getuser()
-        joinorglist()
-      })
-    })
+    userId = 91
+    getuser()
+    joinorglist()
+    // window.setupWebViewJavascriptBridge(bridge => {
+    //   bridge.callHandler('getUserId', '', (result) => {
+    //     const resData = JSON.parse(result)
+    //     userId = resData.userId
+    //     $('#btnBox').hide()
+    //     getuser()
+    //     joinorglist()
+    //   })
+    // })
   }
   mui.init(muiInit('#pullrefresh', pulldownRefresh));
   mui.ready(function () {

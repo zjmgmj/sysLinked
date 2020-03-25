@@ -5,12 +5,19 @@
     // const size = 12
     // const orgId = 39
     // const orgId = getUrlParam('orgId') ? getUrlParam('orgId') : localStorage.getItem('orgDefault')
-    const orgId = getUrlParam('orgId')
+    let orgId = getUrlParam('orgId')
     // alert('orgId:' + orgId)
-    const pid = JSON.parse(localStorage.getItem('project')).id
+    let pid = JSON.parse(localStorage.getItem('project')).id
     // const deptId = 7
     // const pid = 38
-    getcompanyusercount()
+    window.setupWebViewJavascriptBridge(bridge => {
+      bridge.callHandler('getOrgId', '', (result) => {
+        const resData = JSON.parse(result)
+        orgId = resData.orgId
+        localStorage.setItem('orgDefault', orgId)
+        getcompanyusercount()
+      })
+    })
 
     function getcompanyusercount() {
       $ajax('/orguser/getcompanyusercount?orgId=' + orgId, 'get', '', function (res) {
@@ -119,18 +126,32 @@
       } else if (status === '0') {
         title = 'Unassigned Members'
       }
-      mui.openWindow({
-        url: '/h5/zh/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&status=' + status + '&title=' + title,
-        id: 'membersList'
+      window.setupWebViewJavascriptBridge(bridge => {
+        bridge.callHandler('getOrgId', '', (result) => {
+          const resData = JSON.parse(result)
+          orgId = resData.orgId
+          localStorage.setItem('orgDefault', orgId)
+          mui.openWindow({
+            url: '/h5/zh/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&status=' + status + '&title=' + title,
+            id: 'membersList'
+          })
+        })
       })
     })
 
     mui('#deptList').on('tap', '.dept', function () {
-      const type = this.getAttribute('data-type')
-      const deptId = this.getAttribute('data-id')
-      mui.openWindow({
-        url: '/h5/zh/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&deptId=' + deptId + '&pid=' + pid,
-        id: 'deptMemberList'
+      window.setupWebViewJavascriptBridge(bridge => {
+        bridge.callHandler('getProjectId', '', (result) => {
+          const resData = JSON.parse(result)
+          pid = resData.projectId
+          orgId = localStorage.getItem('orgDefault')
+          const type = this.getAttribute('data-type')
+          const deptId = this.getAttribute('data-id')
+          mui.openWindow({
+            url: '/h5/zh/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&deptId=' + deptId + '&pid=' + pid,
+            id: 'deptMemberList'
+          })
+        })
       })
     })
     mui('body').on('tap', '#back', function () {
