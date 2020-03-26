@@ -65,6 +65,7 @@
       $('#equipmentName').val('')
       $('#serialNumber').val('')
       $('#channelNumber').val('')
+      // $('.create-file-popup').attr('data-edit', '')
     })
     mui('.create-file-popup').on('tap', '#determine', function () {
       console.log('----')
@@ -153,7 +154,7 @@
     mui('#fileList').on('tap', '.file-item', function () { 
       const id = this.getAttribute('data-id')
       mui.openWindow({
-        url: '/h5/cameraManagement?id=' + id,
+        url: '/h5/zh/cameraManagement?id=' + id,
         id: 'cameraManagement'
       })
       return false

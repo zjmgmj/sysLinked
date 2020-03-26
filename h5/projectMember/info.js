@@ -38,7 +38,7 @@
     })
 
 
-    function update (projectRoleId) {
+    function update(projectRoleId) {
       const params = {
         id: info.projectUserId,
         projectId: info.pid,
@@ -52,7 +52,8 @@
     console.log('info', info)
 
     getRole()
-    function getRole () {
+
+    function getRole() {
       $ajax('/role/list?type=2&orgId=' + orgId, 'get', '', function (res) {
         console.log(res)
         if (res.code === 1) {
@@ -75,7 +76,7 @@
 
     mui('body').on('tap', '#sendMessage', function () {
       mui.openWindow({
-        url: '/h5/chat/chatDetail.html?staffId=' + info.userId,
+        url: '/h5/zh/chat/chatDetail.html?staffId=' + info.userId,
         id: 'chatDetail'
       })
     })

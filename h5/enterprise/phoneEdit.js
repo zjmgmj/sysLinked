@@ -52,11 +52,6 @@
         mui.toast('请输入正确验证码')
         return false
       }
-      // const params = {
-      //   type: 2,
-      //   userId: userId,
-      //   userLogin: newPhoneNum
-      // }
       const params = JSON.parse(localStorage.getItem('userInfo'))
       params.type = 2
       params.userLogi = newPhoneNum

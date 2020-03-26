@@ -66,14 +66,10 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
-        contentdown: "Pull down to refresh",
-        contentover: "Refresh immediately",
-        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
-        contentrefresh: "loading",
-        contentnomore: 'No more',
+        contentrefresh: '正在加载...',
         callback: pullupRefresh
       }
     }
@@ -122,7 +118,7 @@
 
     mui('.popup').on('tap', '#inviteMembers', function () {
       mui.openWindow({
-        url: '/h5/organizationMember/addDeptMember.html?deptId=' + id,
+        url: '/h5/zh/organizationMember/addDeptMember.html?deptId=' + id,
         id: 'addDeptMember'
       })
     })
@@ -155,7 +151,7 @@
     mui('body').on('tap', '#back', function () {
       // back()
       mui.openWindow({
-        url: '/h5/projectMember/deptList.html',
+        url: '/h5/zh/projectMember/deptList.html',
         id: 'deptList'
       })
     })

@@ -19,12 +19,12 @@
   const orgId = getUrlParam('orgId')
   // localStorage.getItem('orgDefault')
 
-  const title = getUrlParam('title') || '成员'
+  const title = '成员'
   $('#title').text(title)
   // const deptId = getUrlParam('deptId')
   orguserList()
 
-  function pulldownRefresh() {
+  function pulldownRefresh () {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     page = 1
@@ -32,7 +32,7 @@
     orguserList()
   }
 
-  function pullupRefresh() {
+  function pullupRefresh () {
     // 上拉加载具体业务实现
     console.log('pullupRefresh')
     const total = $('#pullrefresh').attr('data-total')
@@ -44,7 +44,7 @@
     orguserList()
   }
 
-  function orguserList() {
+  function orguserList () {
     const searchKey = $('#searchInput').val()
     // let api = '/orguser/list?page='+page+'&size='+size+ '&name='+searchKey + typeId
     let api = '/deptuser/getdeptuserlist?page=' + page + '&size=' + size + '&orgId=' + orgId + typeId
@@ -70,7 +70,7 @@
     })
   }
 
-  function deptList(resData) {
+  function deptList (resData) {
     let temp = ''
     resData.map((item, index) => {
       const authorPic = item.userPic ? imgPath + item.userPic : '/h5/images/avatar.png'
@@ -87,7 +87,7 @@
     $('#memberList').append(temp)
   }
 
-  function orgList(resData) {
+  function orgList (resData) {
     let temp = ''
     resData.map((item, index) => {
       // temp += `<li class="border-b-grey member-item">

@@ -1,4 +1,4 @@
-.page-con{background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(247,247,250,1) 100%);}
+.page-con{background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(247,247,250,1) 100%);font-family:Roboto;}
 
 .category-list{width: 100%; flex-wrap: wrap; justify-content: space-between;}
 .category-list li{margin-top: 0.65rem;height: 1.56rem;line-height: 1.56rem; background: #fff; width: 42vw;}

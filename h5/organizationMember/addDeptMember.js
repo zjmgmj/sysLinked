@@ -1,7 +1,7 @@
 (function ($$, doc, $) {
   let page = 1
   const size = 12
-  const userId = 17
+  // const userId = 17
   const orgId = getUrlParam('orgId')
   let searchKey = ''
   // const type = getUrlParam('type')
@@ -68,14 +68,10 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
-        contentdown: "Pull down to refresh",
-        contentover: "Refresh immediately",
-        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
-        contentrefresh: "loading",
-        contentnomore: 'No more',
+        contentrefresh: '正在加载...',
         callback: pullupRefresh
       }
     }
@@ -118,7 +114,7 @@
 
     mui('body').on('tap', '#addDeptShow', function () {
       mui.openWindow({
-        url: '/h5/organizationMember/addDeptMember.html',
+        url: '/h5/zh/organizationMember/addDeptMember.html',
         id: 'addDeptMember'
       })
     })

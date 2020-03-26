@@ -4,3 +4,6 @@
 .file-content img{
   width: 2rem;
 }
+.edit,.del{
+  padding: 10px;
+}

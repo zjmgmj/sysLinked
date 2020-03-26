@@ -1,23 +1,18 @@
 (function ($$, doc, $) {
   mui.init();
   mui.ready(function () {
-    // const page = 1
-    // const size = 12
-    // const orgId = 39
-    // const orgId = getUrlParam('orgId') ? getUrlParam('orgId') : localStorage.getItem('orgDefault')
-    let orgId = getUrlParam('orgId')
-    // alert('orgId:' + orgId)
-    let pid = JSON.parse(localStorage.getItem('project')).id
-    // const deptId = 7
-    // const pid = 38
+    let orgId = ''
+    let pid = ''
     window.setupWebViewJavascriptBridge(bridge => {
       bridge.callHandler('getOrgId', '', (result) => {
         const resData = JSON.parse(result)
         orgId = resData.orgId
         localStorage.setItem('orgDefault', orgId)
         getcompanyusercount()
+        deptList()
       })
     })
+
     function getcompanyusercount () {
       $ajax('/orguser/getcompanyusercount?orgId=' + orgId, 'get', '', function (res) {
         console.log(res)
@@ -37,7 +32,8 @@
         $('#deactivatedNum').text(deactivatedNum)
       })
     }
-    deptList()
+
+
     function deptList () {
       $ajax('/dept/list?orgId=' + orgId, 'get', '', function (res) {
         console.log(res)
@@ -48,7 +44,7 @@
           const num = item.num || 0
           temp += `<li class="flex flex-between text-grey ft-14 dept" data-type="deptId" data-id="${item.id}">
             <span>${item.deptName}</span>
-        <span class="text-333">${num}<i class="icon iconfont text-default ft-12">&#xe657;</i></span>
+            <span class="text-333">${num}<i class="icon iconfont text-default ft-12">&#xe657;</i></span>
           </li>`
         })
         $('#deptList').html(temp)
@@ -89,7 +85,7 @@
 
     mui('.popup').on('tap', '#inviteMembers', function () {
       mui.openWindow({
-        url: '/h5/organizationMember/createInvite.html',
+        url: '/h5/zh/organizationMember/createInvite.html',
         id: 'createInvite'
       })
     })
@@ -135,10 +131,6 @@
           })
         })
       })
-      // mui.openWindow({
-      //   url: '/h5/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&status=' + status + '&title=' + title,
-      //   id: 'membersList'
-      // })
     })
 
     mui('#deptList').on('tap', '.dept', function () {
@@ -150,11 +142,11 @@
           const type = this.getAttribute('data-type')
           const deptId = this.getAttribute('data-id')
           mui.openWindow({
-            url: '/h5/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&deptId=' + deptId + '&pid=' + pid,
+            url: '/h5/zh/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&deptId=' + deptId + '&pid=' + pid,
             id: 'deptMemberList'
           })
         })
-      })  
+      })
     })
     mui('body').on('tap', '#back', function () {
       mui.back()

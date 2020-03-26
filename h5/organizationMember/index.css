@@ -15,8 +15,8 @@ body{font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial;}
 .member{background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(247,247,250,1) 100%);}
 .member h1{width: 100%;color: #262628;padding: 1.2rem 0 0.87rem 0;font-weight: 500;}
 .member-list{padding: 0 5%;}
-.member-list li{height: 3rem;width: 100%;padding: 0.55rem 0 0.64rem 0;}
-.member-list li .avator{width: 1.8rem;height: 1.8rem; float: left;margin-right: 0.6rem;margin-top: 0.1rem;}
+.member-list li{height: 3.5rem;width: 100%;padding: 0.55rem 0 0.64rem 0;}
+.member-list li .avator{width: 2rem;height: 2rem; overflow: hidden; float: left;margin-right: 0.6rem;margin-top: 0.1rem;}
 .member-list li .avator img{width: 100%;}
 .member-list li .name{color: #262628;font-weight: 500;}
 .member-list li .email{color: #666666;font-weight: 400;}
@@ -33,8 +33,8 @@ body{font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial;}
 .member-details h1{padding-top: 1.3rem;padding-bottom: 0.65rem;color: #262628;}
 .member-details .info-list li{padding-top: 0.65rem;padding-bottom: 0.35rem;}
 .member-details .info-list li span i{padding-left: 0.4rem;}
-.member-details .btn{width: 100%;background:linear-gradient(136deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);padding: 1px;margin-bottom: 5rem;padding-right: 2px;}
-.member-details .btn span{width: 100%;height: 100%;display: block;background-color: #FFFFFF;color:#49B9EA;}
+.member-details .btn{width: 100%;background:#262628;padding: 1px;margin-bottom: 5rem;padding-right: 2px;}
+.member-details .btn span{width: 100%;height: 100%;display: block;background-color: #FFFFFF;color:#262628;}
 /*群组*/
 .chat-list .picture{width:1.84rem;height: 1.84rem;}
 .chat-list .picture img{padding-right: 0.1rem;width: 0.82rem;display: block;float: left;}
@@ -119,4 +119,10 @@ body{font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial;}
   border-radius: 100%;
   background: #409eff;
   color: #fff;
+}
+.member-info {
+  display: flex;
+  height: 2rem;
+  flex-direction: column;
+  justify-content: space-between;
 }

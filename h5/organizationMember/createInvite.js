@@ -15,7 +15,7 @@
       $ajax('/user/sendorgeamil', 'post', params, function (res) {
         console.log(res)
         if (res.code === 1) {
-          mui.toast('success')
+          mui.toast('发送成功')
           setTimeout(() => {
             back()
           }, 1000)

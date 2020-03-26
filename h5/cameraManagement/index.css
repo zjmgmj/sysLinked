@@ -71,7 +71,7 @@
   height: 2.2rem;
   line-height: 2.2rem;
   text-align: center;
-  background: #262628
+  background: #5458A6 linear-gradient(130deg, rgba(177, 220, 189, 1) 0%, rgba(73, 185, 234, 1) 58%, rgba(84, 88, 166, 1) 100%);
 }
 
 .create-file .device-form {
@@ -81,7 +81,7 @@
   height: 1.4rem;
   line-height: 1.4rem;
   margin-bottom: 1.78rem;
-  border-bottom: 1px solid #262628;
+  border-bottom: 1px solid #48B6E6;
 }
 
 .create-file .device-form input {

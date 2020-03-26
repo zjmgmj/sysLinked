@@ -1,4 +1,7 @@
 /* body{font-family: Roboto;} */
+html{
+  background: #fff;
+}
 .member h1 {
   width: 100%;
   color: #262628;
@@ -64,9 +67,9 @@
 }
 
 /*组织成员*/
-.member {
+/* .member {
   background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(247, 247, 250, 1) 100%);
-}
+} */
 
 .member h1 {
   width: 100%;
@@ -77,17 +80,18 @@
 
 /* .member-list{padding: 0 5%;} */
 .member-list li {
-  height: 3rem;
+  height: 3.5rem;
   width: 100%;
   padding: 0.55rem 0 0.64rem 0;
 }
 
 .member-list li .avator {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 2rem;
+  height: 2rem;
   float: left;
   margin-right: 0.6rem;
   margin-top: 0.1rem;
+  overflow: hidden;
 }
 
 .member-list li .avator img {
@@ -125,11 +129,15 @@
   opacity: 0.68;
   width: 100%;
   height: 12.6rem;
+  overflow: hidden;
+  position: relative;
 }
 
 .avator-box .avator-bg img {
   width: 100%;
-  height: 100%;
+  position: absolute;
+  bottom: 0;
+  /* height: 100%; */
 }
 
 .avator-box .avator-piece {
@@ -179,7 +187,7 @@
 
 .member-details .btn {
   width: 100%;
-  background: linear-gradient(136deg, rgba(177, 220, 189, 1) 0%, rgba(73, 185, 234, 1) 58%, rgba(84, 88, 166, 1) 100%);
+  background: #262628;
   padding: 1px;
   padding-right: 2px;
 }
@@ -189,7 +197,7 @@
   height: 100%;
   display: block;
   background-color: #FFFFFF;
-  color: #49B9EA;
+  color: #262628;
 }
 
 /*修改角色*/
@@ -299,6 +307,9 @@
   height: 100%;
 }
 
+/* .create-project p.on {
+  background: #262628
+} */
 
 /*邀请成员*/
 .member-list .check-box {
@@ -351,7 +362,7 @@
   height: 2.2rem;
   line-height: 2.2rem;
   text-align: center;
-  background: #262628;
+  background: #262628
 }
 
 .create-file .file-name {
@@ -410,4 +421,13 @@
 
 .is-setting {
   display: none;
+}
+.page-con{
+  padding-top: 0.5rem
+}
+.member-info {
+  display: flex;
+  height: 2rem;
+  flex-direction: column;
+  justify-content: space-between;
 }

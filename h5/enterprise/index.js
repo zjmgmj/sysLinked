@@ -25,13 +25,14 @@
         }
         let settingTemp = ''
         if (item.userid == userId) {
+          // settingTemp = `<div class="setting-icon"><i class="icon iconfont text-white ft-20 iconicon-test11"></i></div>`
           settingTemp = `<div class="setting-icon"><i class="icon iconfont ft-20 iconicon-test11"></i></div>`
         }
         temp += `<li class="org-list" data-orgName="${item.orgName}" data-orgNum="${item.orgNum}" data-id="${item.id}">
           <div class="flex align-center flex-between org-list-content">
             <div class="flex align-center">
               <div class="pl-05 pr-05 check-org"><img src="${pic}" /></div>
-              <p class="ft-14 f-grey">${item.orgName}</p> 
+              <p class="ft-14 f-grey ">${item.orgName}</p> 
             </div>
             <div class="ft-14 pr-05 options-btn">
               <div class="flex">
@@ -43,7 +44,6 @@
         </li>`
       })
       $('#enterpriseContent').html(temp)
-      // $('#btnBox').show()
       mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
       setTimeout(() => { 
         getPermissionOrg()
@@ -61,16 +61,15 @@
       // $('#mailbox').text(resData.userEamil)
       $('#mailbox').text(resData.userEamil)
       $('#phone').text(resData.userLogin)
-      $('#weChat').text(resData.userWechatopenid ? 'Bind' : 'Unbound')
-      $('#weibo').text(resData.userWeiboopenid ? 'Bind' : 'Unbound')
-      $('#dingTalk').text(resData.userDingdingopenid ? 'Bind' : 'Unbound')
-      $('#apple').text(resData.userAppleopnid ? 'Bind' : 'Unbound')
+      $('#weChat').text(resData.userWechatopenid ? '已绑定' : '未绑定')
+      $('#weibo').text(resData.userWeiboopenid ? '已绑定' : '未绑定')
+      $('#dingTalk').text(resData.userDingdingopenid ? '已绑定' : '未绑定')
+      $('#apple').text(resData.userAppleopnid ? '已绑定' : '未绑定')
       if (resData.userPic) {
         $('#authorImg').attr('src', imgPath + resData.userPic)
       }
       $('#name').text(resData.userNickname)
       $('#role').text(resData.orgRoleName)
-      // let tmp = `<img src="/h5/images/icon_enterprise_grey.jpg" />`
       if (resData.userNotice === 1) {
         $('#notificationSet').attr('src', '/h5/images/icon_enterprise_blue.jpg')
       } else { 
@@ -81,29 +80,48 @@
     })
   }
 
-
-
-  function pulldownRefresh() {
-    userId = 91
-    getuser()
-    joinorglist()
+  function pulldownRefresh () {
+    // userId = 91
+    // getuser()
+    // joinorglist()
+    window.setupWebViewJavascriptBridge(bridge => {
+      bridge.callHandler('getUserId', '', (result) => {
+        const resData = JSON.parse(result)
+        userId = resData.userId
+        $('#btnBox').hide()
+        getuser()
+        joinorglist()
+      })
+    })
+  }
+  mui.init(muiInit('#pullrefresh', pulldownRefresh));
+  mui.ready(function () {
     // window.setupWebViewJavascriptBridge(bridge => {
     //   bridge.callHandler('getUserId', '', (result) => {
     //     const resData = JSON.parse(result)
     //     userId = resData.userId
-    //     $('#btnBox').hide()
+    //     localStorage.setItem('userId', userId)
     //     getuser()
     //     joinorglist()
     //   })
     // })
-  }
-  mui.init(muiInit('#pullrefresh', pulldownRefresh));
-  mui.ready(function () {
+    // getuser()
+    // joinorglist()
+    // const userId = 39
+
+    // window.setupWebViewJavascriptBridge(bridge => {
+    //   bridge.callHandler('getUserId', '', (result) => {
+    //     const resData = JSON.parse(result)
+    //     userId = resData.userId
+    //     joinorglist()
+    //   })
+    // })
     const minWidth = window.innerWidth * 0.6
     let maxWidth = $('#enterpriseContent')[0].clientWidth
     mui('body').on('tap', '#createBusiness', function () {
+      // console.log(this)
       mui.openWindow({
-        url: '/h5/enterprise/createEnterprise.html',
+        url: '/h5/zh/enterprise/createEnterprise.html',
         id: 'createEnterprise'
       })
     })
@@ -115,7 +133,7 @@
       }
       const node = $(this).parents('.org-list')
       mui.openWindow({
-        url: '/h5/organizationMember/index.html?orgId=' + Number(node.attr('data-id')),
+        url: '/h5/zh/organizationMember/index.html?orgId=' + Number(node.attr('data-id')),
         id: 'organizationMember'
       })
       return false
@@ -127,7 +145,7 @@
       if (orgusertype === '0') {
         const node = $(this).parents('.org-list')
         mui.openWindow({
-          url: '/h5/organizationMember/index.html?orgId=' + Number(node.attr('data-id')),
+          url: '/h5/zh/organizationMember/index.html?orgId=' + Number(node.attr('data-id')),
           id: 'organizationMember'
         })
       } else {
@@ -157,12 +175,21 @@
       return false
     })
 
+    // mui('#enterpriseContent').on('drag', '.org-list-content', function (event) {
+    //   // const node = $(this).find('.org-list-content')[0]
+    //   const newWidth = this.clientWidth + event.detail.deltaX
+    //   this.style.width = (newWidth < minWidth ? minWidth : newWidth > maxWidth ? maxWidth : newWidth) + 'px'
+    // })
+
     function updateOrg(params) {
       $ajax('/orguser/update', 'post', params, function (res) {
         // mui.toast(res.msg)
         if (res.code === 1) {
           joinorglist()
         }
+        // console.log(res)
+        // joinorglist()
+        // projectClick
         window.setupWebViewJavascriptBridge(bridge => {
           bridge.callHandler('setOrgId', JSON.stringify({
             defaultOrgId: params.orgId
@@ -182,7 +209,7 @@
     mui('#enterpriseContent').on('tap', '.setting-icon', function () {
       const orgId = $(this).parents('.org-list').attr('data-id')
       mui.openWindow({
-        url: '/h5/corporateInfor?id=' + orgId,
+        url: '/h5/zh/corporateInfor?id=' + orgId,
         id: 'corporateInfor'
       })
       return false
@@ -197,8 +224,10 @@
     })
 
     function outorg(orgId) {
+      // const orgId = 38
       $ajax('/orguser/outorg?orgId=' + orgId + '&userId=' + userId, 'get', '', function (res) {
         console.log(res)
+        // mui.toast(res.msg)
         $('#notification').hide()
         // joinorglist()
         if (orgId == localStorage.getItem('orgDefault')) {
@@ -216,6 +245,7 @@
         } else { 
           joinorglist()
         }
+        
       })
     }
 
@@ -259,96 +289,32 @@
 
     mui('body').on('tap', '#personalInfor', function () {
       mui.openWindow({
-        url: '/h5/enterprise/personalInfor.html',
+        url: '/h5/zh/enterprise/personalInfor.html',
         id: 'personalInfor'
       })
     })
     mui('body').on('tap', '#mailbox', function () {
       const userId = localStorage.getItem('userId')
       mui.openWindow({
-        url: '/h5/enterprise/emailEdit.html?email=' + $('#mailbox').text() + '&userId=' + userId,
+        url: '/h5/zh/enterprise/emailEdit.html?email=' + $('#mailbox').text() + '&userId=' + userId,
         id: 'mailbox'
       })
     })
     mui('body').on('tap', '#accountPassword', function () { 
       const userId = localStorage.getItem('userId')
       mui.openWindow({
-        url: '/h5/enterprise/changePassword.html?userId=' + userId,
+        url: '/h5/zh/enterprise/changePassword.html?userId=' + userId,
         id: 'changePassword'
       })
     })
     mui('body').on('tap', '#phone', function () {
       const userId = localStorage.getItem('userId')
       mui.openWindow({
-        url: '/h5/enterprise/phoneEdit.html?phone=' + $('#phone').text() + '&userId=' + userId,
+        url: '/h5/zh/enterprise/phoneEdit.html?phone=' + $('#phone').text() + '&userId=' + userId,
         id: 'phone'
       })
     })
-
     const pickButtons = ['cancel', 'sure']
-    var languagePicker = new mui.PopPicker({
-      buttons: pickButtons
-    });
-    const languageList = [{
-      value: 'en',
-      text: 'English'
-    }, {
-      value: 'zh',
-      text: '中文'
-    }]
-    languagePicker.setData(languageList)
-    mui('body').on('tap', '#selectLanguage', function () {
-      // languagePicker.setSelectedValue('en')
-      const me = this
-      languagePicker.show(function (items) {
-        $(me.children[0]).text(items[0].text)
-
-        if (items[0].value === 'zh') {
-          window.setupWebViewJavascriptBridge(bridge => {
-            bridge.callHandler('setLanguage', items[0].value)
-            mui.openWindow({
-              url: '/h5/zh/enterprise/enterprise.html',
-              id: 'enterprise'
-            })
-          })
-        }
-      });
-    })
-    mui('body').on('tap', '#weChat,#weibo,#dingTalk,#apple', function () {
-      window.setupWebViewJavascriptBridge(bridge => {
-        bridge.callHandler('thirdLogin', this.getAttribute('data-val'), () => {
-          getuser()
-        })
-      })
-    })
-    mui('body').on('tap', '#notificationSet', function () { 
-      // const userId = localStorage.getItem('userId')
-      let noticeStatus = this.getAttribute('data-val')
-      if (noticeStatus == 1) {
-        noticeStatus = 0
-      } else { 
-        noticeStatus = 1
-      }
-      // const params = {
-      //   userId: Number(userId),
-      //   userNotice: noticeStatus
-      // }
-      const params = JSON.parse(localStorage.getItem('userInfo'))
-      params.userNotice = noticeStatus
-      $ajax('/user/update', 'post', params, function (res) {
-        mui.toast(res.msg)
-        if (res.code === 1) {
-          // getuser()
-          localStorage.setItem('userInfo', JSON.stringify(res.data))
-          if (noticeStatus === 1) {
-            $('#notificationSet').attr('src', '/h5/images/icon_enterprise_blue.jpg')
-          } else { 
-            $('#notificationSet').attr('src', '/h5/images/icon_enterprise_grey.jpg')
-          }
-          $('#notificationSet').attr('data-val', noticeStatus)
-        }
-      })
-    })
     var daysPicker = new mui.PopPicker({
       buttons: pickButtons
     });
@@ -377,6 +343,68 @@
           localStorage.setItem('userInfo', JSON.stringify(res.data))
         })
       });
+    })
+    var languagePicker = new mui.PopPicker({
+      buttons: pickButtons
+    });
+    const languageList = [{
+      value: 'en',
+      text: 'English'
+    }, {
+      value: 'zh',
+      text: '中文'
+    }]
+    languagePicker.setData(languageList)
+    mui('body').on('tap', '#selectLanguage', function () {
+      // languagePicker.setSelectedValue('en')
+      const me = this
+      languagePicker.show(function (items) {
+        $(me.children[0]).text(items[0].text)
+        if (items[0].value === 'en') {
+          window.setupWebViewJavascriptBridge(bridge => {
+            bridge.callHandler('setLanguage', items[0].value)
+            mui.openWindow({
+              url: '/h5/enterprise/enterprise.html',
+              id: 'enterprise'
+            })
+          })
+        }
+      });
+    })
+    mui('body').on('tap', '#weChat,#weibo,#dingTalk,#apple', function () {
+      console.log(this)
+      window.setupWebViewJavascriptBridge(bridge => {
+        bridge.callHandler('thirdLogin', this.getAttribute('data-val'), () => {
+          getuser()
+        })
+      })
+    })
+    mui('body').on('tap', '#notificationSet', function () {
+      // const userId = localStorage.getItem('userId')
+      let noticeStatus = this.getAttribute('data-val')
+      if (noticeStatus == 1) {
+        noticeStatus = 0
+      } else {
+        noticeStatus = 1
+      }
+      // const params = {
+      //   userId: Number(userId),
+      //   userNotice: noticeStatus
+      // }
+      const params = JSON.parse(localStorage.getItem('userInfo'))
+      params.userNotice = noticeStatus
+      $ajax('/user/update', 'post', params, function (res) {
+        mui.toast(res.msg)
+        if (res.code === 1) {
+          localStorage.setItem('userInfo', JSON.stringify(res.data))
+          if (noticeStatus === 1) {
+            $('#notificationSet').attr('src', '/h5/images/icon_enterprise_blue.jpg')
+          } else {
+            $('#notificationSet').attr('src', '/h5/images/icon_enterprise_grey.jpg')
+          }
+          $('#notificationSet').attr('data-val', noticeStatus)
+        }
+      })
     })
   });
 })(mui, document, jQuery);

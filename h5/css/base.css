@@ -30,7 +30,7 @@ html { font-size: 25px !important; }
 
 
 html { -ms-touch-action: none;}
-body { font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial, "Microsoft YaHei"; background-color: #f5f5f5; color: #262626;}
+body { font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial, "Microsoft YaHei"; background-color: #f5f5f5; }
 /*页面旋转3d效果*/
 
 input,button { font-family: Arial, "Microsoft YaHei", sans-serif;border: none;background: none; }
@@ -138,15 +138,14 @@ sub { vertical-align: text-bottom }
 .radius-b25{-webkit-border-radius: 0.25rem;border-radius: 0.25rem;}
 /*颜色*/
 .text-theme{color: #3574fa;}
-.text-default{color: #262628;}
+.text-default{color: #999999;}
 .text-white{color:#FFFFFF}
 .text-red{color: #ff0000;}
 .text-grey{color: #666666;}
 .f-grey{color:#262628}
 .text-333{color: #333333;}
 .text-green{color: #059002;}
-.text-black{color: #262628;}
-.text-999{color: #999999;}
+.text-black{color: #000000;}
 .f-7E7E7F{color: #7E7E7F;}
 .f-48B6E6{color: #48B6E6;}
 .f-blue{color: #49B9EA;}
@@ -195,10 +194,6 @@ sub { vertical-align: text-bottom }
 
 /*标题栏样式*/
 .page-title{position: fixed;z-index: 100; top: 0; left: 0; right: 0; width: 100%;padding: 0 5%; height: 1.8rem;line-height: 1.8rem;text-align: center;background-color: #FFFFFF;box-shadow:0px 3px 6px rgba(0,0,0,0.1);box-sizing: border-box;}
-.page-title .logo {
-  padding-top: 0.3rem;
-  height: 1.5rem;
-}
 .page-title img{height: 100%;}
 .page-title .edit-group{position: absolute;right: 5%;top: 0;z-index: 3;height:100% ;}
 .page-title .edit-group i{padding-left: 0.5rem;}
@@ -426,40 +421,4 @@ sub { vertical-align: text-bottom }
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-
-
-/* 权限 */
-#createProject, 
-.store-txt .setting, 
-.store-txt .Pentagram, 
-#organization #optionShow,
-#btnBox,
-#enterpriseContent .setting-icon,
-#enterpriseContent .delete,
-#uploadFileBox,
-#createFile,
-#editFile,
-#delFile,
-#projectMembers #optionShow,
-#invoice #addPhotoShow,
-#invoiceDetail .create-project,
-#reportBox,
-#removeCompletely,
-#recoverFiles,
-#recycleAlone,
-#recycleAll{
-  display: none;
-}
-
-.cancel-btn {
-  border: 1px #999 solid;
-  border-radius: 5px;
-  color: #999;
-}
-.submit-btn{
-  border: 1px #262628 solid;
-  border-radius: 5px;
-  color: #262628;
 }

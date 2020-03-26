@@ -19,7 +19,7 @@
   //     // loadData()
   //   })
   // })
-  function pulldownRefresh() {
+  function pulldownRefresh () {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     page = 1
@@ -28,8 +28,7 @@
     $('#fileList').html('')
     loadData()
   }
-
-  function pullupRefresh() {
+  function pullupRefresh () {
     // 上拉加载具体业务实现
     console.log('pullupRefresh')
     const total = $('#pullrefresh').attr('data-total')
@@ -40,8 +39,7 @@
     page = Number($('#pullrefresh').attr('data-page')) + 1
     loadData()
   }
-
-  function loadData() {
+  function loadData () {
     $ajax('/projectrecycle/list?projectId=' + pid + '&page=' + page + '&size=' + size, 'get', '', (res) => {
       console.log(res)
       $('#pullrefresh').attr('data-page', page)
@@ -55,6 +53,13 @@
         console.log(item)
         let filePic = '/h5/images/file_icon.jpg'
         let fileType = 'file'
+        // if (item.type === 1) {
+        //   const imgSuffix = ['.jpg', '.png']
+        //   filePic = imgPath + item.pic
+        //   if (imgSuffix.indexOf(item.pic.substr(-4)) === -1) {
+        //     filePic = '/h5/images/file_pdf.jpg'
+        //   }
+        // }
         const imgSuffix = ['.jpg', '.png', '.jpeg']
         if (item.name.substr(-4) === '.pdf') {
           filePic = '/h5/images/file_pdf.jpg'
@@ -66,12 +71,12 @@
           fileType = 'office'
           filePic = '/h5/images/file-word.png'
         }
-        // const createDate = datetime2Str(new Date(item.createDate))
         let caozuoTmp = `<i class="icon iconfont text-default ft-16 iconcaozuo"></i>`
         const projectRole = JSON.parse(localStorage.getItem('projectRoles'))
         if (projectRole.recycle.indexOf('projectrecycle:delete') === -1 && projectRole.recycle.indexOf('projectrecycle:recovery') === -1) {
           caozuoTmp = ''
         }
+        // const createDate = datetime2Str(new Date(item.createDate))
         const createDate = item.createDate ? iosTimeFormtter(item.createDate) : ''
         temp += `<li class="flex flex-between border-b-grey file-item">
         <div class="flex align-center">
@@ -97,14 +102,10 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
-        contentdown: "Pull down to refresh",
-        contentover: "Refresh immediately",
-        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
-        contentrefresh: "loading",
-        contentnomore: 'No more',
+        contentrefresh: '正在加载...',
         callback: pullupRefresh
       }
     }
@@ -144,7 +145,7 @@
     mui('.popup').on('tap', '#removeCompletely', function () {
       const checkEl = $("input:checked")
       if (!checkEl.length) {
-        mui.toast('Please select the data to be deleted')
+        mui.toast('请选择需要删除的数据')
         $('.popup').hide()
         return false
       }
@@ -159,7 +160,7 @@
       // const id = $("input:checked")[0].getAttribute('data-id')      
       const checkEl = $("input:checked")
       if (!checkEl.length) {
-        mui.toast('Please select the data you need to recover')
+        mui.toast('请选择需要恢复的数据')
         $('.popup').hide()
         return false
       }
@@ -182,7 +183,7 @@
     localStorage.removeItem('recoverFileList')
     loadData()
 
-    function deleteFile(params) {
+    function deleteFile (params) {
       $ajax('/projectrecycle/deleteall', 'post', params, function (res) {
         if (res.code === 1) {
           page = 1
@@ -194,7 +195,7 @@
       })
     }
 
-    function recoveryFile(params) {
+    function recoveryFile (params) {
       $ajax('/projectrecycle/recoveryall', 'post', params, function (res) {
         console.log(res)
         if (res.code === 1) {

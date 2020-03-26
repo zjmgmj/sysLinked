@@ -11,7 +11,7 @@
       resData.map((item, index) => {
         temp += `<li class="border-b-grey flex flex-between align-center member-item" data-id="${item.projectUserId}" data-index="${index}">
           <div class="avator border-blue radius-b50">        
-            <img src="${item.userPic !== 'null' && item.userPic !== '' ? imgPath + item.userPic : '/h5/images/avatar.png'}" alt="sysLinked" />            
+            <img src="${item.userPic !== 'null' && item.userPic ? imgPath + item.userPic : '/h5/images/avatar.png'}" alt="sysLinked" />            
           </div>
           <div class="member-info col">
             <p class="name ft-16">${item.userNickname}</p>
@@ -25,12 +25,11 @@
         getPermissionProject()
       }, 100)
     })
-
   }
 
   function pulldownRefresh () {
     $('#projectMembers #optionShow').hide()
-    // pid = JSON.parse(localStorage.getItem('project')).id
+    // pid = '10098'
     // loadData()
     window.setupWebViewJavascriptBridge(bridge => {
       bridge.callHandler('getProjectId', '', (result) => {
@@ -70,6 +69,16 @@
     })
 
     mui('.member-list').on('tap', '.member-item', function () {
+          // const params = JSON.parse(localStorage.getItem('projectuserlist'))
+          // const idx = this.getAttribute('data-index')
+          // const detail = params[idx]
+          // pid = 10098
+          // detail.pid = pid
+          // localStorage.setItem('projectuserDetail', JSON.stringify(detail))
+          // mui.openWindow({
+          //   url: '/h5/zh/projectMember/memberInfo.html',
+          //   id: 'memberInfo'
+          // })
       window.setupWebViewJavascriptBridge(bridge => {
         bridge.callHandler('getProjectId', '', (result) => {
           const resData = JSON.parse(result)
