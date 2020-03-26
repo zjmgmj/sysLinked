@@ -1,18 +1,19 @@
 (function ($$, doc, $) {
   mui.init();
   mui.ready(function () {
+    // let orgId = getUrlParam('orgId')
     let orgId = ''
     let pid = ''
+    // let pid = JSON.parse(localStorage.getItem('project')).id
     window.setupWebViewJavascriptBridge(bridge => {
       bridge.callHandler('getOrgId', '', (result) => {
         const resData = JSON.parse(result)
         orgId = resData.orgId
         localStorage.setItem('orgDefault', orgId)
-        getcompanyusercount()
         deptList()
+        getcompanyusercount()
       })
     })
-
     function getcompanyusercount () {
       $ajax('/orguser/getcompanyusercount?orgId=' + orgId, 'get', '', function (res) {
         console.log(res)
@@ -32,7 +33,6 @@
         $('#deactivatedNum').text(deactivatedNum)
       })
     }
-
 
     function deptList () {
       $ajax('/dept/list?orgId=' + orgId, 'get', '', function (res) {
@@ -85,7 +85,7 @@
 
     mui('.popup').on('tap', '#inviteMembers', function () {
       mui.openWindow({
-        url: '/h5/zh/organizationMember/createInvite.html',
+        url: '/h5/organizationMember/createInvite.html',
         id: 'createInvite'
       })
     })
@@ -126,11 +126,15 @@
           orgId = resData.orgId
           localStorage.setItem('orgDefault', orgId)
           mui.openWindow({
-            url: '/h5/zh/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&status=' + status + '&title=' + title,
+            url: '/h5/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&status=' + status + '&title=' + title,
             id: 'membersList'
           })
         })
       })
+      // mui.openWindow({
+      //   url: '/h5/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&status=' + status + '&title=' + title,
+      //   id: 'membersList'
+      // })
     })
 
     mui('#deptList').on('tap', '.dept', function () {
@@ -142,7 +146,7 @@
           const type = this.getAttribute('data-type')
           const deptId = this.getAttribute('data-id')
           mui.openWindow({
-            url: '/h5/zh/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&deptId=' + deptId + '&pid=' + pid,
+            url: '/h5/organizationMember/members.html?type=' + type + '&orgId=' + orgId + '&deptId=' + deptId + '&pid=' + pid,
             id: 'deptMemberList'
           })
         })

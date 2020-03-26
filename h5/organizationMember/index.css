@@ -33,8 +33,8 @@ body{font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial;}
 .member-details h1{padding-top: 1.3rem;padding-bottom: 0.65rem;color: #262628;}
 .member-details .info-list li{padding-top: 0.65rem;padding-bottom: 0.35rem;}
 .member-details .info-list li span i{padding-left: 0.4rem;}
-.member-details .btn{width: 100%;background:#262628;padding: 1px;margin-bottom: 5rem;padding-right: 2px;}
-.member-details .btn span{width: 100%;height: 100%;display: block;background-color: #FFFFFF;color:#262628;}
+.member-details .btn{width: 100%;background:linear-gradient(136deg,rgba(177,220,189,1) 0%,rgba(73,185,234,1) 58%,rgba(84,88,166,1) 100%);padding: 1px;margin-bottom: 5rem;padding-right: 2px;}
+.member-details .btn span{width: 100%;height: 100%;display: block;background-color: #FFFFFF;color:#49B9EA;}
 /*群组*/
 .chat-list .picture{width:1.84rem;height: 1.84rem;}
 .chat-list .picture img{padding-right: 0.1rem;width: 0.82rem;display: block;float: left;}
@@ -125,4 +125,11 @@ body{font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial;}
   height: 2rem;
   flex-direction: column;
   justify-content: space-between;
+}
+.popup-txt{
+  width: 7.5rem;
+  right: 0rem;
+}
+.popup-txt .popup-members li{
+  width: 5.8rem;
 }

@@ -431,3 +431,9 @@ html{
   flex-direction: column;
   justify-content: space-between;
 }
+.popup-txt{
+  width: 7.5rem;
+}
+.popup-txt .popup-members li{
+  width: 5.8rem;
+}

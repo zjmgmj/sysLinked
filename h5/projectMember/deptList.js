@@ -4,8 +4,7 @@
     const orgId = localStorage.getItem('orgDefault')
     const pid = JSON.parse(localStorage.getItem('project')).id
     loadData()
-
-    function loadData() {
+    function loadData () {
       $ajax('/dept/getdeptusercountlist?orgId=' + orgId, 'get', '', function (res) {
         if (res.code === 1) {
           console.log(res)
@@ -25,7 +24,7 @@
       console.log(this)
       const deptId = this.getAttribute('data-id')
       mui.openWindow({
-        url: '/h5/zh/projectMember/members.html?deptId=' + deptId + '&projectId=' + pid,
+        url: '/h5/projectMember/members.html?deptId=' + deptId + '&projectId=' + pid,
         id: 'projectMembers'
       })
     })
@@ -33,7 +32,7 @@
     mui('body').on('tap', '.back', function () {
       // back()
       mui.openWindow({
-        url: '/h5/zh/projectMember/projectMembers.html',
+        url: '/h5/projectMember/projectMembers.html',
         id: 'projectMember'
       })
     })

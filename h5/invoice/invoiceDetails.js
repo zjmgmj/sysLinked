@@ -7,7 +7,7 @@
     const categoryPickerList = []
     categoryList()
 
-    function invoiceDetail () {
+    function invoiceDetail() {
       loadingShow()
       $ajax('/projectinvoice/detail?id=' + id, 'get', '', function (res) {
         console.log(res)
@@ -45,7 +45,7 @@
     }
 
 
-    function distinguish (path) {
+    function distinguish(path) {
       loadingShow()
       $ajax('/projectinvoice/distinguish?url=' + url + path, 'get', '', (res) => {
         if (res.code === 1) {
@@ -91,7 +91,7 @@
 
 
     // const pid = 50
-    function categoryList () {
+    function categoryList() {
       $ajax('/category/list?type=3&&pid=' + 1, 'get', '', (res) => {
 
         if (res.code === 1) {
@@ -114,7 +114,7 @@
 
     mui('body').on('tap', '.submit', function () {
       if (!$('#category').attr('data-val')) {
-        mui.toast('请选择发票类型')
+        mui.toast('Please select an invoice type')
         return false
       }
       const params = {

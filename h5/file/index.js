@@ -1,8 +1,10 @@
 (function ($$, doc, $) {
   let page = 1
   const size = 15
-  let createUserid = localStorage.getItem('userId')
-  let pid = JSON.parse(localStorage.getItem('project')).id
+  // let createUserid = localStorage.getItem('userId')
+  // let pid = JSON.parse(localStorage.getItem('project')).id
+  let createUserid = 91
+  let pid = 10098
   // alert('v2')
   // let createUserid = 62
   // let pid = 10047
@@ -99,10 +101,14 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
+        contentdown: "Pull down to refresh",
+        contentover: "Refresh immediately",
+        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
-        contentrefresh: '正在加载...',
+        contentrefresh: "loading",
+        contentnomore: 'No more',
         callback: pullupRefresh
       }
     }
@@ -144,7 +150,7 @@
         $('.create-file-popup').attr('data-edit', idx)
         return false
       }
-      mui.toast('请选择文件夹修改')
+      mui.toast('Please select a folder to modify')
       // $('input').attr('checked', false)
     })
 
@@ -185,7 +191,7 @@
       if (fileType === 'file') {
         const id = this.getAttribute('data-id')
         mui.openWindow({
-          url: '/h5/zh/file/index.html?parentId=' + id,
+          url: '/h5/file/index.html?parentId=' + id,
           id: 'fileChild'
         })
       } else if (fileType === 'office') {
@@ -193,7 +199,7 @@
         location.href = `https://view.officeapps.live.com/op/view.aspx?src=${imgPath}${path}`
       } else if (fileType === 'img') {
         mui.openWindow({
-          url: `/h5/zh/file/detail.html?path=${path}&type=${fileType}`,
+          url: `/h5/file/detail.html?path=${path}&type=${fileType}`,
           id: 'fileChild'
         })
       } else if (fileType === 'pdf') {

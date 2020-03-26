@@ -6,14 +6,15 @@
   const orgId = localStorage.getItem('orgDefault')
   const userId = localStorage.getItem('userId')
   // const picPath = 'https://test-for-syslinked1.s3.cn-north-1.amazonaws.com.cn/'
-  function pulldownRefresh () {
+  function pulldownRefresh() {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     page = 1
     $('#memberList').html('')
     loadData()
   }
-  function pullupRefresh () {
+
+  function pullupRefresh() {
     // 上拉加载具体业务实现
     const total = $('#pullrefresh').attr('data-total')
     if (total == $('#memberList .member-item').length) {
@@ -25,7 +26,7 @@
     console.log('pullupRefresh')
   }
 
-  function loadData () {
+  function loadData() {
     // staffId=34&orgId=87&size=50&page=1
     $ajax('/messages/list?size=' + size + '&page=' + page + '&orgId=' + orgId + '&staffId=' + userId, 'get', '', (res) => {
       console.log('---s', res)
@@ -69,10 +70,14 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
+        contentdown: "Pull down to refresh",
+        contentover: "Refresh immediately",
+        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
-        contentrefresh: '正在加载...',
+        contentrefresh: "loading",
+        contentnomore: 'No more',
         callback: pullupRefresh
       }
     }

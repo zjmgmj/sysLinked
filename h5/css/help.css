@@ -1,4 +1,4 @@
-.page-con{background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(247,247,250,1) 100%);font-family:Roboto;}
+.page-con{background:linear-gradient(180deg,rgba(255,255,255,1) 0%,rgba(247,247,250,1) 100%);}
 
 .help .search-input{width: 80%;height: 1.6rem;line-height: 1.6rem; background:rgba(229,229,229,0.35);border:1px solid rgba(229,229,229,1);border-radius: 0.8rem;}
 .help .search-input input{height: 1.6rem;line-height: 1.6rem;border: none;}

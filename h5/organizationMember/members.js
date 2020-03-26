@@ -19,12 +19,12 @@
   const orgId = getUrlParam('orgId')
   // localStorage.getItem('orgDefault')
 
-  const title = '成员'
+  const title = getUrlParam('title') || 'All Members'
   $('#title').text(title)
   // const deptId = getUrlParam('deptId')
   orguserList()
 
-  function pulldownRefresh () {
+  function pulldownRefresh() {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     page = 1
@@ -32,7 +32,7 @@
     orguserList()
   }
 
-  function pullupRefresh () {
+  function pullupRefresh() {
     // 上拉加载具体业务实现
     console.log('pullupRefresh')
     const total = $('#pullrefresh').attr('data-total')
@@ -44,7 +44,7 @@
     orguserList()
   }
 
-  function orguserList () {
+  function orguserList() {
     const searchKey = $('#searchInput').val()
     // let api = '/orguser/list?page='+page+'&size='+size+ '&name='+searchKey + typeId
     let api = '/deptuser/getdeptuserlist?page=' + page + '&size=' + size + '&orgId=' + orgId + typeId
@@ -70,7 +70,7 @@
     })
   }
 
-  function deptList (resData) {
+  function deptList(resData) {
     let temp = ''
     resData.map((item, index) => {
       const authorPic = item.userPic ? imgPath + item.userPic : '/h5/images/avatar.png'
@@ -87,7 +87,7 @@
     $('#memberList').append(temp)
   }
 
-  function orgList (resData) {
+  function orgList(resData) {
     let temp = ''
     resData.map((item, index) => {
       // temp += `<li class="border-b-grey member-item">
@@ -100,7 +100,7 @@
       //   </div>
       // </li>`
       // <div class="check-box"><input type="checkbox" checked="checked"/></div>
-      const status = item.status === 0 ? '未分配' : item.status === 1 ? '已分配' : '已停用'
+      const status = item.status === 0 ? 'Unassigned' : item.status === 1 ? 'Allocated' : 'Terminated'
       temp += `<li class="border-b-grey member-item" data-userId="${item.userId}"  data-index="${index}">
       <div class="flex align-center flex-between">        
         <div class="flex align-center">
@@ -109,7 +109,7 @@
             <p class="email ft-12">${item.userId}</p>
             <p class="name ft-16">
               <span>${item.userNickname}</span>
-              <span class="ft-12">(${item.orgRoleName ? item.orgRoleName : '暂无'})</span>
+              <span class="ft-12">(${item.orgRoleName})</span>
             </p>            
           </div>
         </div>
@@ -123,10 +123,14 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
+        contentdown: "Pull down to refresh",
+        contentover: "Refresh immediately",
+        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
-        contentrefresh: '正在加载...',
+        contentrefresh: "loading",
+        contentnomore: 'No more',
         callback: pullupRefresh
       }
     }
@@ -165,7 +169,7 @@
       localStorage.setItem('projectuserDetail', JSON.stringify(detail))
       console.log(this)
       mui.openWindow({
-        url: '/h5/zh/projectMember/memberInfo.html',
+        url: '/h5/projectMember/memberInfo.html',
         id: 'memberInfo'
       })
       // if (type === 'orgId') {
@@ -197,7 +201,7 @@
 
     mui('.popup').on('tap', '#inviteMembers', function () {
       mui.openWindow({
-        url: '/h5/zh/organizationMember/addDeptMember.html?deptId=' + id + '&orgId=' + orgId,
+        url: '/h5/organizationMember/addDeptMember.html?deptId=' + id + '&orgId=' + orgId,
         id: 'addDeptMember'
       })
     })

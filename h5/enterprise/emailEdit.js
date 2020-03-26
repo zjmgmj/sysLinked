@@ -4,11 +4,11 @@
     const email = getUrlParam('email')
     const userId = getUrlParam('userId')
     if (!email) {
-      $('#mailboxTitle').text('邮箱')
+      $('#mailboxTitle').text('Mailbox')
       $('#mailbox').attr('readonly', false)
       $('#oldMail').hide()
     } else {
-      $('#mailboxTitle').text('更换邮箱')
+      $('#mailboxTitle').text('Change Mailbox')
       $('#mailbox').attr('readonly', true)
       $('#mailbox').val(email)
     }
@@ -23,12 +23,12 @@
     function sendCode() {
       const toeamil = $('#alternateMailbox').val()
       if (!emailReg.test(toeamil)) {
-        mui.toast('邮箱格式错误')
+        mui.toast('Email is malformed')
         return false
       }
       $ajax('/user/sendeamil?type=1&toeamil=' + toeamil, 'get', '', function (res) {
         if (res.code === 1) {
-          mui.toast('发送成功')
+          mui.toast('success')
           $('.code-button').attr('data-code', res.data)
           let time = 60
           const timeInter = setInterval(() => {

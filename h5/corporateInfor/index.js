@@ -85,8 +85,5 @@
         }
       })
     }
-    mui('body').on('tap', '#back', function () {
-      mui.back()
-    })
   })
 })(mui, document, jQuery);

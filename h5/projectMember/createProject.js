@@ -125,12 +125,11 @@
         }
       }
       $ajax(urlApi, 'post', params, (res) => {
-        console.log('---------', res)
         mui.toast(res.msg)
         if (res.code === 1) {
           setTimeout(() => {
             mui.openWindow({
-              url: '/h5/zh/',
+              url: '/h5/',
               id: 'home'
             })
           }, 800)

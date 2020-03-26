@@ -27,7 +27,7 @@
     })
   }
 
-  function pulldownRefresh () {
+  function pulldownRefresh() {
     $('#projectMembers #optionShow').hide()
     // pid = '10098'
     // loadData()
@@ -43,6 +43,9 @@
     pullRefresh: {
       container: '#pullrefresh', //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
       down: {
+        contentdown: "Pull down to refresh",
+        contentover: "Refresh immediately",
+        contentrefresh: "loading",
         auto: true,
         style: 'circle',
         callback: pulldownRefresh
@@ -79,7 +82,7 @@
           detail.pid = pid
           localStorage.setItem('projectuserDetail', JSON.stringify(detail))
           mui.openWindow({
-            url: '/h5/zh/projectMember/memberInfo.html',
+            url: '/h5/projectMember/memberInfo.html',
             id: 'memberInfo'
           })
         })
@@ -93,13 +96,13 @@
 
     mui('body').on('tap', '#inviteMembers', function () {
       mui.openWindow({
-        url: '/h5/zh/projectMember/inviteMembers.html',
+        url: '/h5/projectMember/inviteMembers.html',
         id: 'inviteMembers'
       })
     })
     mui('body').on('tap', '#batchImport', function () {
       mui.openWindow({
-        url: '/h5/zh/projectMember/batchImport.html',
+        url: '/h5/projectMember/batchImport.html',
         id: 'batchImport'
       })
     })

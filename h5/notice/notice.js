@@ -104,7 +104,7 @@
             <p class="ft-16 f-grey">${item.userNickname}</p>
             <p class="ft-12 text-grey">${time}</p>
           </div>
-          <p class="ft-12 text-grey pt-05">${item.messages}</p>
+          <p class="ft-12 text-grey pt-05">${item.englishMessages}</p>
           ${imgTempBox}
         </div>
       </li>`
@@ -143,11 +143,15 @@
     pullRefresh: {
       container: '#pullrefresh',
       down: {
+        contentdown: "Pull down to refresh",
+        contentover: "Refresh immediately",
+        contentrefresh: "loading",
         callback: pulldownRefresh
       },
       up: {
         auto: true,
-        contentrefresh: '正在加载...',
+        contentrefresh: "loading",
+        contentnomore: 'No more',
         callback: pullupRefresh
       }
     }
@@ -175,7 +179,7 @@
     mui('#chatList').on('tap', '.chat-item', function () {
       const staffId = this.getAttribute('data-staffId')
       mui.openWindow({
-        url: '/h5/zh/chat/chatDetail.html?staffId=' + staffId,
+        url: '/h5/chat/chatDetail.html?staffId=' + staffId,
         id: 'chatDetail'
       })
     })

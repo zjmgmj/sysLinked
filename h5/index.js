@@ -21,7 +21,7 @@
         })
       } else {
         // document.getElementById('content').innerHTML = contentTemp
-        $('#content').html(`<div class="text-center pt-10">暂无数据</div>`)
+        $('#content').html(`<div class="text-center pt-10">No data</div>`)
         mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
       }
     })
@@ -37,10 +37,11 @@
 
   function pulldownRefresh () {
     $('#createProject').hide()
-    // userId = 91
-    // orgId = 159
+    // userId = 82
+    // orgId = 158
     // joinorglistAjax(userId)
     // getuser(userId)
+
     getJoinorglist()
   }
 
@@ -89,20 +90,13 @@
             break
         }
       })
-      const contentTemp = `<h1>加星标项目 · <span id="starredCount">${starredCount}</span></h1>
+      const contentTemp = `<h1>My Starred Projects · <span id="starredCount">${starredCount}</span></h1>
       <ul class="store-list" id="starredProjects">${starredProjectsTemp}</ul>
-      <h1>启动项目 · <span id="startupCount">${startupCount}</span></h1>
+      <h1>Startup Project · <span id="startupCount">${startupCount}</span></h1>
       <ul class="store-list" id="startupProject">${startupProjectTemp}</ul>
-      <h1>关闭项目 · <span id="closeCount">${closeCount}</span></h1>
+      <h1>Close Project · <span id="closeCount">${closeCount}</span></h1>
       <ul class="store-list close-list" id="closeProject">${closeProjectTemp}</ul>`
       localStorage.setItem('projectList', JSON.stringify(resData))
-      // $('#starredCount').text(starredCount)
-      // $('#startupCount').text(startupCount)
-      // $('#closeCount').text(closeCount)
-      // document.getElementById('starredProjects').innerHTML = starredProjectsTemp
-      // document.getElementById('startupProject').innerHTML = startupProjectTemp
-      // document.getElementById('closeProject').innerHTML = closeProjectTemp
-      // document.getElementById('content').innerHTML = contentTemp
       $('#content').html(contentTemp)
       mui('#pullrefresh').pullRefresh().endPulldownToRefresh()
       if ($('.store-txt').length > 0) maxWidth = $('.store-txt')[0].clientWidth
@@ -114,13 +108,10 @@
 
 
   function getJoinorglist() {
-    // joinorglistAjax('39')
     window.setupWebViewJavascriptBridge(bridge => {
       bridge.callHandler('getUserId', '', (result) => {
         const resData = JSON.parse(result)
         userId = resData.userId
-        // log('参数', result)
-        // log('userId', userId)
         joinorglistAjax(resData.userId)
         getuser(resData.userId)
         window.setupWebViewJavascriptBridge(bridge => {
@@ -131,22 +122,11 @@
           })
         })
       })
-      // if (userId) {
-      //   bridge.callHandler('hasGetUserId', { flag: 1 })
-      // }
     })
   }
   mui.init(muiInit('#pullrefresh', pulldownRefresh));
   mui.ready(function () {
-
-    // userId = 34
-    // joinorglistAjax(userId)
-    // getuser(userId)
-
     const minWidth = window.innerWidth * 0.6
-
-
-
 
     mui('#content').on('drag', '.store-left', (event) => {
       const newWidth = event.path[1].clientWidth + event.detail.deltaX
@@ -181,7 +161,7 @@
       // console.log(this)
       const id = $(this).parents('.store-txt').attr('data-id')
       mui.openWindow({
-        url: '/h5/zh/projectMember/createProject.html?id=' + id,
+        url: '/h5/projectMember/createProject.html?id=' + id,
         id: 'project'
       })
       return false
@@ -208,7 +188,7 @@
         mui.toast(res.msg)
       })
       return false
-    }) 
+    })
 
     mui('#content').on('tap', '.store-left', function () {
       // 选择项目
@@ -231,7 +211,7 @@
       //   })
       // })      
       mui.openWindow({
-        url: '/h5/zh/projectMember/createProject.html',
+        url: '/h5/projectMember/createProject.html',
         id: 'project'
       })
     })

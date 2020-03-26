@@ -1,4 +1,4 @@
-.page-con{background-color: #FFFFFF;font-family:Roboto;}
+.page-con{background-color: #FFFFFF;}
 .page-con h1{width: 100%;height: auto;padding: 1.2rem 0;font-size: 0.6rem;color: #262628;font-weight:500;}
 .page-con ul.store-list{width: 100%;height: 100%;}
 /* .page-con ul.store-list li{width:100%;height: 2.2rem;line-height: 2.2rem; box-shadow:0px 0px 6px rgba(84,88,166,0.11);border-radius:4px;margin-bottom: 0.65rem;clear: both;} */
@@ -32,4 +32,7 @@
 } */
 .mui-pull-top-pocket{
   top: 1.8rem;
+}
+.page-con ul.store-list li.store-txt .delete{
+  display: none;
 }

@@ -5,7 +5,7 @@ span,
 i,
 em,
 input {
-  font-family: Roboto;
+  font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial, "Microsoft YaHei";
 }
 
 /*搜索框模块*/

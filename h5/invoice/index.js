@@ -35,7 +35,7 @@
     })
 
 
-    function invoiceList(page, invoiceType) {
+    function invoiceList (page, invoiceType) {
       // window.setupWebViewJavascriptBridge(bridge => {
       //   bridge.callHandler('getProjectId', '', (result) => {
       //     const resData = JSON.parse(result)
@@ -46,7 +46,7 @@
       getProjectinvoice(page, invoiceType)
     }
 
-    function getProjectinvoice(page, invoiceType) {
+    function getProjectinvoice (page, invoiceType) {
       $ajax('/projectinvoice/list?projectId=' + pid + '&size=' + size + '&page=' + page + '&invoiceType=' + invoiceType, 'get', '', (res) => {
         console.log(res)
         let temp = ''
@@ -82,25 +82,25 @@
     mui('#invoiceList').on('tap', '.invoice-item', function () {
       const id = this.getAttribute('data-id')
       mui.openWindow({
-        url: '/h5/zh/invoice/invoiceDetails.html?id=' + id,
+        url: '/h5/invoice/invoiceDetails.html?id=' + id,
         id: 'invoiceDetail'
       })
     })
 
-    function uploadImg(formData) {
+    function uploadImg (formData) {
       $upload('/upload/fileuploadaws', 'post', formData, (res) => {
         loadingHide()
         if (res.code === 1) {
           console.log(res)
           mui.openWindow({
-            url: '/h5/zh/invoice/invoiceDetails.html?url=' + res.data.url,
+            url: '/h5/invoice/invoiceDetails.html?url=' + res.data.url,
             id: 'invoiceDetails'
           })
         }
       })
     }
 
-    function getProjectInvoiceGgroupList(invoiceType) {
+    function getProjectInvoiceGgroupList (invoiceType) {
       // let pid = null
       // window.setupWebViewJavascriptBridge(bridge => {
       //   bridge.callHandler('getProjectId', '', (result) => {
@@ -114,7 +114,7 @@
       getprojectinvoicegrouplistAjax(pid, invoiceType)
     }
     // getprojectinvoicegrouplistAjax(52, '')
-    function getprojectinvoicegrouplistAjax(pid, invoiceType) {
+    function getprojectinvoicegrouplistAjax (pid, invoiceType) {
       $ajax('/projectinvoice/getprojectinvoicegrouplist?projectId=' + pid + '&invoiceType=' + invoiceType, 'get', '', (res) => {
         console.log(res)
         echart(res.data)
@@ -141,7 +141,7 @@
       });
     })
 
-    function getPixelRatio(context) {
+    function getPixelRatio (context) {
       // 获取设备的PixelRatio
       var backingStore = context.backingStorePixelRatio ||
         context.webkitBackingStorePixelRatio ||
@@ -152,7 +152,7 @@
       return (window.devicePixelRatio || 1) / backingStore;
     }
 
-    function echart(data) {
+    function echart (data) {
       const echartData = []
       data.map(item => {
         const obj = {
@@ -164,27 +164,29 @@
       var myChart = echarts.init(document.getElementById('chart'));
       // 指定图表的配置项和数据
       option = {
-        series: [{
-          type: 'pie',
-          radius: ['50%', '70%'],
-          data: echartData,
-          itemStyle: {
-            emphasis: {
-              shadowBlur: 10,
-              shadowOffsetX: 0,
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
-            },
-            normal: {
-              color: function (params) {
-                // 自定义颜色
-                var colorList = [
-                  '#B1DCBD', '#48B6E6', '#4081E8', '#5458A6'
-                ];
-                return colorList[params.dataIndex]
+        series: [
+          {
+            type: 'pie',
+            radius: ['50%', '70%'],
+            data: echartData,
+            itemStyle: {
+              emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+              },
+              normal: {
+                color: function (params) {
+                  // 自定义颜色
+                  var colorList = [
+                    '#B1DCBD', '#48B6E6', '#4081E8', '#5458A6'
+                  ];
+                  return colorList[params.dataIndex]
+                }
               }
             }
           }
-        }]
+        ]
       }
       myChart.setOption(option);
     };

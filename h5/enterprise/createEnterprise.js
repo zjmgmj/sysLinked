@@ -7,7 +7,7 @@
     mui('body').on('tap', '#startCreating', function () {
       // alert('---------------create')
       // save(localStorage.getItem('userId'))
-      // save(39)
+      // save(91)
       window.setupWebViewJavascriptBridge(bridge => {
         bridge.callHandler('getUserId', '', (result) => {
           const resData = JSON.parse(result)
@@ -22,7 +22,6 @@
         userid: Number(userId)
       }
       $ajax('/org/save', 'post', params, function (res) {
-        console.log(res)
         mui.toast(res.msg)
         if (res.code === 1) {
           window.setupWebViewJavascriptBridge(bridge => {
