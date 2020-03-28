@@ -1,7 +1,8 @@
 /*setting*/
 .setting {
   height: auto;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(247, 247, 250, 1) 100%);
+  background: #fff;
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(247, 247, 250, 1) 100%); */
 }
 
 .setting .upload-picture {

@@ -101,10 +101,11 @@
       // </li>`
       // <div class="check-box"><input type="checkbox" checked="checked"/></div>
       const status = item.status === 0 ? 'Unassigned' : item.status === 1 ? 'Allocated' : 'Terminated'
+      const userPic = item.userPic ? imgPath + item.userPic : '/h5/images/avator.png'
       temp += `<li class="border-b-grey member-item" data-userId="${item.userId}"  data-index="${index}">
       <div class="flex align-center flex-between">        
         <div class="flex align-center">
-          <div class="avator border-blue radius-b50"><img src="/h5/images/avator.png" /></div>
+          <div class="avator border-blue radius-b50"><img src="${userPic}" /></div>
           <div class="member-info">
             <p class="email ft-12">${item.userId}</p>
             <p class="name ft-16">

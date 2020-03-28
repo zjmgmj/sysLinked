@@ -154,6 +154,7 @@
 
     mui('body').on('tap', '#back', function () {
       // back()
+      bridge.callHandler('pushTosecond', '')
       mui.openWindow({
         url: '/h5/projectMember/deptList.html',
         id: 'deptList'

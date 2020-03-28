@@ -46,7 +46,7 @@
                 <div class="chat-avator fl"><img src="${authorPic}" /></div>
                 <div class="chat-info fl">
                   <p class="ft-16 f-grey">${item.userNickname}</p>
-                  <p class="ft-12 text-grey">${item.message}</p>
+                  <p class="ft-12 text-grey">${item.message || ''}</p>
                 </div>
               </div>
               <div class="chat-time ft-12 text-grey">

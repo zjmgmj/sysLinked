@@ -167,7 +167,8 @@ html{
   padding-left: 5%;
   padding-right: 5%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(247, 247, 250, 1) 100%);
+  background: #fff;
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(247, 247, 250, 1) 100%); */
 }
 
 .member-details h1 {
@@ -202,7 +203,8 @@ html{
 
 /*修改角色*/
 .change-role {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(247, 247, 250, 1) 100%);
+  background: #fff;
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(247, 247, 250, 1) 100%); */
 }
 
 .change-role h1 {
@@ -225,7 +227,8 @@ html{
 /*setting*/
 .setting {
   height: auto;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(247, 247, 250, 1) 100%);
+  background: #fff;
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(247, 247, 250, 1) 100%); */
 }
 
 .setting .upload-picture {
@@ -423,7 +426,7 @@ html{
   display: none;
 }
 .page-con{
-  padding-top: 0.5rem
+  padding-top: 1.5rem
 }
 .member-info {
   display: flex;

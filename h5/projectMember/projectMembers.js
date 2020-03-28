@@ -29,15 +29,15 @@
 
   function pulldownRefresh() {
     $('#projectMembers #optionShow').hide()
-    // pid = '10098'
-    // loadData()
-    window.setupWebViewJavascriptBridge(bridge => {
-      bridge.callHandler('getProjectId', '', (result) => {
-        const resData = JSON.parse(result)
-        pid = resData.projectId
-        loadData()
-      })
-    })
+    pid = '10098'
+    loadData()
+    // window.setupWebViewJavascriptBridge(bridge => {
+    //   bridge.callHandler('getProjectId', '', (result) => {
+    //     const resData = JSON.parse(result)
+    //     pid = resData.projectId
+    //     loadData()
+    //   })
+    // })
   }
   mui.init({
     pullRefresh: {
@@ -72,6 +72,16 @@
     })
 
     mui('.member-list').on('tap', '.member-item', function () {
+      // const params = JSON.parse(localStorage.getItem('projectuserlist'))
+      // const idx = this.getAttribute('data-index')
+      // const detail = params[idx]
+      // pid = 10098
+      // detail.pid = pid
+      // localStorage.setItem('projectuserDetail', JSON.stringify(detail))
+      // mui.openWindow({
+      //   url: '/h5/projectMember/memberInfo.html',
+      //   id: 'memberInfo'
+      // })
       window.setupWebViewJavascriptBridge(bridge => {
         bridge.callHandler('getProjectId', '', (result) => {
           const resData = JSON.parse(result)

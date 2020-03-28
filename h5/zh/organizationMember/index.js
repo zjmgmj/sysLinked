@@ -121,6 +121,7 @@
         title = 'Unassigned Members'
       }
       window.setupWebViewJavascriptBridge(bridge => {
+        bridge.callHandler('pushTosecond', '')
         bridge.callHandler('getOrgId', '', (result) => {
           const resData = JSON.parse(result)
           orgId = resData.orgId
@@ -135,6 +136,7 @@
 
     mui('#deptList').on('tap', '.dept', function () {
       window.setupWebViewJavascriptBridge(bridge => {
+        bridge.callHandler('pushTosecond', '')
         bridge.callHandler('getProjectId', '', (result) => {
           const resData = JSON.parse(result)
           pid = resData.projectId
