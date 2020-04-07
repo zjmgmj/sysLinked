@@ -156,8 +156,8 @@
     })
 
     mui('body').on('tap', '.back, .cancel', () => {
-      mui.back()
-      // back()
+      // mui.back()
+      back()
     })
     mui.previewImage();
 

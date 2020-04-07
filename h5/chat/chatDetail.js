@@ -70,13 +70,25 @@
       sendChat()
     })
 
-    mui('body').on('change', '#file', function () {
-      loadingShow()
-      const file = this.files[0]
-      const formData = new FormData()
-      formData.append('file', file)
-      uploadImg(formData)
-    })
+    // if (isAndroid) {
+    //   mui('body').on('click', '#file', function () {
+    //     window.setupWebViewJavascriptBridge(bridge => {
+    //       bridge.callHandler('upload', '', (res) => {
+    //         log('res', res)
+    //         console.log(res)
+    //       })
+    //     })
+    //     return false
+    //   })
+    // } else {
+      mui('body').on('change', '#file', function () {
+        loadingShow()
+        const file = this.files[0]
+        const formData = new FormData()
+        formData.append('file', file)
+        uploadImg(formData)
+      })
+    //  }
 
     function uploadImg (formData) {
       $upload('/upload/fileuploadaws', 'post', formData, (res) => {

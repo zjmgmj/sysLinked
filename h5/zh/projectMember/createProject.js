@@ -6,7 +6,7 @@
     const id = _get('id')
     if (id) {
       $('.is-setting').css('display', 'block')
-      $('.title').text('Project Settings')
+      $('.title').text('项目设置')
       load()
       console.log('id', id)
     }
@@ -26,13 +26,13 @@
           $('#projectName').val(resData.name)
           $('#projectAddress').val(resData.implementationAddress)
           $('#projectCycle').val(resData.cycles)
-          $('#startTime span')[0].innerText = iosDateFormtter(resData.startTime)
-          $('#endTime span')[0].innerText = iosDateFormtter(resData.endTime)
+          $('#startTime span')[0].innerText = date2Str(new Date(resData.startTime))
+          $('#endTime span')[0].innerText = date2Str(new Date(resData.endTime))
           if (resData.status === 3) {
-            $('#checkedNo i.icon').attr('class', 'icon iconfont iconicon-test36 f-48B6E6')
-          } else {
             $('#checkedYes i.icon').attr('class', 'icon iconfont iconicon-test36 f-48B6E6')
             $('#checkedYes').attr('data-val', resData.status)
+          } else {
+            $('#checkedNo i.icon').attr('class', 'icon iconfont iconicon-test36 f-48B6E6')
           }
           localStorage.setItem('tempObject', JSON.stringify(resData))
         }

@@ -3,25 +3,6 @@
   const size = 15
   let createUserid = localStorage.getItem('userId')
   let pid = JSON.parse(localStorage.getItem('project')).id
-  // alert('v2')
-  // let createUserid = 62
-  // let pid = 10047
-  // window.setupWebViewJavascriptBridge(bridge => {
-  //   bridge.callHandler('getUserId', '', (result) => {
-  //     const resData = JSON.parse(result)
-  //     createUserid = resData.userId
-  //     // getJoinorglist()
-  //     // loadData()
-  //   })
-  // })
-  // window.setupWebViewJavascriptBridge(bridge => {
-  //   bridge.callHandler('getProjectId', '', (result) => {
-  //     const resData = JSON.parse(result)
-  //     pid = resData.projectId
-  //     // getJoinorglist()
-  //     // loadData()
-  //   })
-  // })
   const parentId = getUrlParam('parentId') || 0
   if (parentId) {
     $('#back').show()
@@ -119,11 +100,14 @@
       $('.popup').hide()
     })
     mui('.popup').on('change', '#addInvoice', function () {
-      const file = this.files[0]
-      const formData = new FormData()
-      formData.append('file', file)
-      console.log(formData)
-      uploadImg(formData)
+      if (this.files) {
+        const file = this.files[0]
+        const formData = new FormData()
+        formData.append('file', file)
+        console.log(formData)
+        uploadImg(formData)
+      }
+      
     })
 
     mui('.popup').on('tap', '#createFile', function () {
@@ -257,11 +241,6 @@
         }
       })
     })
-
-    // mui('body').on('change', '#searchInput', function() {
-
-    // })
-
     loadData()
 
 

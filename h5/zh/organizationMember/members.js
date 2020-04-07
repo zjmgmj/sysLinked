@@ -207,8 +207,10 @@
       $ajax('/dept/delete?id=' + id, 'get', '', function (res) {
         console.log(res)
         if (res.code === 1) {
-          // mui.back()
-          back()
+          window.setupWebViewJavascriptBridge(bridge => {
+            bridge.callHandler('pushTosecond', 'no')
+            back()
+          })
         }
       })
     })
@@ -231,7 +233,10 @@
 
     mui('body').on('tap', '#back', function () {
       // back()
-      mui.back()
+      window.setupWebViewJavascriptBridge(bridge => {
+        bridge.callHandler('pushTosecond', 'no')
+        mui.back()
+      })
       // mui.openWindow({
       //   url: '/organizationMember/',
       //   id: 'organizationMember'

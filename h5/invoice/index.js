@@ -59,8 +59,8 @@
           13: 'Other'
         }
         rows.map(item => {
-          // const createDate = datetime2Str(new Date(item.createDate))
-          const createDate = iosTimeFormtter(item.createDate)
+          const createDate = datetime2Str(new Date(item.createDate))
+          // const createDate = iosTimeFormtter(item.createDate)
           console.log(createDate)
           temp += `<li class="border-b-grey invoice-item" data-id="${item.id}">
             <div class="fl invoice-picture"><img src="${imgPath}${item.pic}" /></div>

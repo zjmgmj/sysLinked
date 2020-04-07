@@ -17,7 +17,10 @@
         if (res.code === 1) {
           mui.toast('发送成功')
           setTimeout(() => {
-            back()
+            window.setupWebViewJavascriptBridge(bridge => {
+              bridge.callHandler('pushTosecond', 'no')
+              back()
+            })
           }, 1000)
         } else {
           mui.toast(res.msg)
@@ -26,7 +29,10 @@
     })
 
     $('body').on('tap', '#back', function () {
-      back()
+      window.setupWebViewJavascriptBridge(bridge => {
+        bridge.callHandler('pushTosecond', 'no')
+        back()
+      })
     })
   });
 })(mui, document, jQuery);

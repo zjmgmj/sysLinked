@@ -38,7 +38,7 @@
   function pulldownRefresh () {
     $('#createProject').hide()
     // userId = 91
-    // orgId = 159
+    // orgId = 182
     // joinorglistAjax(userId)
     // getuser(userId)
     getJoinorglist()
@@ -59,6 +59,7 @@
       let closeCount = 0
       // if (resData.length) { }
       resData.map((item) => {
+        const pentagramTemp = item.status !== 3 ? `<i class="icon iconfont ${item.status === 2 ? 'iconicon-test6' : 'iconicon-test5'} Pentagram"></i>` : ''
         const temp = `<li class="store-txt" data-status="${item.status}" data-id="${item.id}" data-orgId="${item.orgId}">
           <div class="store-left flex flex-between align-center">
             <img class="store-pic" src="${item.pic !== 'null' && item.pic !== '' ? imgPath + item.pic : '/h5/images/nike.png'}" alt="sysLinked" />            
@@ -67,7 +68,7 @@
               <span>${item.name}</span>
             </p>
             <i class="icon iconfont iconicon-test11 setting"></i>
-            <i class="icon iconfont ${item.status === 2 ? 'iconicon-test6' : 'iconicon-test5'} Pentagram"></i>
+            ${pentagramTemp}
           </div>
           <div class="delete">
             <i class="icon iconfont text-white ft-20">&#xe63b;</i>
@@ -96,13 +97,6 @@
       <h1>关闭项目 · <span id="closeCount">${closeCount}</span></h1>
       <ul class="store-list close-list" id="closeProject">${closeProjectTemp}</ul>`
       localStorage.setItem('projectList', JSON.stringify(resData))
-      // $('#starredCount').text(starredCount)
-      // $('#startupCount').text(startupCount)
-      // $('#closeCount').text(closeCount)
-      // document.getElementById('starredProjects').innerHTML = starredProjectsTemp
-      // document.getElementById('startupProject').innerHTML = startupProjectTemp
-      // document.getElementById('closeProject').innerHTML = closeProjectTemp
-      // document.getElementById('content').innerHTML = contentTemp
       $('#content').html(contentTemp)
       mui('#pullrefresh').pullRefresh().endPulldownToRefresh()
       if ($('.store-txt').length > 0) maxWidth = $('.store-txt')[0].clientWidth

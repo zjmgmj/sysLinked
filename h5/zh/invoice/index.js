@@ -1,13 +1,6 @@
 (function ($$, doc, $) {
   mui.init();
   mui.ready(function () {
-    // const pid = 50
-    // mui('.page-title').on('tap', '#addPhotoShow', function () {
-    //   $('.popup').show()
-    // })
-    // mui('body').on('tap', '.opacity-bg', function () {
-    //   $('.popup').hide()
-    // })
     const pid = JSON.parse(localStorage.getItem('project')).id
     activeSidebar('cost')
     mui('.relation').on('change', '#addInvoice', function () {
@@ -53,14 +46,14 @@
         const rows = res.data.rows
         let invoiceAmountTotal = 0
         const category = {
-          2: 'Traffic',
-          3: 'Accommodation',
-          12: 'Catering',
-          13: 'Other'
+          2: '交通',
+          3: '住宿',
+          12: '餐饮',
+          13: '其他'
         }
         rows.map(item => {
-          // const createDate = datetime2Str(new Date(item.createDate))
-          const createDate = iosTimeFormtter(item.createDate)
+          const createDate = datetime2Str(new Date(item.createDate))
+          // const createDate = iosTimeFormtter(item.createDate)
           console.log(createDate)
           temp += `<li class="border-b-grey invoice-item" data-id="${item.id}">
             <div class="fl invoice-picture"><img src="${imgPath}${item.pic}" /></div>
@@ -114,6 +107,12 @@
       getprojectinvoicegrouplistAjax(pid, invoiceType)
     }
     // getprojectinvoicegrouplistAjax(52, '')
+    const typeName = {
+      'Ttaffic': '交通',
+      'Accommodation': '住宿',
+      'Catering': '餐饮费',
+      'Other': '其他'
+    }
     function getprojectinvoicegrouplistAjax(pid, invoiceType) {
       $ajax('/projectinvoice/getprojectinvoicegrouplist?projectId=' + pid + '&invoiceType=' + invoiceType, 'get', '', (res) => {
         console.log(res)
@@ -126,7 +125,7 @@
           temp += `<li class="flex flex-between">
             <div class="chart-color">
               <span class="chart fl" style="background: ${colorList[index]}"></span>
-              <p class="ft-16 f-grey fl">${item.typeName}</p>
+              <p class="ft-16 f-grey fl">${typeName[item.typeName]}</p>
             </div>
             <p class="ft-12 text-grey">¥ ${item.amount}</p>
           </li>`
@@ -157,7 +156,7 @@
       data.map(item => {
         const obj = {
           value: item.amount,
-          name: item.typeName
+          name: typeName[item.typeName]
         }
         echartData.push(obj)
       })

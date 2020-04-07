@@ -98,7 +98,7 @@
           res.data.map(item => {
             const obj = {
               value: item.id,
-              text: item.name
+              text: item.ename
             }
             categoryPickerList.push(obj)
           })
@@ -140,7 +140,7 @@
         sellerBankaccount: $('#sellerBankaccount').text(),
         sellerName: $('#sellerName').text(),
         sellerTax: $('#sellerTax').text(),
-        type: Number($('#category').attr('data-type'))
+        type: $('#category').attr('data-type')
       }
       let urlApi = '/projectinvoice/save'
       if (id) {
@@ -156,7 +156,7 @@
     })
 
     mui('body').on('tap', '.back, .cancel', () => {
-      mui.back()
+      back()
       // back()
     })
     mui.previewImage();

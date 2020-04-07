@@ -16,14 +16,6 @@
   //     // loadData()
   //   })
   // })
-  // window.setupWebViewJavascriptBridge(bridge => {
-  //   bridge.callHandler('getProjectId', '', (result) => {
-  //     const resData = JSON.parse(result)
-  //     pid = resData.projectId
-  //     // getJoinorglist()
-  //     // loadData()
-  //   })
-  // })
   const parentId = getUrlParam('parentId') || 0
   if (parentId) {
     $('#back').show()
@@ -233,45 +225,64 @@
     mui('.create-file-popup').on('tap', '#cancel', function () {
       $('.create-file-popup').hide()
     })
-
-    mui('.popup').on('change', '#uploadFile', function () {
-      loadingShow()
-      const file = this.files[0]
-      const formData = new FormData()
-      formData.append('file', file)
-      console.log(formData)
-      // uploadImg(formData)
-      const api = '/upload/fileuploadaws'
-      // if (file.type.indexOf('image') === -1) {
-      //   api = '/upload/fileuploadpdf'
-      // }
-      $upload(api, 'post', formData, (res) => {
-        mui.toast(res.msg)
-        loadingHide()
-        if (res.code === 1) {
-          $('#fileList').html('')
-          $('.add-file-popup').hide()
-          const params = {
-            createUserid: createUserid,
-            name: file.name,
-            projectId: pid,
-            parentId: parentId,
-            pic: res.data.url,
-            type: 1
+    // if (isAndroid) {
+    //   mui('body').on('click', '#uploadFile', function () {
+    //     // alert('isAndroid')
+    //     loadingShow()
+    //     window.setupWebViewJavascriptBridge(bridge => {
+    //       bridge.callHandler('openPhoto')
+    //       bridge.registerHandler('upload', function(data, responseCallback) {
+    //         console.log("upload:", data)
+    //         const resObj = JSON.parse(data)
+    //         loadingHide()
+    //         $('#fileList').html('')
+    //         $('.add-file-popup').hide()
+    //         const params = {
+    //           createUserid: createUserid,
+    //           name: resObj.name,
+    //           projectId: pid,
+    //           parentId: parentId,
+    //           pic: resObj.url,
+    //           type: 1
+    //         }
+    //         saveFile(params)
+    //         responseCallback('success')
+    //       })
+    //     })
+    //     return false
+    //   })
+    // } else { 
+      mui('.popup').on('change', '#uploadFile', function () {
+        loadingShow()
+        const file = this.files[0]
+        const formData = new FormData()
+        formData.append('file', file)
+        console.log(formData)
+        const api = '/upload/fileuploadaws'
+        $upload(api, 'post', formData, (res) => {
+          mui.toast(res.msg)
+          loadingHide()
+          if (res.code === 1) {
+            $('#fileList').html('')
+            $('.add-file-popup').hide()
+            const params = {
+              createUserid: createUserid,
+              name: file.name,
+              projectId: pid,
+              parentId: parentId,
+              pic: res.data.url,
+              type: 1
+            }
+            saveFile(params)
           }
-          saveFile(params)
-        }
+        })
       })
-    })
-
-    // mui('body').on('change', '#searchInput', function() {
-
-    // })
-
+    // }
     loadData()
 
 
-    function saveFile(params) {
+    function saveFile (params) {
+      alert(JSON.stringify(params))
       $ajax('/projectfolder/save', 'post', params, (res) => {
         if (res.code === 1) {
           $('#fileList').html('')

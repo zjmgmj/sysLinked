@@ -6,6 +6,7 @@
     let pid = ''
     // let pid = JSON.parse(localStorage.getItem('project')).id
     window.setupWebViewJavascriptBridge(bridge => {
+      bridge.callHandler('pushTosecond', 'no')
       bridge.callHandler('getOrgId', '', (result) => {
         const resData = JSON.parse(result)
         orgId = resData.orgId
@@ -84,9 +85,12 @@
     })
 
     mui('.popup').on('tap', '#inviteMembers', function () {
-      mui.openWindow({
-        url: '/h5/organizationMember/createInvite.html',
-        id: 'createInvite'
+      window.setupWebViewJavascriptBridge(bridge => {
+        bridge.callHandler('pushTosecond', 'yes')
+        mui.openWindow({
+          url: '/h5/organizationMember/createInvite.html',
+          id: 'createInvite'
+        })
       })
     })
 
@@ -121,7 +125,7 @@
         title = 'Unassigned Members'
       }
       window.setupWebViewJavascriptBridge(bridge => {
-        bridge.callHandler('pushTosecond', '')
+        bridge.callHandler('pushTosecond', 'yes')
         bridge.callHandler('getOrgId', '', (result) => {
           const resData = JSON.parse(result)
           orgId = resData.orgId
@@ -140,7 +144,7 @@
 
     mui('#deptList').on('tap', '.dept', function () {
       window.setupWebViewJavascriptBridge(bridge => {
-        bridge.callHandler('pushTosecond', '')
+        bridge.callHandler('pushTosecond', 'yes')
         bridge.callHandler('getProjectId', '', (result) => {
           const resData = JSON.parse(result)
           pid = resData.projectId

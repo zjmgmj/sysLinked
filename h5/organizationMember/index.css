@@ -127,9 +127,9 @@ body{font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial;}
   justify-content: space-between;
 }
 .popup-txt{
-  width: 7.5rem;
+  width: 8rem;
   right: 0rem;
 }
 .popup-txt .popup-members li{
-  width: 5.8rem;
+  width: 6.5rem;
 }

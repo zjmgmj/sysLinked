@@ -9,12 +9,10 @@
 
     function initData () {
       const authorPic = info.userPic ? imgPath + info.userPic : '/h5/images/avatar.png'
-      if (!info.userPic) {
-        $('#authorPicMax').hide()
-      } else { 
-        $('#authorPicMax').attr('src', authorPic)
-      }
-      $('#authorPicMin').attr('src', authorPic)
+      $('#authorPicMin, #authorPicMax').attr('style', `background: url(${authorPic});
+      background-size: 100%;
+      background-position: center;
+      background-repeat: no-repeat;`)
       $('#name').text(info.firstName)
       $('#surname').text(info.lastName)
       $('#mailbox').text(info.userEamil)

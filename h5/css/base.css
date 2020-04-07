@@ -474,7 +474,7 @@ sub { vertical-align: text-bottom }
 #recoverFiles,
 #recycleAlone,
 #recycleAll{
-  display: none;
+  display: block;
 }
 
 .cancel-btn {

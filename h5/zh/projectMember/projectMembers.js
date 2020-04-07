@@ -10,6 +10,7 @@
       let temp = ''
       resData.map((item, index) => {
         temp += `<li class="border-b-grey flex flex-between align-center member-item" data-id="${item.projectUserId}" data-index="${index}">
+          <div class="flex col">
           <div class="avator border-blue radius-b50">        
             <img src="${item.userPic !== 'null' && item.userPic ? imgPath + item.userPic : '/h5/images/avatar.png'}" alt="sysLinked" />            
           </div>
@@ -17,6 +18,8 @@
             <p class="name ft-16">${item.userNickname}</p>
             <p class="email ft-12">${item.userEamil}</p>
           </div>
+          </div>
+          <div id="remove">移除</div>
         </li>`
       })
       $('#adminList').html(temp)
@@ -69,16 +72,6 @@
     })
 
     mui('.member-list').on('tap', '.member-item', function () {
-          // const params = JSON.parse(localStorage.getItem('projectuserlist'))
-          // const idx = this.getAttribute('data-index')
-          // const detail = params[idx]
-          // pid = 10098
-          // detail.pid = pid
-          // localStorage.setItem('projectuserDetail', JSON.stringify(detail))
-          // mui.openWindow({
-          //   url: '/h5/zh/projectMember/memberInfo.html',
-          //   id: 'memberInfo'
-          // })
       window.setupWebViewJavascriptBridge(bridge => {
         bridge.callHandler('getProjectId', '', (result) => {
           const resData = JSON.parse(result)
@@ -112,6 +105,14 @@
         url: '/h5/zh/projectMember/batchImport.html',
         id: 'batchImport'
       })
+    })
+    mui('#adminList').on('tap', '#remove', function () { 
+      const id = this.parentElement.getAttribute('data-id')
+      $ajax('/projectuser/delete?id=' + id, 'get', '', function (res) {
+        mui.toast(res.msg)
+        pulldownRefresh()
+      })
+      return false
     })
   });
 })(mui, document, jQuery);

@@ -4,7 +4,7 @@
   const createUserId = localStorage.getItem('userId')
   const deptId = getUrlParam('deptId')
   const pid = getUrlParam('projectId')
-
+  const orgId = getUrlParam('orgId')
   function pulldownRefresh() {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
@@ -27,7 +27,7 @@
 
   function deptuserList() {
     // const searchKey = $('#searchInput').val()
-    let api = '/deptuser/getdeptuserlist?size=' + size + '&page=' + page + '&deptId=' + deptId + '&projectId=' + pid
+    let api = '/deptuser/getdeptuserlist?size=' + size + '&page=' + page + '&deptId=' + deptId + '&projectId=' + pid + '&orgId=' + orgId
     $ajax(api, 'get', '', function (res) {
       console.log(res)
       $('#pullrefresh').attr('data-page', page)
@@ -86,16 +86,22 @@
       const isChecked = $(this).find('input').attr('checked')
       $(this).find('input').attr('checked', !isChecked)
       const userId = this.getAttribute('data-userid')
-      if (isChecked) {
-        projectuserDelete(this.getAttribute('data-projectUserId'))
-      } else {
-        const params = {
-          createUserid: createUserId,
-          projectId: Number(pid),
-          userId: Number(userId)
-        }
-        projectUserSave(params)
+      const params = {
+        createUserid: createUserId,
+        projectId: Number(pid),
+        userId: Number(userId)
       }
+      projectUserSave(params)
+      // if (isChecked) {
+      //   projectuserDelete(this.getAttribute('data-projectUserId'))
+      // } else {
+      //   const params = {
+      //     createUserid: createUserId,
+      //     projectId: Number(pid),
+      //     userId: Number(userId)
+      //   }
+      //   projectUserSave(params)
+      // }
       return false
     })
 
@@ -150,10 +156,7 @@
 
     mui('body').on('tap', '#back', function () {
       // back()
-      mui.openWindow({
-        url: '/h5/zh/projectMember/deptList.html',
-        id: 'deptList'
-      })
+      mui.back()
     })
     deptuserList()
   });
