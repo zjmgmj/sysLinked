@@ -4,7 +4,7 @@
   const orgId = localStorage.getItem('orgDefault')
   const userId = localStorage.getItem('userId')
   // const picPath = 'https://test-for-syslinked1.s3.cn-north-1.amazonaws.com.cn/'
-  function pulldownRefresh() {
+  function pulldownRefresh () {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     // const page = Number($('#pulldownRefresh').attr('data-page'))
@@ -20,7 +20,7 @@
     loadData()
   }
 
-  function pullupRefresh() {
+  function pullupRefresh () {
     // 上拉加载具体业务实现
     const total = $('#pullrefresh').attr('data-total')
     if (Number(total) == $('#noticeList li').length) {
@@ -32,7 +32,7 @@
     console.log('pullupRefresh')
   }
 
-  function loadData() {
+  function loadData () {
     window.setupWebViewJavascriptBridge(bridge => {
       bridge.callHandler('getUserId', '', (result) => {
         const resData = JSON.parse(result)
@@ -79,12 +79,12 @@
     })
   }
 
-  function noticeList(resData) {
+  function noticeList (resData) {
     let temp = ''
     resData.map((item) => {
       const authorPic = item.userPic ? imgPath + item.userPic : '/h5/images/icon_dotted.jpg'
-      // const time = datetime2Str(new Date(item.messagesDate))
-      const time = iosTimeFormtter(item.messagesDate)
+      const time = datetime2Str(new Date(item.messagesDate))
+      // const time = iosTimeFormtter(item.messagesDate)
       let imgTempBox = ''
       if (item.fileurl) {
         const imgPathList = item.fileurl.split(',')
@@ -101,7 +101,7 @@
         <div class="notice-avator"><img src="${authorPic}" /></div>
         <div class="notice-info col ml-05">
           <div class="flex flex-between line-height-20">
-            <p class="ft-16 f-grey">${item.userNickname}</p>
+            <p class="ft-16 f-grey">${item.userNickname || 'System'}</p>
             <p class="ft-12 text-grey">${time}</p>
           </div>
           <p class="ft-12 text-grey pt-05">${item.englishMessages}</p>
@@ -112,7 +112,7 @@
     $('#noticeList').append(temp)
   }
 
-  function chatList(resData) {
+  function chatList (resData) {
     let temp = ''
     resData.map((item) => {
       const authorPic = item.userPic ? imgPath + item.userPic : '/h5/images/icon_dotted.jpg'

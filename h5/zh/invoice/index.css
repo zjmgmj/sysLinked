@@ -1,6 +1,6 @@
-body,p,div,span,i,em,input{font-family: Roboto;}
+body,p,div,span,i,em,input{font-family: Roboto,Heiti, Heiti SC, DroidSans, DroidSansFallback, Arial, "Microsoft YaHei";}
 /*费用管理*/
-.slide-item{width: 100%;height: 1.74rem;padding-top: 0.87rem;line-height: 1.74rem;}
+.slide-item{width: 100%;height: 1.74rem;padding-top: 0.87rem;line-height: 1.74rem; overflow-x: auto;}
 .slide-item li{position: relative;width: auto;height: 100%;}
 .slide-item li span{position: absolute;width:100%;left: 0;height: 3px;bottom: -4px;z-index: 222;}
 .slide-item li span.on{background:#262628;}
@@ -41,15 +41,15 @@ body,p,div,span,i,em,input{font-family: Roboto;}
 .create-project{margin-top: 2rem;}
 .create-project p{
   text-align: center;
-  line-height: 1.74rem;
-  height: 1.74rem;
-  padding: 1px;
   /* border: 1px #262628 solid;
   border-radius: 5px;
   color: #262628; */
+  line-height: 1.74rem;
+  height: 1.74rem;
+  padding: 1px;
 }
 .create-project p span{background-color: #FFFFFF;display: block;width: 100%;height: 100%;}
-/* .create-project p.on{background:#262628} */
+/* .create-project p.on{background:#262628;} */
 .invoice-img{
   width: 2.2rem;
   height: 2.2rem;
@@ -212,4 +212,18 @@ body,p,div,span,i,em,input{font-family: Roboto;}
 p img {
   max-width: 100%;
   height: auto;
+}
+
+.gallery-thumbs{
+  margin-top: 20px;
+  border-bottom: 1px #707070 solid;
+}
+.category-tab{
+  color: #999999;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+.swiper-slide-thumb-active{
+  color: #262628;
+  border-bottom: 3px solid #262628;
 }

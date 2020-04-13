@@ -38,7 +38,7 @@
   function pulldownRefresh () {
     $('#createProject').hide()
     // userId = 91
-    // orgId = 182
+    // orgId = 159
     // joinorglistAjax(userId)
     // getuser(userId)
     getJoinorglist()
@@ -61,7 +61,7 @@
       resData.map((item) => {
         const pentagramTemp = item.status !== 3 ? `<i class="icon iconfont ${item.status === 2 ? 'iconicon-test6' : 'iconicon-test5'} Pentagram"></i>` : ''
         const temp = `<li class="store-txt" data-status="${item.status}" data-id="${item.id}" data-orgId="${item.orgId}">
-          <div class="store-left flex flex-between align-center">
+          <div class="store-left flex flex-between align-center" style="${item.status === 3 ? 'background: #f7f7f7' : ''}">
             <img class="store-pic" src="${item.pic !== 'null' && item.pic !== '' ? imgPath + item.pic : '/h5/images/nike.png'}" alt="sysLinked" />            
             <p class="col">
               <span>${item.id}</span>
@@ -97,6 +97,13 @@
       <h1>关闭项目 · <span id="closeCount">${closeCount}</span></h1>
       <ul class="store-list close-list" id="closeProject">${closeProjectTemp}</ul>`
       localStorage.setItem('projectList', JSON.stringify(resData))
+      // $('#starredCount').text(starredCount)
+      // $('#startupCount').text(startupCount)
+      // $('#closeCount').text(closeCount)
+      // document.getElementById('starredProjects').innerHTML = starredProjectsTemp
+      // document.getElementById('startupProject').innerHTML = startupProjectTemp
+      // document.getElementById('closeProject').innerHTML = closeProjectTemp
+      // document.getElementById('content').innerHTML = contentTemp
       $('#content').html(contentTemp)
       mui('#pullrefresh').pullRefresh().endPulldownToRefresh()
       if ($('.store-txt').length > 0) maxWidth = $('.store-txt')[0].clientWidth
@@ -211,6 +218,7 @@
       const projectList = getProjectList.find((item) => {
         return item.id === Number(id)
       })
+      if (projectList.status === 3) return false
       localStorage.setItem('project', JSON.stringify(projectList))
       getPermissionProject(id)
       window.setupWebViewJavascriptBridge(bridge => {

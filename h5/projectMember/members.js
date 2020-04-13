@@ -28,7 +28,10 @@
 
   function deptuserList() {
     // const searchKey = $('#searchInput').val()
-    let api = '/deptuser/getdeptuserlist?size=' + size + '&page=' + page + '&deptId=' + deptId + '&projectId=' + pid + '&orgId=' + orgId
+    let api = '/deptuser/getdeptuserlist?size=' + size + '&page=' + page + '&projectId=' + pid + '&orgId=' + orgId
+    if (deptId) {
+      api = api + '&deptId=' + deptId
+     }
     $ajax(api, 'get', '', function (res) {
       console.log(res)
       $('#pullrefresh').attr('data-page', page)
@@ -45,19 +48,25 @@
 
   function orgList(resData) {
     let temp = ''
+    let btnTemp = ''
     resData.map((item) => {
       let checked = ""
+      btnTemp = `<div class="f-blue add">Join</div>`
       if (item.isproject) {
         checked = "checked"
+        btnTemp = `<div class="text-999">Joined</div>`
       }
+      // <div class="check-box"><input type="checkbox" ${checked}/></div>
       temp += `<li class="border-b-grey member-item" data-userId="${item.userId}" data-projectUserId="${item.projectUserId}">
-        <div class="flex align-center">
-          <div class="check-box"><input type="checkbox" ${checked}/></div>
-          <div class="avator border-blue radius-b50"><img src="/h5/images/avator.png" /></div>
-          <div class="member-info">
-            <p class="name ft-16">${item.userNickname}</p>
-            <p class="email ft-12">${item.userEamil}</p>
+        <div class="flex align-center flex-between">
+          <div class="flex align-center">
+            <div class="avator border-blue radius-b50"><img src="/h5/images/avator.png" /></div>
+            <div class="member-info">
+              <p class="name ft-16">${item.userNickname}</p>
+              <p class="email ft-12">${item.userEamil}</p>
+            </div>
           </div>
+          ${btnTemp}
         </div>
       </li>`
     })
@@ -87,10 +96,8 @@
       deptuserList()
     })
 
-    mui('#memberList').on('tap', '.member-item', function () {
-      const isChecked = $(this).find('input').attr('checked')
-      $(this).find('input').attr('checked', !isChecked)
-      const userId = this.getAttribute('data-userid')
+    mui('#memberList').on('tap', '.member-item .add', function () {
+      const userId = this.parentNode.parentNode.getAttribute('data-userid')
       const params = {
         createUserid: createUserId,
         projectId: Number(pid),
@@ -120,6 +127,7 @@
     function projectUserSave(params) {
       $ajax('/projectuser/save', 'post', params, function (res) {
         mui.toast(res.msg)
+        pulldownRefresh()
       })
     }
 
@@ -160,8 +168,8 @@
     // })
 
     mui('body').on('tap', '#back', function () {
-      // back()
-      mui.back()
+      back()
+      // mui.back()
       // mui.openWindow({
       //   url: '/h5/projectMember/deptList.html',
       //   id: 'deptList'

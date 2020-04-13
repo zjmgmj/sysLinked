@@ -277,6 +277,7 @@ sub { vertical-align: text-bottom }
   border-bottom: 1px #262628 dotted;
   overflow: hidden;
   box-sizing: border-box;
+  position: relative;
 }
 .popup-txt .popup-members li:last-child{
   border-bottom: none

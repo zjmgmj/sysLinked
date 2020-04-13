@@ -2,6 +2,17 @@
   const page = 1
   const size = 150
   let pid = null
+  let orgId = null
+  window.setupWebViewJavascriptBridge(bridge => {
+    bridge.callHandler('getProjectId', '', (result) => {
+      const resData = JSON.parse(result)
+      pid = resData.projectId
+    })
+    bridge.callHandler('getOrgId', '', (result) => {
+      const resData = JSON.parse(result)
+      orgId = resData.orgId
+    })
+  })
 
   function loadData() {
     $ajax('/projectuser/getprojectuserlist?page=' + page + '&size=' + size + '&projectId=' + pid, 'get', '', function (res) {
@@ -32,15 +43,16 @@
 
   function pulldownRefresh () {
     $('#projectMembers #optionShow').hide()
-    // pid = '10098'
-    // loadData()
-    window.setupWebViewJavascriptBridge(bridge => {
-      bridge.callHandler('getProjectId', '', (result) => {
-        const resData = JSON.parse(result)
-        pid = resData.projectId
-        loadData()
-      })
-    })
+    pid = '10098'
+    orgId = '182'
+    loadData()
+    // window.setupWebViewJavascriptBridge(bridge => {
+    //   bridge.callHandler('getProjectId', '', (result) => {
+    //     const resData = JSON.parse(result)
+    //     pid = resData.projectId
+    //     loadData()
+    //   })
+    // })
   }
   mui.init({
     pullRefresh: {
@@ -102,8 +114,10 @@
     })
     mui('body').on('tap', '#batchImport', function () {
       mui.openWindow({
-        url: '/h5/zh/projectMember/batchImport.html',
-        id: 'batchImport'
+        url: '/h5/zh/projectMember/members.html?projectId='+pid+'&orgId='+orgId,
+        id: 'members'
+        // url: '/h5/zh/projectMember/batchImport.html',
+        // id: 'batchImport'
       })
     })
     mui('#adminList').on('tap', '#remove', function () { 

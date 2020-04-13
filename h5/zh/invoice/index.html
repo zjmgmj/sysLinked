@@ -17,31 +17,71 @@
   <!-- <link rel="stylesheet" href="../css/mui.min.css"> -->
   <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
   <link rel="stylesheet" type="text/css" href="/h5/css/index.css" />
-  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" type="text/css" href="/h5/css/swiper.min.css" />
+  <link rel="stylesheet" href="/h5/invoice/index.css">
+  <style>
+    #swiperContent .swiper-slide .invoice-list{
+  max-height: 300px;
+  overflow-y: auto;
+}
+.gallery-thumbs{
+  margin-top: 20px;
+  border-bottom: 1px #707070 solid;
+}
+.category-tab{
+  color: #999999;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+.swiper-slide-thumb-active{
+  color: #262628;
+  border-bottom: 3px solid #262628;
+}
+  </style>
 </head>
 
 <body class="page-width" id="invoice">
   <div class="bg-white flex flex-between page-width page-title">
-    <!-- <i class="icon iconfont f-grey ft-18">&#xe651;</i> -->
     <div id="sidebar">
       <i class="icon iconfont f-grey ft-18 iconicon-test29"></i>
     </div>
     <div class="title ft-14">发票管理</div>
     <div class="relation">
       <i class="icon iconfont text-default ft-18 iconicon-test7" id="addPhotoShow"></i>
-      <input type="file" accept="image/*" id="addInvoice" value="" class="upload-input">
     </div>
   </div>
   <div class="page-con invoice pt-header">
-    <ul class="slide-item flex flex-between border-b-grey">
-      <li class="ft-16 f-grey category-tab" data-val="">全部<span class="on"></span></li>
-      <li class="ft-16 text-default category-tab" data-val="2">交通<span></span></li>
-      <li class="ft-16 text-default category-tab" data-val="3">住宿<span></span></li>
-      <li class="ft-16 text-default category-tab" data-val="12">餐饮<span></span></li>
-      <li class="ft-16 text-default category-tab" data-val="13">其他<span></span></li>
-    </ul>
-    <ul class="invoice-list" id="invoiceList">
-    </ul>
+    <div class="swiper-container gallery-thumbs">
+      <div id="headInvoice" class="swiper-wrapper" style="text-align: center;">
+        
+      </div>
+    </div>
+    <div class="swiper-container gallery-top">
+      <div class="swiper-wrapper" id="swiperContent">
+        <div class="swiper-slide">
+          <ul class="invoice-list" id="invoiceList_0"></ul>
+        </div>
+        <div class="swiper-slide">
+          <ul class="invoice-list" id="invoiceList_1"></ul>
+        </div>
+        <div class="swiper-slide">
+          <ul class="invoice-list" id="invoiceList_2"></ul>
+        </div>
+        <div class="swiper-slide">
+          <ul class="invoice-list" id="invoiceList_2"></ul>
+        </div>
+        <div class="swiper-slide">
+          <ul class="invoice-list" id="invoiceList_2"></ul>
+        </div>
+        <div class="swiper-slide">
+          <ul class="invoice-list" id="invoiceList_2"></ul>
+        </div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+        <div class="swiper-slide"></div>
+      </div>
+    </div>
     <div class="flex flex-between border-b-grey total">
       <p class="ft-14 f-grey">合计</p>
       <p class="ft-12 text-grey" id="invoiceAmountTotal"></p>
@@ -64,21 +104,27 @@
     <div class="popup-txt">
       <div class="popup-bg"><img src="/h5/images/popupBg.png" /></div>
       <ul class="popup-members">
-        <li class="border-b-grey ft-14 flex align-center">
+        <li class="border-b-grey ft-14 flex align-center" id="addInvoice">
           <i class="icon iconfont text-black ft-20">&#xe64b;</i>
-          <span class="pl-02">扫一扫</span>
+          <span class="pl-02">新增发票</span>
+          <!-- <input type="file" accept="image/*" id="addInvoice" value="" class="upload-input"> -->
         </li>
-        <li class="ft-14 flex align-center relative">
+        <li class="ft-14 flex align-center relative" id="addExpenses">
           <i class="icon iconfont text-black ft-20">&#xe646;</i>
-          <span class="pl-02">添加</span>
-          <input type="file" accept="image/*" id="addInvoice" value="" class="upload-input">
+          <span class="pl-02">收据</span>
+          <!-- <input type="file" accept="image/*" id="addExpenses" value="" class="upload-input"> -->
           <!-- <input type="file" accept="image/*" value="" id="file"/>      -->
+        </li>
+        <li class="ft-14 flex align-center relative" id="category">
+          <i class="icon iconfont text-black ft-20">&#xe63e;</i>
+          <span class="pl-02">分类</span>
         </li>
       </ul>
     </div>
   </div>
 </body>
 <script src="/h5/js/jquery-3.4.1.min.js"></script>
+<script src="/h5/js/swiper.js"></script>
 <script src="/h5/js/mui.js"></script>
 <script src="/h5/js/echarts.min.js"></script>
 <script src="/h5/js/public.js"></script>
