@@ -132,10 +132,10 @@
           })
           if (id) {
             invoiceDetail()
+          } else if (invoiceClass === '1') {
+            distinguish(path)
           }
-          // else if (invoiceClass === '1') {
-          //   distinguish(path)
-          // } else { 
+          // else { 
             // $('#invoice-pic')[0].src = url + path
             // $('#invoice-pic').attr('data-path', path)
           // }

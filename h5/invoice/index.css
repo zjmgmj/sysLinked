@@ -213,20 +213,3 @@ p img {
   max-width: 100%;
   height: auto;
 }
-#swiperContent .swiper-slide .invoice-list{
-  max-height: 300px;
-  overflow-y: auto;
-}
-.gallery-thumbs{
-  margin-top: 20px;
-  border-bottom: 1px #707070 solid;
-}
-.category-tab{
-  color: #999999;
-  font-size: 16px;
-  padding-bottom: 5px;
-}
-.swiper-slide-thumb-active{
-  color: #262628;
-  border-bottom: 3px solid #262628;
-}

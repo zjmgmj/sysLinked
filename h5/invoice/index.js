@@ -10,23 +10,21 @@
     })
     const pid = JSON.parse(localStorage.getItem('project')).id
     activeSidebar('cost')
-    mui('.popup').on('tap', '#addInvoice', function () {
-      mui.openWindow({
-        url: '/h5/invoice/invoiceDetails.html?invoiceClass=1',
-        id: 'invoiceDetails'
-      })
-      // loadingShow()
-      // const file = this.files[0]
-      // if (!file.name) {
-      //   loadingHide()
-      //   mui.toast('upload failed')
-      //   return false
-      // }
-      // const formData = new FormData()
-      // formData.append('file', file)
-      // console.log(formData)
-      // this.value = ''
-      // uploadImg(formData, 1)
+    mui('.popup').on('change', '#addInvoice', function () {
+      // mui.openWindow({
+      //   url: '/h5/invoice/invoiceDetails.html?invoiceClass=1',
+      //   id: 'invoiceDetails'
+      // })
+      const file = this.files[0]
+      if (!file.name) {
+        mui.toast('upload failed')
+        return false
+      }
+      const formData = new FormData()
+      formData.append('file', file)
+      console.log(formData)
+      this.value = ''
+      uploadImg(formData, 1)
     })
     mui('.popup').on('tap', '#addExpenses', function () {
       mui.openWindow({
@@ -135,6 +133,7 @@
     })
 
     function uploadImg (formData, invoiceClass) {
+      loadingShow()
       $upload('/upload/fileuploadaws', 'post', formData, (res) => {
         loadingHide()
         if (res.code === 1) {

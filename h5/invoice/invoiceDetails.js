@@ -133,11 +133,12 @@
           if (id) {
             invoiceDetail()
           }
-          // else if (invoiceClass === '1') {
-          //   distinguish(path)
-          // } else { 
-            // $('#invoice-pic')[0].src = url + path
-            // $('#invoice-pic').attr('data-path', path)
+          else if (invoiceClass === '1') {
+            distinguish(path)
+          }
+          // else { 
+          //   $('#invoice-pic')[0].src = url + path
+          //   $('#invoice-pic').attr('data-path', path)
           // }
         }
         categoryPicker.setData(categoryPickerList)
