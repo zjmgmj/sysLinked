@@ -35,6 +35,7 @@
             $('#checkedNo i.icon').attr('class', 'icon iconfont iconicon-test36 f-48B6E6')
           }
           localStorage.setItem('tempObject', JSON.stringify(resData))
+          getprojectuserlist(resData.transferUserid)
         }
       })
     }
@@ -121,7 +122,7 @@
         params = tempObject
         const projectUser = $('#projectUser span').attr('data-userId')
         if (projectUser) {
-          params.createUserid = Number(projectUser)
+          params.transferUserid = Number(projectUser)
         }
       }
       $ajax(urlApi, 'post', params, (res) => {
@@ -163,8 +164,8 @@
     const userPicker = new mui.PopPicker({
       buttons: pickButtons
     });
-    getprojectuserlist()
-    function getprojectuserlist() { 
+    
+    function getprojectuserlist(transferUserid) { 
       const urlApi = '/projectuser/getprojectuserlist?page=1&size=100&projectId='+id
       $ajax(urlApi, 'get', '', (res) => {
         console.log('---------', res)
@@ -174,6 +175,9 @@
           resData.map(item => { 
             item.value = item.userId
             item.text = item.userNickname
+            if (transferUserid && item.value === transferUserid) { 
+              $('#projectUser span').text(item.userNickname)
+            }
           })
           userPicker.setData(res.data.rows)
         }

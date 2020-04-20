@@ -60,7 +60,7 @@
       let closeCount = 0
       // if (resData.length) { }
       resData.map((item) => {
-        const pentagramTemp = item.status !== 3 ? `<i class="icon iconfont ${item.status === 2 ? 'iconicon-test6' : 'iconicon-test5'} Pentagram"></i>` : ''
+        const pentagramTemp = item.status !== 3 ? `<i class="icon iconfont iconicon-test11 setting"></i><i class="icon iconfont ${item.status === 2 ? 'iconicon-test6' : 'iconicon-test5'} Pentagram"></i>` : ''
         const temp = `<li class="store-txt" data-status="${item.status}" data-id="${item.id}" data-orgId="${item.orgId}">
           <div class="store-left flex flex-between align-center" style="${item.status === 3 ? 'background: #f7f7f7' : ''}">
             <img class="store-pic" src="${item.pic !== 'null' && item.pic !== '' ? imgPath + item.pic : '/h5/images/nike.png'}" alt="sysLinked" />            
@@ -68,7 +68,6 @@
               <span>${item.id}</span>
               <span>${item.name}</span>
             </p>
-            <i class="icon iconfont iconicon-test11 setting"></i>
             ${pentagramTemp}
           </div>
           <div class="delete">
