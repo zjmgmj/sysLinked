@@ -33,8 +33,8 @@
           let temp = ''
           resData.map(item => {
             // const authorPic = item.userPic ? imgPath + item.userPic : '/h5/images/icon_dotted.jpg'
-            // const time = datetime2Str(new Date(item.createTime))
-            const time = iosTimeFormtter(item.createTime)
+            const time = datetime2Str(new Date(item.createTime))
+            // const time = iosTimeFormtter(item.createTime)
             let imgTemp = ''
             if (item.fileurl) {
               imgTemp = `<img src="${imgPath}${item.fileurl}" class="chat-img" data-preview-src="" data-preview-group="1">`

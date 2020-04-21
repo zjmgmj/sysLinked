@@ -3,6 +3,25 @@
   const size = 15
   let createUserid = localStorage.getItem('userId')
   let pid = JSON.parse(localStorage.getItem('project')).id
+  // alert('v2')
+  // let createUserid = 62
+  // let pid = 10047
+  // window.setupWebViewJavascriptBridge(bridge => {
+  //   bridge.callHandler('getUserId', '', (result) => {
+  //     const resData = JSON.parse(result)
+  //     createUserid = resData.userId
+  //     // getJoinorglist()
+  //     // loadData()
+  //   })
+  // })
+  // window.setupWebViewJavascriptBridge(bridge => {
+  //   bridge.callHandler('getProjectId', '', (result) => {
+  //     const resData = JSON.parse(result)
+  //     pid = resData.projectId
+  //     // getJoinorglist()
+  //     // loadData()
+  //   })
+  // })
   const parentId = getUrlParam('parentId') || 0
   if (parentId) {
     $('#back').show()
@@ -55,8 +74,8 @@
             filePic = '/h5/images/file-word.png'
           }
         }
-        // const createDate = datetime2Str(new Date(item.createDate))
-        const createDate = iosTimeFormtter(item.createDate)
+        const createDate = datetime2Str(new Date(item.createDate))
+        // const createDate = iosTimeFormtter(item.createDate)
         temp += `<li class="flex border-b-grey align-center file-item">
           <div class="mr-15"><input type="checkbox" data-index="${index}"/></div>
           <div class="flex align-center file-content" data-id="${item.id}" data-fileType='${fileType}' data-path="${item.pic}">
@@ -100,14 +119,11 @@
       $('.popup').hide()
     })
     mui('.popup').on('change', '#addInvoice', function () {
-      if (this.files) {
-        const file = this.files[0]
-        const formData = new FormData()
-        formData.append('file', file)
-        console.log(formData)
-        uploadImg(formData)
-      }
-      
+      const file = this.files[0]
+      const formData = new FormData()
+      formData.append('file', file)
+      console.log(formData)
+      uploadImg(formData)
     })
 
     mui('.popup').on('tap', '#createFile', function () {
@@ -241,6 +257,11 @@
         }
       })
     })
+
+    // mui('body').on('change', '#searchInput', function() {
+
+    // })
+
     loadData()
 
 

@@ -51,7 +51,8 @@
     const active = $('#pullrefresh').attr('data-active')
     let api = '/notice/list?page=' + page + '&size=' + size + '&orgId=' + orgId + '&userId=' + userId
     if (active === '1') {
-      api = '/messages/getgruopuserlist?size=' + size + '&page=' + page + '&orgId=' + orgId + '&staffId=' + userId
+      api = '/messages/getgruopuserlist?page=1&size=50&orgId=236&staffId=109'
+      // api = '/messages/getgruopuserlist?size=' + size + '&page=' + page + '&orgId=' + orgId + '&staffId=' + userId
     }
     $ajax(api, 'get', '', (res) => {
       console.log(res)

@@ -68,8 +68,8 @@
             filePic = '/h5/images/file-word.png'
           }
         }
-        // const createDate = datetime2Str(new Date(item.createDate))
-        const createDate = iosTimeFormtter(item.createDate)
+        const createDate = datetime2Str(new Date(item.createDate))
+        // const createDate = iosTimeFormtter(item.createDate)
         temp += `<li class="flex border-b-grey align-center file-item">
           <div class="mr-15"><input type="checkbox" data-index="${index}"/></div>
           <div class="flex align-center file-content" data-id="${item.id}" data-fileType='${fileType}' data-path="${item.pic}">

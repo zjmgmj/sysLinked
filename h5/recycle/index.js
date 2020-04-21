@@ -72,7 +72,8 @@
         if (projectRole.recycle.indexOf('projectrecycle:delete') === -1 && projectRole.recycle.indexOf('projectrecycle:recovery') === -1) {
           caozuoTmp = ''
         }
-        const createDate = item.createDate ? iosTimeFormtter(item.createDate) : ''
+        // datetime2Str(new Date(item.createDate))
+        const createDate = item.createDate ? datetime2Str(new Date(item.createDate)) : ''
         temp += `<li class="flex flex-between border-b-grey file-item">
         <div class="flex align-center">
           <div class="mr-15"><input type="checkbox" data-id="${item.id}" data-index="${index}"/></div>
