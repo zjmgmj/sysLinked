@@ -11,8 +11,10 @@
     categoryList()
     if (invoiceClass == 1) {
       $('#title').text('费用明细')
+      $('#picturesTitle').text('替换图片')
     } else { 
       $('#title').text('填写费用')
+      $('#picturesTitle').text('添加图片')
     }
     
     const pickButtons = ['取消', '确定']
@@ -233,7 +235,6 @@
       // mui.back()
       back()
     })
-    mui.previewImage();
     mui('body').on('change', '#addInvoice', function () {
       loadingShow()
       const file = this.files[0]
@@ -248,6 +249,7 @@
         if (res.code === 1) {
           path = res.data.url
           $('#addInvoice').attr('data-path', res.data.url)
+          $('#picturesTitle').text('Replace pictures')
           if (invoiceClass == '1') {
             distinguish(path)
           } else { 
@@ -262,5 +264,10 @@
     //     console.log(res)
     //   })
     // }
+    mui('body').on('tap', '#invoice-pic', () => {
+      if ($('#invoice-pic').attr('data-path')) {
+        mui.previewImage();
+      }
+    })
   });
 })(mui, document, jQuery);

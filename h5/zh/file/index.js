@@ -189,8 +189,12 @@
           id: 'fileChild'
         })
       } else if (fileType === 'office') {
-        loadingShow()
-        location.href = `https://view.officeapps.live.com/op/view.aspx?src=${imgPath}${path}`
+        mui.openWindow({
+          url: '/h5/zh/file/detailFile.html?path=' + path,
+          id: 'detailFile'
+        })
+        // loadingShow()
+        // location.href = `https://view.officeapps.live.com/op/view.aspx?src=${imgPath}${path}`
       } else if (fileType === 'img') {
         mui.openWindow({
           url: `/h5/zh/file/detail.html?path=${path}&type=${fileType}`,

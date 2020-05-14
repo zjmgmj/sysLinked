@@ -6,7 +6,7 @@
   const pid = getUrlParam('projectId')
   const orgId = getUrlParam('orgId')
 
-  function pulldownRefresh() {
+  function pulldownRefresh () {
     //  下拉刷新具体业务实现
     console.log('pulldownRefresh')
     page = 1
@@ -14,7 +14,7 @@
     deptuserList()
   }
 
-  function pullupRefresh() {
+  function pullupRefresh () {
     // 上拉加载具体业务实现
     console.log('pullupRefresh')
     const total = $('#pullrefresh').attr('data-total')
@@ -26,12 +26,12 @@
     deptuserList()
   }
 
-  function deptuserList() {
+  function deptuserList () {
     // const searchKey = $('#searchInput').val()
     let api = '/deptuser/getdeptuserlist?size=' + size + '&page=' + page + '&projectId=' + pid + '&orgId=' + orgId
     if (deptId) {
       api = api + '&deptId=' + deptId
-     }
+    }
     $ajax(api, 'get', '', function (res) {
       console.log(res)
       $('#pullrefresh').attr('data-page', page)
@@ -46,7 +46,7 @@
     })
   }
 
-  function orgList(resData) {
+  function orgList (resData) {
     let temp = ''
     let btnTemp = ''
     resData.map((item) => {
@@ -60,7 +60,7 @@
       temp += `<li class="border-b-grey member-item" data-userId="${item.userId}" data-projectUserId="${item.projectUserId}">
         <div class="flex align-center flex-between">
           <div class="flex align-center">
-            <div class="avator border-blue radius-b50"><img src="/h5/images/avator.png" /></div>
+            <div class="avator border-blue radius-b50"><img src="${item.userPic !== 'null' && item.userPic ? imgPath + item.userPic : '/h5/images/avatar.png'}" /></div>
             <div class="member-info">
               <p class="name ft-16">${item.userNickname}</p>
               <p class="email ft-12">${item.userEamil}</p>
@@ -117,14 +117,14 @@
       return false
     })
 
-    function projectuserDelete(userId) {
+    function projectuserDelete (userId) {
       $ajax('/projectuser/delete?id=' + userId, 'get', '', function (res) {
         console.log(res)
         mui.toast(res.msg)
       })
     }
 
-    function projectUserSave(params) {
+    function projectUserSave (params) {
       $ajax('/projectuser/save', 'post', params, function (res) {
         mui.toast(res.msg)
         pulldownRefresh()

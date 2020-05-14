@@ -43,16 +43,15 @@
 
   function pulldownRefresh () {
     $('#projectMembers #optionShow').hide()
-    pid = '10098'
-    orgId = '182'
-    loadData()
-    // window.setupWebViewJavascriptBridge(bridge => {
-    //   bridge.callHandler('getProjectId', '', (result) => {
-    //     const resData = JSON.parse(result)
-    //     pid = resData.projectId
-    //     loadData()
-    //   })
-    // })
+    // pid = '10098'
+    // loadData()
+    window.setupWebViewJavascriptBridge(bridge => {
+      bridge.callHandler('getProjectId', '', (result) => {
+        const resData = JSON.parse(result)
+        pid = resData.projectId
+        loadData()
+      })
+    })
   }
   mui.init({
     pullRefresh: {

@@ -43,7 +43,7 @@
     const nowDate = new Date()
     const endDate = new Date(new Date().getTime() + 604800000)
     $('#startTime span')[0].innerText = date2Str(new Date(nowDate))
-    $('#endTime span')[0].innerText = date2Str(new Date(endDate))
+    // $('#endTime span')[0].innerText = date2Str(new Date(endDate))
     const dayPicker = new $$.DtPicker({
       buttons: pickButtons,
       type: 'date',

@@ -11,8 +11,10 @@
     categoryList()
     if (invoiceClass == 1) {
       $('#title').text('Invoice Details')
+      $('#picturesTitle').text('Replace pictures')
     } else { 
       $('#title').text('Fill In The Cost')
+      $('#picturesTitle').text('Add pictures')
     }
     
     const pickButtons = ['cancel', 'sure']
@@ -234,7 +236,8 @@
       // mui.back()
       back()
     })
-    mui.previewImage();
+    
+    
     mui('body').on('change', '#addInvoice', function () {
       loadingShow()
       const file = this.files[0]
@@ -249,6 +252,7 @@
         if (res.code === 1) {
           path = res.data.url
           $('#addInvoice').attr('data-path', res.data.url)
+          $('#picturesTitle').text('Replace pictures')
           if (invoiceClass == '1') {
             distinguish(path)
           } else { 
@@ -263,5 +267,10 @@
     //     console.log(res)
     //   })
     // }
+    mui('body').on('tap', '#invoice-pic', () => {
+      if ($('#invoice-pic').attr('data-path')) {
+        mui.previewImage();
+      }
+    })
   });
 })(mui, document, jQuery);
