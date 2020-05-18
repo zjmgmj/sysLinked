@@ -33,6 +33,14 @@
     })
 
     function categoryAdd (name) { 
+      const isReapeat = $('#addItem li').filter((index, el) => {
+        console.log(index)
+        return name === el.getAttribute('data-name')
+      })
+      if (isReapeat.length) {
+        mui.toast('added')
+        return false
+      }
       const params={
         createUserid: userid,
         name: name,
@@ -56,7 +64,7 @@
       $ajax('/category/list?type=3&pid=1', 'get', '', (res)=> {
         let temp = ''
         res.data.map((item) => {
-          temp += `<li class="border-grey group-list" data-id="${item.id}" data-name="${item.name}" data-pid="${item.pid}" data-name="${item.name}">	 
+          temp += `<li class="border-grey group-list" data-id="${item.id}" data-pid="${item.pid}" data-name="${item.name}">	 
             <i class="icon iconfont ft-20 f-6DB767 mr-10 pl-05 fl">&#xe648;</i>
             <p class="ft-12 text-default ml-05">${item.name}</p>
           </li>`
@@ -69,7 +77,7 @@
       $ajax(`/projectcategory/list?projectId=${pid}&type=4`, 'get', '', (res)=> {
         let temp = ''
         res.data.map((item) => {
-          temp += `<li class="border-grey" data-id="${item.id}">
+          temp += `<li class="border-grey" data-id="${item.id}" data-name="${item.name}">
             <div class="flex flex-between align-center">
               <p class="ft-12 text-default ml-05 flex align-center del">
                 <i class="icon iconfont ft-20 f-E23E3E mr-10">&#xe647;</i>

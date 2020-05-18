@@ -53,8 +53,16 @@
           data-preview-group="1" /></div>
     </div> -->
     <div class="flex" style="align-items: flex-end;">
-      <div class="invoice-img mt-05"><img src="/h5/images/add.jpg" id="invoice-pic" data-preview-src=""
+      <!-- <div class="invoice-img mt-05"><img src="/h5/images/add.jpg" id="invoice-pic" data-preview-src=""
         data-preview-group="1" /></div>
+      <div style="position: relative; padding-left: 10px;">
+        <span id="picturesTitle">替换图片</span>
+        <input type="file" accept="image/*" id="addInvoice" value="" class="upload-input">
+      </div> -->
+      <div class="invoice-img mt-05" style="position: relative;">
+        <img src="/h5/images/add.jpg" id="invoice-pic" data-preview-src="" data-preview-group="1"/>
+        <input type="file" accept="image/*" value="" id="uploadInput" class="upload-input">
+      </div>
       <div style="position: relative; padding-left: 10px;">
         <span id="picturesTitle">替换图片</span>
         <input type="file" accept="image/*" id="addInvoice" value="" class="upload-input">
@@ -77,76 +85,90 @@
       <div class="border-b-dot pb-05">
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">开票日期</p>
-          <p class="ft-14 f-grey line-height-30" id="invoiceDate"></p>
+          <p class="ft-14 f-grey line-height-30" id="invoiceDate" style="border-bottom: 1px solid rgba(229,229,229,1);" id="invoiceDate">请选择开票日期</p>
+          <!-- <p class="ft-14 f-grey line-height-30" id="invoiceDate"></p> -->
         </div>
         <div class="pt-20 details-list">
           <div class="fl width-50">
             <p class="ft-12 text-default line-height-20">发票代码</p>
-            <p class="ft-14 f-grey line-height-30" id="invoiceCode"></p>
+            <input type="text" id="invoiceCode">
+            <!-- <p class="ft-14 f-grey line-height-30" id="invoiceCode"></p> -->
           </div>
-          <div class="fl width-50">
+          <div class="fl width-50 pl-10">
             <p class="ft-12 text-default line-height-20">发票号码</p>
-            <p class="ft-14 f-grey line-height-30" id="invoiceNum"></p>
+            <input type="text" id="invoiceNum">
+            <!-- <p class="ft-14 f-grey line-height-30" id="invoiceNum"></p> -->
           </div>
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">验证码</p>
-          <input type="text" id="verifiyCode" style="border: none!important;">
+          <input type="text" id="verifiyCode">
           <!-- <p class="ft-14 f-grey line-height-30" id="verifiyCode"></p> -->
         </div>
         <div class="pt-20 details-list">
           <div class="fl width-50">
             <p class="ft-12 text-default line-height-20">发票金额</p>
-            <p class="ft-14 f-grey line-height-30" id="invoiceAmount"></p>
+            <input type="number" id="invoiceAmount">
+            <!-- <p class="ft-14 f-grey line-height-30" id="invoiceAmount"></p> -->
           </div>
-          <div class="fl width-50">
+          <div class="fl width-50 pl-10">
             <p class="ft-12 text-default line-height-20">税额</p>
-            <p class="ft-14 f-grey line-height-30" id="invoiceTax"></p>
+            <input type="text" id="number" id="invoiceTax">
+            <!-- <p class="ft-14 f-grey line-height-30" id="invoiceTax"></p> -->
           </div>
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">免税额</p>
-          <p class="ft-14 f-grey line-height-30" id="amountExtax"></p>
+          <input type="text" id="amountExtax" style="border: none!important;">
+          <!-- <p class="ft-14 f-grey line-height-30" id="amountExtax"></p> -->
         </div>
       </div>
       <div class="border-b-dot pb-05">
         <div class="pt-20 details-list">
           <div class="fl width-50">
             <p class="ft-12 text-default line-height-20">发票接收人</p>
-            <p class="ft-14 f-grey line-height-30" id="draweeName"></p>
+            <input type="text" id="draweeName">
+            <!-- <p class="ft-14 f-grey line-height-30" id="draweeName"></p> -->
           </div>
-          <div class="fl width-50">
+          <div class="fl width-50 pl-10">
             <p class="ft-12 text-default line-height-20">发票收款人税码</p>
-            <p class="ft-14 f-grey line-height-30" id="draweeTaxno"></p>
+            <input type="text" id="draweeTaxno">
+            <!-- <p class="ft-14 f-grey line-height-30" id="draweeTaxno"></p> -->
           </div>
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">发票收件人地址、电话</p>
-          <p class="ft-14 f-grey line-height-30" id="draweeAddphone"></p>
+          <input type="text" id="draweeAddphone">
+          <!-- <p class="ft-14 f-grey line-height-30" id="draweeAddphone"></p> -->
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">发票收款行，账号</p>
-          <p class="ft-14 f-grey line-height-30" id="draweeBankaccount"></p>
+          <input type="text" id="draweeBankaccount" style="border: none!important;">
+          <!-- <p class="ft-14 f-grey line-height-30" id="draweeBankaccount"></p> -->
         </div>
       </div>
       <div class="pb-05">
         <div class="pt-20 details-list">
           <div class="fl width-50">
             <p class="ft-12 text-default line-height-20">发票签发人</p>
-            <p class="ft-14 f-grey line-height-30" id="sellerName"></p>
+            <input type="text" id="sellerName">
+            <!-- <p class="ft-14 f-grey line-height-30" id="sellerName"></p> -->
           </div>
-          <div class="fl width-50">
+          <div class="fl width-50 pl-10">
             <p class="ft-12 text-default line-height-20">发票发行人税码</p>
-            <p class="ft-14 f-grey line-height-30" id="sellerTax"></p>
+            <input type="text" id="sellerTax">
+            <!-- <p class="ft-14 f-grey line-height-30" id="sellerTax"></p> -->
           </div>
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">销售方地址、电话</p>
-          <p class="ft-14 f-grey line-height-30" id="sellerAddphone"></p>
+          <input type="text" id="sellerAddphone">
+          <!-- <p class="ft-14 f-grey line-height-30" id="sellerAddphone"></p> -->
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">销售方开户行、账号</p>
-          <p class="ft-14 f-grey line-height-30" id="sellerBankaccount"></p>
+          <input type="text" id="sellerBankaccount">
+          <!-- <p class="ft-14 f-grey line-height-30" id="sellerBankaccount"></p> -->
         </div>
       </div>
     </div>

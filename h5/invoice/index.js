@@ -107,7 +107,7 @@
           const createDate = date2Str(new Date(item.createDate))
           // const createDate = iosTimeFormtter(item.createDate)
           console.log(createDate)
-          temp += `<li class="border-b-grey invoice-item" data-id="${item.id}">
+          temp += `<li class="border-b-grey invoice-item" data-id="${item.id}" data-invoiceClass="${item.invoiceClass}">
             <div class="fl invoice-picture"><img src="${imgPath}${item.pic}" /></div>
             <div class="fl flex flex-between invoice-info">
               <div class="line-height-15">
@@ -126,8 +126,9 @@
 
     mui('#swiperContent').on('tap', '.invoice-item', function () {
       const id = this.getAttribute('data-id')
+      const invoiceClass = this.getAttribute('data-invoiceClass')
       mui.openWindow({
-        url: '/h5/invoice/invoiceDetails.html?id=' + id,
+        url: `/h5/invoice/invoiceDetails.html?id=${id}&invoiceClass=${invoiceClass}`,
         id: 'invoiceDetail'
       })
     })

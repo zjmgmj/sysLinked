@@ -39,8 +39,10 @@
   </div>
   <div class="page-con invoice pb-menu pt-header linear-gradient-grey">
     <div class="flex" style="align-items: flex-end;">
-      <div class="invoice-img mt-05"><img src="/h5/images/add.jpg" id="invoice-pic" data-preview-src=""
-        data-preview-group="1" /></div>
+      <div class="invoice-img mt-05" style="position: relative;">
+        <img src="/h5/images/add.jpg" id="invoice-pic" data-preview-src="" data-preview-group="1"/>
+        <input type="file" accept="image/*" value="" id="uploadInput" class="upload-input">
+      </div>
       <div style="position: relative; padding-left: 10px;">
         <span id="picturesTitle">Replace pictures</span>
         <input type="file" accept="image/*" id="addInvoice" value="" class="upload-input">
@@ -63,76 +65,91 @@
       <div class="border-b-dot pb-05">
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">Issue Date</p>
-          <p class="ft-14 f-grey line-height-30" id="invoiceDate"></p>
+          <!-- <input type="text" id="invoiceDate"> -->
+          <!-- <p class="ft-14 f-grey line-height-30" id="invoiceDate"></p> -->
+          <p class="ft-14 f-grey line-height-30" id="invoiceDate" style="border-bottom: 1px solid rgba(229,229,229,1);" id="invoiceDate">Please select time</p>
         </div>
         <div class="pt-20 details-list">
           <div class="fl width-50">
             <p class="ft-12 text-default line-height-20">Invoice Code</p>
-            <p class="ft-14 f-grey line-height-30" id="invoiceCode"></p>
+            <!-- <p class="ft-14 f-grey line-height-30" id="invoiceCode"></p> -->
+            <input type="text" id="invoiceCode">
           </div>
-          <div class="fl width-50">
+          <div class="fl width-50 pl-10">
             <p class="ft-12 text-default line-height-20">Invoice No.</p>
-            <p class="ft-14 f-grey line-height-30" id="invoiceNum"></p>
+            <input type="text" id="invoiceNum">
+            <!-- <p class="ft-14 f-grey line-height-30" id="invoiceNum"></p> -->
           </div>
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">Verify Code</p>
-          <input type="text" id="verifiyCode" style="border: none!important;">
+          <input type="text" id="verifiyCode">
           <!-- <p class="ft-14 f-grey line-height-30" id="verifiyCode"></p> -->
         </div>
         <div class="pt-20 details-list">
           <div class="fl width-50">
             <p class="ft-12 text-default line-height-20">Invoice Amount</p>
-            <p class="ft-14 f-grey line-height-30" id="invoiceAmount"></p>
+            <input type="number" id="invoiceAmount">
+            <!-- <p class="ft-14 f-grey line-height-30" id="invoiceAmount"></p> -->
           </div>
-          <div class="fl width-50">
+          <div class="fl width-50 pl-10">
             <p class="ft-12 text-default line-height-20">Tax Amount</p>
-            <p class="ft-14 f-grey line-height-30" id="invoiceTax"></p>
+            <input type="text" id="number" id="invoiceTax">
+            <!-- <p class="ft-14 f-grey line-height-30" id="invoiceTax"></p> -->
           </div>
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">Amount without Tax</p>
-          <p class="ft-14 f-grey line-height-30" id="amountExtax"></p>
+          <input type="text" id="amountExtax" style="border: none!important;">
+          <!-- <p class="ft-14 f-grey line-height-30" id="amountExtax"></p> -->
         </div>
       </div>
       <div class="border-b-dot pb-05">
         <div class="pt-20 details-list">
           <div class="fl width-50">
             <p class="ft-12 text-default line-height-20">Invoice Receiver</p>
-            <p class="ft-14 f-grey line-height-30" id="draweeName"></p>
+            <input type="text" id="draweeName">
+            <!-- <p class="ft-14 f-grey line-height-30" id="draweeName"></p> -->
           </div>
-          <div class="fl width-50">
+          <div class="fl width-50 pl-10">
             <p class="ft-12 text-default line-height-20">Invoice Receiver Tax Code</p>
-            <p class="ft-14 f-grey line-height-30" id="draweeTaxno"></p>
+            <input type="text" id="draweeTaxno">
+            <!-- <p class="ft-14 f-grey line-height-30" id="draweeTaxno"></p> -->
           </div>
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">Invoice Receiver Address, phone</p>
-          <p class="ft-14 f-grey line-height-30" id="draweeAddphone"></p>
+          <input type="text" id="draweeAddphone">
+          <!-- <p class="ft-14 f-grey line-height-30" id="draweeAddphone"></p> -->
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">Invoice receiver Bank, Account No.</p>
-          <p class="ft-14 f-grey line-height-30" id="draweeBankaccount"></p>
+          <input type="text" id="draweeBankaccount" style="border: none!important;">
+          <!-- <p class="ft-14 f-grey line-height-30" id="draweeBankaccount"></p> -->
         </div>
       </div>
       <div class="pb-05">
         <div class="pt-20 details-list">
           <div class="fl width-50">
             <p class="ft-12 text-default line-height-20">Invoice Issuer</p>
-            <p class="ft-14 f-grey line-height-30" id="sellerName"></p>
+            <input type="text" id="sellerName">
+            <!-- <p class="ft-14 f-grey line-height-30" id="sellerName"></p> -->
           </div>
-          <div class="fl width-50">
+          <div class="fl width-50 pl-10">
             <p class="ft-12 text-default line-height-20">Invoice Issuer Tax Code</p>
-            <p class="ft-14 f-grey line-height-30" id="sellerTax"></p>
+            <input type="text" id="sellerTax">
+            <!-- <p class="ft-14 f-grey line-height-30" id="sellerTax"></p> -->
           </div>
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">Invoice Issuer Address, phone</p>
-          <p class="ft-14 f-grey line-height-30" id="sellerAddphone"></p>
+          <input type="text" id="sellerAddphone">
+          <!-- <p class="ft-14 f-grey line-height-30" id="sellerAddphone"></p> -->
         </div>
         <div class="pt-20 details-list">
           <p class="ft-12 text-default line-height-20">Invoice Issuer Bank, Account No.</p>
-          <p class="ft-14 f-grey line-height-30" id="sellerBankaccount"></p>
+          <!-- <p class="ft-14 f-grey line-height-30" id="sellerBankaccount"></p> -->
+          <input type="text" id="sellerBankaccount">
         </div>
       </div>
     </div>
@@ -141,7 +158,7 @@
         <div class="fl width-50">
           <p class="ft-12 text-default line-height-20">
             <span class="text-red">*</span> Invoice Amount</p>
-          <input type="number" id="invoiceAmount">
+            <input type="number" id="invoiceAmount">
         </div>
         <div class="fl width-50 pl-10">
           <p class="ft-12 text-default line-height-20">
