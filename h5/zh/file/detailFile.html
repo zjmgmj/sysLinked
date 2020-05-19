@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="/h5/font/iconfont.css">
   <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
   <link rel="stylesheet" href="./index.css">
+  <!-- <base target="_parent"> -->
 </head>
 
 <body class="page-width">
@@ -43,7 +44,7 @@
     // const temp = `<iframe src="viewOffice.html?path=${path}" width="100%" height="${height}" frameborder="0"></iframe>`
     $('#detailBox').html(temp)
     mui('body').on('tap', '.back', function () {
-      back()
+      mui.back()
     })
   })
 })(mui, document, jQuery);

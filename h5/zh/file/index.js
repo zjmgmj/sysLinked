@@ -228,8 +228,8 @@
       saveFile(params)
     })
 
-    mui('.create-file-popup').on('tap', '#cancel', function () {
-      $('.create-file-popup').hide()
+    mui('.popup').on('tap', '#cancel', function () {
+      $('.popup').hide()
     })
 
     mui('.popup').on('change', '#uploadFile', function () {
@@ -302,5 +302,92 @@
     //     }
     //   })
     // }
+    mui('.popup').on('tap', '#operation', function () { 
+      $('.popup').hide()
+      $('#optionsBox').show()
+    })
+    mui('#optionsBox').on('tap', '#removeCompletely', function () { 
+      // 删除
+      const checkEl = $("input:checked")
+      if (!checkEl.length) {
+        mui.toast('请选择需要删除的数据')
+        $('.popup').hide()
+        return false
+      }
+      const fileListStr = localStorage.getItem('fileList')
+      const fileList = JSON.parse(fileListStr)
+      const delFileList = []
+      checkEl.map((idx, el) => {
+        const dataIdx = el.getAttribute('data-index')
+        fileList[dataIdx].status = 1
+        delFileList.push(fileList[dataIdx])
+      })
+      console.log('delFileList', delFileList)
+      $ajax('/projectfolder/delete', 'post', delFileList, function (res) {
+        mui.toast(res.msg)
+        if (res.code === 1) {
+          page = 1
+          $('#fileList').html('')
+          loadData()
+          $('.popup').hide()
+        }
+      })
+    })
+    mui('#optionsBox').on('tap', '#copyFolder', function () { 
+      // 复制
+      debugger
+      const checkEl = $("input:checked")
+      if (!checkEl.length) {
+        mui.toast('请选择需要复制的文件')
+        $('.popup').hide()
+        return false
+      }
+      if (checkEl.length > 1) { 
+        mui.toast('只能选择一条复制')
+        $('.popup').hide()
+        return false
+      }
+      const idx = $("input:checked")[0].getAttribute('data-index')
+      const fileList = JSON.parse(localStorage.getItem('fileList'))
+      if (fileList[idx].type !== 2) {
+        mui.toast('请选择要复制的文件夹')
+        $('.popup').hide()
+        return false
+      }
+      params = {
+        createUserid: createUserid,
+        name: fileList[idx].name,
+        projectId: pid,
+        parentId: parentId,
+        type: 2
+      }
+      saveFile(params)
+      $('.popup').hide()
+    })
+    mui('#optionsBox').on('tap', '#modificationName', function () { 
+      // 修改名称
+      const checkEl = $("input:checked")
+      if (!checkEl.length) {
+        mui.toast('请选择需要修改的数据')
+        $('.popup').hide()
+        return false
+      }
+      if (checkEl.length > 1) { 
+        mui.toast('只能选择一条修改')
+        $('.popup').hide()
+        return false
+      }
+      const idx = $("input:checked")[0].getAttribute('data-index')
+      const fileList = JSON.parse(localStorage.getItem('fileList'))
+      $('.popup').hide()
+      if (fileList[idx].type === 2) {
+        $('.create-file-popup').show()
+        $('#fileName').val(fileList[idx].name)
+        $('.create-file-popup').attr('data-edit', idx)
+        return false
+      }
+      mui.toast('请选择要修改的文件夹')
+      console.log('-------modificationName')
+    })
   });
 })(mui, document, jQuery);

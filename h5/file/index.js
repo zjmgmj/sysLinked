@@ -226,8 +226,8 @@
       saveFile(params)
     })
 
-    mui('.create-file-popup').on('tap', '#cancel', function () {
-      $('.create-file-popup').hide()
+    mui('.popup').on('tap', '#cancel', function () {
+      $('.popup').hide()
     })
     // if (isAndroid) {
     //   mui('body').on('click', '#uploadFile', function () {
@@ -319,5 +319,91 @@
     //     }
     //   })
     // }
+    mui('.popup').on('tap', '#operation', function () { 
+      $('.popup').hide()
+      $('#optionsBox').show()
+    })
+    mui('#optionsBox').on('tap', '#removeCompletely', function () { 
+      // 删除
+      const checkEl = $("input:checked")
+      if (!checkEl.length) {
+        mui.toast('Please select the data to be deleted')
+        $('.popup').hide()
+        return false
+      }
+      const fileListStr = localStorage.getItem('fileList')
+      const fileList = JSON.parse(fileListStr)
+      const delFileList = []
+      checkEl.map((idx, el) => {
+        const dataIdx = el.getAttribute('data-index')
+        fileList[dataIdx].status = 1
+        delFileList.push(fileList[dataIdx])
+      })
+      console.log('delFileList', delFileList)
+      $ajax('/projectfolder/delete', 'post', delFileList, function (res) {
+        mui.toast(res.msg)
+        if (res.code === 1) {
+          page = 1
+          $('#fileList').html('')
+          loadData()
+          $('.popup').hide()
+        }
+      })
+    })
+    mui('#optionsBox').on('tap', '#copyFolder', function () { 
+      // 复制
+      debugger
+      const checkEl = $("input:checked")
+      if (!checkEl.length) {
+        mui.toast('Please select the file to be copied')
+        $('.popup').hide()
+        return false
+      }
+      if (checkEl.length > 1) { 
+        mui.toast('Only one copy can be selected')
+        $('.popup').hide()
+        return false
+      }
+      const idx = $("input:checked")[0].getAttribute('data-index')
+      const fileList = JSON.parse(localStorage.getItem('fileList'))
+      if (fileList[idx].type !== 2) {
+        mui.toast('Please select a folder to modify')
+        $('.popup').hide()
+        return false
+      }
+      params = {
+        createUserid: createUserid,
+        name: fileList[idx].name,
+        projectId: pid,
+        parentId: parentId,
+        type: 2
+      }
+      saveFile(params)
+      $('.popup').hide()
+    })
+    mui('#optionsBox').on('tap', '#modificationName', function () { 
+      // 修改名称
+      const checkEl = $("input:checked")
+      if (!checkEl.length) {
+        mui.toast('Please select a folder to modify')
+        $('.popup').hide()
+        return false
+      }
+      if (checkEl.length > 1) { 
+        mui.toast('Only one modification can be selected')
+        $('.popup').hide()
+        return false
+      }
+      const idx = $("input:checked")[0].getAttribute('data-index')
+      const fileList = JSON.parse(localStorage.getItem('fileList'))
+      $('.popup').hide()
+      if (fileList[idx].type === 2) {
+        $('.create-file-popup').show()
+        $('#fileName').val(fileList[idx].name)
+        $('.create-file-popup').attr('data-edit', idx)
+        return false
+      }
+      mui.toast('Please select a folder to modify')
+    })
   });
 })(mui, document, jQuery);

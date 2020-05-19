@@ -18,6 +18,11 @@
   <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
   <link rel="stylesheet" type="text/css" href="/h5/css/index.css" />
   <link rel="stylesheet" href="./index.css">
+  <style>
+    .shadow{
+      box-shadow: 1px 1px 8px #dbdada;
+    }
+  </style>
 </head>
 
 <body class="page-width">
@@ -64,6 +69,10 @@
           <i class="icon iconfont text-black ft-21">&#xe646;</i>
           <span class="pl-02">创建文件夹</span>
         </li>
+        <li class="ft-14 flex align-center" id="operation">
+          <i class="icon iconfont text-black ft-21">&#xe63d;</i>
+          <span class="pl-02">操作</span>
+        </li>
         <!-- <li class="ft-14 flex align-center" id="delFile">
           <i class="icon iconfont text-black ft-21 iconicon-test9"></i>
           <span class="pl-02">移除</span>
@@ -86,6 +95,23 @@
       <div class="create-btn flex flex-between border-t-grey">
         <span class="text-999 ft-16 width-50 border-r-grey" id="cancel">取消</span>
         <span class="text-black ft-16 width-50" id="determine">确认</span>
+      </div>
+    </div>
+  </div>
+
+  <!--底部弹窗-->
+  <div class="popup" id="optionsBox">
+    <!--遮盖层-->
+    <div class="opacity-bg"></div>
+    <!--弹窗内容-->
+    <div class="popup-native">
+      <div class="native-txt bg-white shadow" id="recycleAll">
+        <p class="native-btn ft-20 f-007AFF border-b-grey" id="modificationName">修改名称</p>
+        <p class="native-btn ft-20 f-007AFF border-b-grey" id="copyFolder">复制文件夹</p>
+        <p class="native-btn ft-18 f-FF0000" id="removeCompletely">删除</p>
+      </div>
+      <div class="native-txt bg-white shadow" id="cancel">
+        <p class="native-btn ft-20 f-007AFF">取消</p>
       </div>
     </div>
   </div>
