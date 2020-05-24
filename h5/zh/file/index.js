@@ -335,7 +335,6 @@
     })
     mui('#optionsBox').on('tap', '#copyFolder', function () { 
       // 复制
-      debugger
       const checkEl = $("input:checked")
       if (!checkEl.length) {
         mui.toast('请选择需要复制的文件')
@@ -349,17 +348,18 @@
       }
       const idx = $("input:checked")[0].getAttribute('data-index')
       const fileList = JSON.parse(localStorage.getItem('fileList'))
-      if (fileList[idx].type !== 2) {
-        mui.toast('请选择要复制的文件夹')
-        $('.popup').hide()
-        return false
-      }
+      const data = fileList[idx]
       params = {
         createUserid: createUserid,
-        name: fileList[idx].name,
+        name: data.name,
         projectId: pid,
-        parentId: parentId,
-        type: 2
+        parentId: parentId
+      }
+      if (data.type === 2) {
+        params.type = 2
+      } else { 
+        params.type = 1
+        params.pic = data.url
       }
       saveFile(params)
       $('.popup').hide()
@@ -380,14 +380,9 @@
       const idx = $("input:checked")[0].getAttribute('data-index')
       const fileList = JSON.parse(localStorage.getItem('fileList'))
       $('.popup').hide()
-      if (fileList[idx].type === 2) {
-        $('.create-file-popup').show()
-        $('#fileName').val(fileList[idx].name)
-        $('.create-file-popup').attr('data-edit', idx)
-        return false
-      }
-      mui.toast('请选择要修改的文件夹')
-      console.log('-------modificationName')
+      $('.create-file-popup').show()
+      $('#fileName').val(fileList[idx].name)
+      $('.create-file-popup').attr('data-edit', idx)
     })
   });
 })(mui, document, jQuery);
