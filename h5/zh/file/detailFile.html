@@ -34,6 +34,9 @@
 <script src="/h5/js/public.js"></script>
 <script>
   (function ($$, doc, $) {
+  window.setupWebViewJavascriptBridge(bridge => {
+    bridge.callHandler('filepop ', 1)
+  })
   mui.init();
   mui.ready(function () {
     const path = imgPath + getUrlParam('path')
