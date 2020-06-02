@@ -10,9 +10,11 @@
       bridge.callHandler('getOrgId', '', (result) => {
         const resData = JSON.parse(result)
         orgId = resData.orgId
-        localStorage.setItem('orgDefault', orgId)
-        deptList()
-        getcompanyusercount()
+        if (orgId) { 
+          localStorage.setItem('orgDefault', orgId)
+          deptList()
+          getcompanyusercount()
+        }
       })
     })
     function getcompanyusercount () {

@@ -314,7 +314,7 @@
         id: 'phone'
       })
     })
-    const pickButtons = ['cancel', 'sure']
+    const pickButtons =  ['取消', '确认']
     var daysPicker = new mui.PopPicker({
       buttons: pickButtons
     });

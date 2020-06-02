@@ -20,7 +20,7 @@
     // const picPath = 'https://test-for-syslinked1.s3.cn-north-1.amazonaws.com.cn/'
 
     loadData()
-    function loadData () {
+    function loadData () { 
       // log('senderId', senderId)
       // log('userId', userId)
       // log('orgId', orgId)
@@ -28,7 +28,8 @@
         console.log(res)
         // const resData = res.data.rows.reverse()
         const resData = res.data.rows
-        $('#name').text(userNickname)
+        $('#name').text(resData[0].userNickname)
+        const senderAuthorPic = resData[0].userPic ? imgPath + resData[0].userPic : '/h5/images/avatar.png'
         if (resData.length > 0) {
           let temp = ''
           resData.map(item => {
@@ -45,7 +46,7 @@
             }
             temp += `<div class="flex mb-05" ><div class="flex mb-05">
               <div class="author-box">
-                <img src="${authorPic}">
+                <img src="${senderAuthorPic}">
               </div>
               <div class="chat-box ml-05">
                 <div class="chat-conter">${imgTemp}${msgTemp}</div>

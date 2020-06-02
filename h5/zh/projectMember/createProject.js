@@ -39,7 +39,7 @@
         }
       })
     }
-    const pickButtons = ['cancel', 'sure']
+    const pickButtons =  ['取消', '确认']
     const nowDate = new Date()
     const endDate = new Date(new Date().getTime() + 604800000)
     $('#startTime span')[0].innerText = date2Str(new Date(nowDate))

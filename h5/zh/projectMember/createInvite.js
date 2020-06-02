@@ -1,6 +1,7 @@
 (function ($$, doc, $) {
   mui.init();
   mui.ready(function () {
+    const pid = getUrlParam('pid')
     $('body').on('tap', '#sendMessage', function () {
       console.log($('#email').val().split(','))
       const emailList = $('#email').val().split(',')
@@ -16,7 +17,8 @@
         inviterUserId: Number(localStorage.getItem('userId')),
         list: emailList,
         orgId: Number(localStorage.getItem('orgDefault')),
-        type: 1
+        projectId: pid,
+        type: 2
       }
       $ajax('/user/sendorgeamil', 'post', params, function (res) {
         console.log(res)

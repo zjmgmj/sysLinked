@@ -10,7 +10,8 @@
     console.log('pulldownRefresh')
     page = 1
     $('#memberList').html('')
-    deptuserList()
+    // deptuserList()
+    orguserList()
   }
 
   function pullupRefresh () {
@@ -22,9 +23,28 @@
       return false
     }
     page = Number($('#pullrefresh').attr('data-page')) + 1
-    deptuserList()
+    // deptuserList()
+    orguserList()
   }
-
+  function orguserList () { 
+    // status=1&projectId=10129&orgId=251
+    let api = '/orguser/list?size=' + size + '&page=' + page + '&projectId=' + pid + '&orgId=' + orgId
+    if (deptId) {
+      api = api + '&deptId=' + deptId
+    }
+    $ajax(api, 'get', '', function (res) {
+      console.log(res)
+      $('#pullrefresh').attr('data-page', page)
+      $('#pullrefresh').attr('data-total', res.data.total)
+      const resData = res.data.rows
+      orgList(resData)
+      if (page === 1) {
+        mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+      } else {
+        mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+      }
+    })
+  }
   function deptuserList () {
     // const searchKey = $('#searchInput').val()
     let api = '/deptuser/getdeptuserlist?size=' + size + '&page=' + page + '&projectId=' + pid + '&orgId=' + orgId
@@ -88,7 +108,8 @@
       console.log('-------1')
       $('#memberList').html('')
       page = 1
-      deptuserList()
+      // deptuserList()
+      orguserList()
     })
 
     mui('#memberList').on('tap', '.member-item .add', function () {
@@ -158,6 +179,7 @@
       // back()
       mui.back()
     })
-    deptuserList()
+    // deptuserList()
+    orguserList()
   });
 })(mui, document, jQuery);

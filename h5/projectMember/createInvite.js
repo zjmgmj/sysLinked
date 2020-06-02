@@ -1,6 +1,7 @@
 (function ($$, doc, $) {
   mui.init();
-  mui.ready(function () {
+  mui.ready(function () { 
+    const pid = getUrlParam('pid')
     $('body').on('tap', '#sendMessage', function () {
       console.log($('#email').val().split(','))
       const emailList = $('#email').val().split(',')

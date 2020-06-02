@@ -19,6 +19,7 @@
       localStorage.setItem('projectuserlist', JSON.stringify(resData))
       let temp = ''
       resData.map((item, index) => {
+        const delElemnt = item.roleName !== '拥有者' ? '<div id="remove">remove</div>' : ''
         temp += `<li class="border-b-grey flex flex-between align-center member-item" data-id="${item.projectUserId}" data-index="${index}">
           <div class="flex col">
           <div class="avator border-blue radius-b50">        
@@ -29,7 +30,7 @@
             <p class="email ft-12">${item.userEamil}</p>
           </div>
           </div>
-          <div id="remove">remove</div>
+          ${delElemnt}
         </li>`
       })
       $('#adminList').html(temp)
@@ -119,9 +120,20 @@
     })
 
     mui('body').on('tap', '#inviteMembers', function () {
-      mui.openWindow({
-        url: '/h5/projectMember/inviteMembers.html',
-        id: 'inviteMembers'
+      // mui.openWindow({
+      //   url: '/h5/projectMember/inviteMembers.html',
+      //   id: 'inviteMembers'
+      // })
+      $('.popup').hide()
+      window.setupWebViewJavascriptBridge(bridge => {
+        bridge.callHandler('getProjectId', '', (result) => {
+          const resData = JSON.parse(result)
+          pid = resData.projectId
+          mui.openWindow({
+            url: '/h5/projectMember/inviteMembers.html?pid='+pid,
+            id: 'inviteMembers'
+          })
+        })
       })
     })
     mui('body').on('tap', '#batchImport', function () {

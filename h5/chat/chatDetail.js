@@ -28,9 +28,10 @@
         console.log(res)
         // const resData = res.data.rows.reverse()
         const resData = res.data.rows
-        $('#name').text(userNickname)
+        $('#name').text(resData[0].userNickname)
         if (resData.length > 0) {
           let temp = ''
+          const senderAuthorPic = resData[0].userPic ? imgPath + resData[0].userPic : '/h5/images/avatar.png'
           resData.map(item => {
             // const authorPic = item.userPic ? imgPath + item.userPic : '/h5/images/icon_dotted.jpg'
             const time = datetime2Str(new Date(item.createTime))
@@ -45,7 +46,7 @@
             }
             temp += `<div class="flex mb-05" ><div class="flex mb-05">
               <div class="author-box">
-                <img src="${authorPic}">
+                <img src="${senderAuthorPic}">
               </div>
               <div class="chat-box ml-05">
                 <div class="chat-conter">${imgTemp}${msgTemp}</div>

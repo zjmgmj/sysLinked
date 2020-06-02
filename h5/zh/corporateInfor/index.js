@@ -31,7 +31,7 @@
       mui.back()
     })
 
-    const pickButtons = ['cancel', 'sure']
+    const pickButtons = ['取消', '确认']
     const corporatePicker = new mui.PopPicker({
       buttons: pickButtons
     });

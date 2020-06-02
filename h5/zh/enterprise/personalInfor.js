@@ -1,7 +1,7 @@
 (function ($$, doc, $) {
   mui.init()
   mui.ready(function () {
-    const pickButtons = ['cancel', 'sure']
+    const pickButtons = ['取消', '确认']
     const dayPicker = new mui.DtPicker({
       buttons: pickButtons,
       type: 'date',

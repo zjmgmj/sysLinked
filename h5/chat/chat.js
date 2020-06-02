@@ -28,8 +28,7 @@
 
   function loadData() {
     // staffId=34&orgId=87&size=50&page=1
-    const url = '/messages/list?size=' + size + '&page=' + page + '&orgId=' + orgId + '&staffId=' + userId
-    $ajax(url, 'get', '', (res) => {
+    $ajax('/messages/list?size=' + size + '&page=' + page + '&orgId=' + orgId + '&staffId=' + userId, 'get', '', (res) => {
       console.log('---s', res)
       if (res.code === 1) {
         $('#pullrefresh').attr('data-page', page)

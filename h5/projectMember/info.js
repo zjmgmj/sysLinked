@@ -4,8 +4,12 @@
     const orgId = localStorage.getItem('orgDefault')
     const info = JSON.parse(localStorage.getItem('projectuserDetail'))
     // const url = 'https://test-for-syslinked1.s3.cn-north-1.amazonaws.com.cn/'
-
-    initData()
+    const from = getUrlParam('from')
+    if (info.roleName === '拥有者' || info.orgRoleName === '拥有者') {
+      $('#authority').hide()
+      $('#sendMessage').hide()
+    }
+    // initData() 
 
     function initData () {
       const authorPic = info.userPic ? imgPath + info.userPic : '/h5/images/avatar.png'
@@ -18,7 +22,7 @@
       $('#mailbox').text(info.userEamil)
       $('#phoneNum').text(info.userLogin)
       $('#jobTitle').text(info.position)
-      $('#roleVal').text(info.roleName)
+      $('#roleVal').text(info.roleName || info.orgRoleName)
     }
 
     const pickButtons = ['cancel', 'sure']
@@ -37,13 +41,24 @@
 
 
     function update (projectRoleId) {
-      const params = {
-        id: info.projectUserId,
-        projectId: info.pid,
-        projectRoleId: projectRoleId,
-        userId: info.userId
+      let params = {}
+      let url =''
+      if (from === 'organization') {
+        params = {
+          id: info.orgUserId,
+          orgRoleId: projectRoleId
+        }
+        url= '/orguser/update'
+      } else { 
+        params = {
+          id: info.projectUserId,
+          projectId: info.pid,
+          projectRoleId: projectRoleId,
+          userId: info.userId
+        }
+        url= '/projectuser/update'
       }
-      $ajax('/projectuser/update', 'post', params, function (res) {
+      $ajax(url, 'post', params, function (res) {
         mui.toast(res.msg)
       })
     }
@@ -51,7 +66,8 @@
 
     getRole()
     function getRole () {
-      $ajax('/role/list?type=2&orgId=' + orgId, 'get', '', function (res) {
+      const type = from === 'organization' ? 1 : 2
+      $ajax('/role/list?type='+type+'&orgId=' + orgId, 'get', '', function (res) {
         console.log(res)
         if (res.code === 1) {
           const rolePickerList = []
@@ -63,6 +79,7 @@
             rolePickerList.push(obj)
           })
           rolePicker.setData(rolePickerList)
+          initData()
         }
       })
     }

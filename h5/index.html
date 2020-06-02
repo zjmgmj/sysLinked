@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="/h5/font/iconfont.css">
   <link rel="stylesheet" type="text/css" href="/h5/css/base.css" />
   <link rel="stylesheet" type="text/css" href="/h5/css/index.css" />
+
 </head>
 
 <body style="background: #fff;">
@@ -29,16 +30,13 @@
         <i class="icon iconfont text-default ft-20 create-project">&#xe639;</i>
       </div>
     </div>
-    <div id="pullrefresh" class="mt-40">
-      <div class="page-con" id="content">
-        <!-- <h1>My Starred Projects · <span id="starredCount"></span></h1>
-      <ul class="store-list" id="starredProjects"></ul>
-      <h1>Startup Project · <span id="startupCount"></span></h1>
-      <ul class="store-list" id="startupProject"></ul>
-      <h1>Close Project · <span id="closeCount"></span></h1>
-      <ul class="store-list close-list" id="closeProject"></ul> -->
+    <div id="pullrefresh" class="mt-40 mui-content mui-scroll-wrapper" style="background: #fff;">
+      <div class="mui-scroll">
+        <div class="page-con mui-table-view mui-table-view-chevron" id="content">
+        </div>
       </div>
     </div>
+    
   </div>
 </body>
 <script src="/h5/js/jquery-3.4.1.min.js"></script>

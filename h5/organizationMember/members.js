@@ -170,7 +170,7 @@
       localStorage.setItem('projectuserDetail', JSON.stringify(detail))
       console.log(this)
       mui.openWindow({
-        url: '/h5/projectMember/memberInfo.html',
+        url: '/h5/projectMember/memberInfo.html?from=organization',
         id: 'memberInfo'
       })
       // if (type === 'orgId') {

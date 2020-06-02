@@ -3,6 +3,7 @@
   const size = 150
   let pid = null
   let orgId = null
+  
   window.setupWebViewJavascriptBridge(bridge => {
     bridge.callHandler('getProjectId', '', (result) => {
       const resData = JSON.parse(result)
@@ -14,12 +15,13 @@
     })
   })
 
-  function loadData() {
+  function loadData () {
     $ajax('/projectuser/getprojectuserlist?page=' + page + '&size=' + size + '&projectId=' + pid, 'get', '', function (res) {
       const resData = res.data.rows
       localStorage.setItem('projectuserlist', JSON.stringify(resData))
       let temp = ''
       resData.map((item, index) => {
+        const delElemnt = item.roleName !== '拥有者' ? '<div id="remove">移除</div>' : ''
         temp += `<li class="border-b-grey flex flex-between align-center member-item" data-id="${item.projectUserId}" data-index="${index}">
           <div class="flex col">
           <div class="avator border-blue radius-b50">        
@@ -30,7 +32,7 @@
             <p class="email ft-12">${item.userEamil}</p>
           </div>
           </div>
-          <div id="remove">移除</div>
+          ${delElemnt}
         </li>`
       })
       $('#adminList').html(temp)
@@ -43,15 +45,15 @@
 
   function pulldownRefresh () {
     $('#projectMembers #optionShow').hide()
-    // pid = '10098'
-    // loadData()
-    window.setupWebViewJavascriptBridge(bridge => {
-      bridge.callHandler('getProjectId', '', (result) => {
-        const resData = JSON.parse(result)
-        pid = resData.projectId
-        loadData()
-      })
-    })
+    pid = '10129'
+    loadData()
+    // window.setupWebViewJavascriptBridge(bridge => {
+    //   bridge.callHandler('getProjectId', '', (result) => {
+    //     const resData = JSON.parse(result)
+    //     pid = resData.projectId
+    //     loadData()
+    //   })
+    // })
   }
   mui.init({
     pullRefresh: {
@@ -106,9 +108,16 @@
     })
 
     mui('body').on('tap', '#inviteMembers', function () {
-      mui.openWindow({
-        url: '/h5/zh/projectMember/inviteMembers.html',
-        id: 'inviteMembers'
+      $('.popup').hide()
+      window.setupWebViewJavascriptBridge(bridge => {
+        bridge.callHandler('getProjectId', '', (result) => {
+          const resData = JSON.parse(result)
+          pid = resData.projectId
+          mui.openWindow({
+            url: '/h5/zh/projectMember/inviteMembers.html?pid='+pid,
+            id: 'inviteMembers'
+          })
+        })
       })
     })
     mui('body').on('tap', '#batchImport', function () {
@@ -127,5 +136,9 @@
       })
       return false
     })
+    // window.addEventListener('popstate', function (e) {
+    //   //侦测是用户触发的后退操作
+    //   if (e.state) {pulldownRefresh()}
+    // }, false);
   });
 })(mui, document, jQuery);
